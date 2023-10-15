@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2013-2016 The CyanogenMod Project
+                   2017 The LineageOS Project
+                   2020-2023 Paranoid Android
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="glyph_settings_app_name">Glief interface</string>
+    <string name="glyph_settings_enable">Glief lampen</string>
+    <string name="glyph_settings_title">Glief interface</string>
+    <string name="glyph_settings_summary">Opties voor Glief lampen</string>
+    <string name="glyph_settings_flip_toggle_title">Spiegel naar Glief</string>
+    <string name="glyph_settings_flip_toggle_summary">Zet geluid uit en laat Gliefen zien als de telefoon naar beneden wordt bekeken</string>
+    <string name="glyph_settings_brightness">Helderheid</string>
+    <string name="glyph_settings_charging_title">Bezig met opladen</string>
+    <string name="glyph_settings_charging_level_title">Batterijniveau</string>
+    <string name="glyph_settings_charging_level_summary">Batterijniveau weergeven tijdens het aansluiten van de oplader</string>
+    <string name="glyph_settings_charging_powershare_title">Omgekeerd draadloos opladen</string>
+    <string name="glyph_settings_charging_powershare_summary">Een animatie weergeven wanneer draadloos opladen wordt gedetecteerd</string>
+    <string name="glyph_settings_call_title">Gesprekken</string>
+    <string name="glyph_settings_call_toggle_title">Oproepanimatie</string>
+    <string name="glyph_settings_call_toggle_summary">Flash LEDs bij inkomende gesprekken</string>
+    <string name="glyph_settings_call_sub_toggle_title">Schakel oproepanimatie in </string>
+    <string name="glyph_settings_call_sub_animations_title">Patroon</string>
+    <string name="glyph_settings_notifs_title">Meldingen</string>
+    <string name="glyph_settings_notifs_toggle_title">Meldingsanimatie</string>
+    <string name="glyph_settings_notifs_toggle_summary">Knipper LEDs bij nieuwe meldingen</string>
+    <string name="glyph_settings_notifs_sub_title">Toegestane apps</string>
+    <string name="glyph_settings_notifs_sub_toggle_title">Schakel meldingsanimatie in</string>
+    <string name="glyph_settings_notifs_sub_animations_title">Patroon</string>
+    <string name="glyph_settings_volume_title">Volume</string>
+    <string name="glyph_settings_volume_level_toggle_title">Volume-indicator</string>
+    <string name="glyph_settings_volume_level_toggle_summary">Laat het volumeniveau tijdens het aanpassen zien</string>
+    <string name="glyph_settings_misc_title">Diversen</string>
+    <string name="glyph_settings_music_visualizer_toggle_title">Muziekvisualisatie</string>
+    <string name="glyph_settings_music_visualizer_toggle_summary">Hierdoor zullen Glief lampen reageren op de audiospeler op het apparaat.\nAlle andere Glief functies zullen uitgeschakeld worden wanneer deze worden gebruikt.</string>
+    <string name="glyph_accessibility_quick_settings">Glief</string>
+    <string name="glyph_accessibility_quick_settings_torch">Glief fakkel</string>
+    <string name="glyph_accessibility_quick_settings_off">Uit</string>
+    <string name="glyph_accessibility_quick_settings_on">Aan</string>
+</resources>

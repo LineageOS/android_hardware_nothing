@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2013-2016 The CyanogenMod Project
+                   2017 The LineageOS Project
+                   2020-2023 Paranoid Android
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="glyph_settings_app_name">Ndërfaqja e glyph</string>
+    <string name="glyph_settings_enable">Dritat glyph</string>
+    <string name="glyph_settings_title">Ndërfaqja e glyph</string>
+    <string name="glyph_settings_summary">Opsionet për dritat glyph</string>
+    <string name="glyph_settings_flip_toggle_title">Kthejeni në Glyph</string>
+    <string name="glyph_settings_flip_toggle_summary">Çaktivizo dhe shfaq Glyphs nëse telefoni është me fytyrë poshtë</string>
+    <string name="glyph_settings_brightness">Ndriçimi</string>
+    <string name="glyph_settings_charging_title">Duke u karikuar</string>
+    <string name="glyph_settings_charging_level_title">Niveli i baterisë</string>
+    <string name="glyph_settings_charging_level_summary">Trego nivelin e baterisë kur futet në prizë</string>
+    <string name="glyph_settings_charging_powershare_title">Karikimi i kundërt me valë</string>
+    <string name="glyph_settings_charging_powershare_summary">Shfaq një animacion kur zbulohet karikimi i kundërt me valë</string>
+    <string name="glyph_settings_call_title">Thirrjet</string>
+    <string name="glyph_settings_call_toggle_title">Thirrje animacion</string>
+    <string name="glyph_settings_call_toggle_summary">Blic LED në thirrjet hyrëse</string>
+    <string name="glyph_settings_call_sub_toggle_title">Aktivizo animacionin e thirrjeve</string>
+    <string name="glyph_settings_call_sub_animations_title">Motivi</string>
+    <string name="glyph_settings_notifs_title">Njoftimet</string>
+    <string name="glyph_settings_notifs_toggle_title">Animacioni i njoftimit</string>
+    <string name="glyph_settings_notifs_toggle_summary">Blic LED në njoftimet e reja</string>
+    <string name="glyph_settings_notifs_sub_title">Aplikacionet për të lejuar</string>
+    <string name="glyph_settings_notifs_sub_toggle_title">Aktivizo animacionin e njoftimeve</string>
+    <string name="glyph_settings_notifs_sub_animations_title">Motivi</string>
+    <string name="glyph_settings_volume_title">Volumi</string>
+    <string name="glyph_settings_volume_level_toggle_title">Treguesi i volumit</string>
+    <string name="glyph_settings_volume_level_toggle_summary">Trego nivelin e volumit kur rregullon</string>
+    <string name="glyph_settings_misc_title">Të ndryshme</string>
+    <string name="glyph_settings_music_visualizer_toggle_title">Vizualizues i muzikës</string>
+    <string name="glyph_settings_music_visualizer_toggle_summary">Kjo do të bëjë që dritat Glyph të reagojnë ndaj luajtësit audio në pajisje.\nTë gjitha funksionet e tjera të Glyph do të çaktivizohen kur kjo të përdoret.</string>
+    <string name="glyph_accessibility_quick_settings">Glyph</string>
+    <string name="glyph_accessibility_quick_settings_torch">Pishtari glyph</string>
+    <string name="glyph_accessibility_quick_settings_off">Fikur</string>
+    <string name="glyph_accessibility_quick_settings_on">Ndezur</string>
+</resources>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2013-2016 The CyanogenMod Project
+                   2017 The LineageOS Project
+                   2020-2023 Paranoid Android
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="glyph_settings_app_name">Glyph インターフェース</string>
+    <string name="glyph_settings_enable">Glyph ライト</string>
+    <string name="glyph_settings_title">Glyph インターフェース</string>
+    <string name="glyph_settings_summary">Glyph ライトのオプション</string>
+    <string name="glyph_settings_flip_toggle_title">裏返した時の Glyph</string>
+    <string name="glyph_settings_flip_toggle_summary">デバイスを裏返して置いた時、ミュートにして Glyph を表示します</string>
+    <string name="glyph_settings_brightness">明るさ</string>
+    <string name="glyph_settings_charging_title">充電中</string>
+    <string name="glyph_settings_charging_level_title">バッテリー残量</string>
+    <string name="glyph_settings_charging_level_summary">電源接続時にバッテリー残量を表示します</string>
+    <string name="glyph_settings_charging_powershare_title">リバースワイヤレス充電</string>
+    <string name="glyph_settings_charging_powershare_summary">リバースワイヤレス充電時にアニメーションを表示します</string>
+    <string name="glyph_settings_call_title">電話</string>
+    <string name="glyph_settings_call_toggle_title">通話アニメーション</string>
+    <string name="glyph_settings_call_toggle_summary">着信時に LED を点滅させます</string>
+    <string name="glyph_settings_call_sub_toggle_title">通話アニメーションを有効化</string>
+    <string name="glyph_settings_call_sub_animations_title">パターン</string>
+    <string name="glyph_settings_notifs_title">通知</string>
+    <string name="glyph_settings_notifs_toggle_title">通知アニメーション</string>
+    <string name="glyph_settings_notifs_toggle_summary">新しい通知があった時に LED を点滅させます</string>
+    <string name="glyph_settings_notifs_sub_title">許可するアプリ</string>
+    <string name="glyph_settings_notifs_sub_toggle_title">通知アニメーションを有効化</string>
+    <string name="glyph_settings_notifs_sub_animations_title">パターン</string>
+    <string name="glyph_settings_volume_title">音量</string>
+    <string name="glyph_settings_volume_level_toggle_title">音量インジケーター</string>
+    <string name="glyph_settings_volume_level_toggle_summary">調整時に音量レベルを表示します</string>
+    <string name="glyph_settings_misc_title">その他</string>
+    <string name="glyph_settings_music_visualizer_toggle_title">音楽ビジュアライザー</string>
+    <string name="glyph_settings_music_visualizer_toggle_summary">Glyph ライトがデバイスのオーディオプレーヤーに連動します。\n使用中は他のすべての Glyph 機能は無効になります</string>
+    <string name="glyph_accessibility_quick_settings">Glyph</string>
+    <string name="glyph_accessibility_quick_settings_torch">Glyph トーチ</string>
+    <string name="glyph_accessibility_quick_settings_off">オフ</string>
+    <string name="glyph_accessibility_quick_settings_on">オン</string>
+</resources>
