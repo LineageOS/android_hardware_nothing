@@ -17,9 +17,12 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="glyph_settings_brightness">Luminosité</string>
+    <string name="glyph_settings_charging_level_title">Niveau de batterie</string>
     <string name="glyph_settings_call_title">Appels</string>
     <string name="glyph_settings_call_toggle_title">Animation d\'appel</string>
     <string name="glyph_settings_notifs_title">Notifications</string>
     <string name="glyph_settings_notifs_toggle_title">Animation de la notification</string>
+    <string name="glyph_settings_notifs_sub_title">Applications à autoriser</string>
     <string name="glyph_settings_volume_title">Volume</string>
 </resources>
