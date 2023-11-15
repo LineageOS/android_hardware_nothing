@@ -21,10 +21,14 @@
     <string name="glyph_settings_enable">Glyph-Lichter</string>
     <string name="glyph_settings_title">Glyph-Schnittstelle</string>
     <string name="glyph_settings_summary">Einstellungen für Glyph-Lichter</string>
+    <string name="glyph_settings_flip_toggle_title">Umdrehen für Glyph</string>
     <string name="glyph_settings_flip_toggle_summary">Stummschalten und Glyphen anzeigen, wenn das Telefon auf dem Display liegt.</string>
     <string name="glyph_settings_brightness">Helligkeit</string>
     <string name="glyph_settings_charging_title">Wird geladen</string>
     <string name="glyph_settings_charging_level_title">Akkustand</string>
+    <string name="glyph_settings_charging_level_summary">Akkustand beim Einstecken anzeigen</string>
+    <string name="glyph_settings_charging_powershare_title">Umgekehrtes kabelloses Laden</string>
+    <string name="glyph_settings_charging_powershare_summary">Animation anzeigen, wenn umgekehrtes kabelloses Laden erkannt wird</string>
     <string name="glyph_settings_call_title">Anrufe</string>
     <string name="glyph_settings_call_toggle_title">Anrufanimation</string>
     <string name="glyph_settings_call_toggle_summary">LEDs bei eingehenden Anrufen blinken lassen</string>
@@ -33,6 +37,7 @@
     <string name="glyph_settings_notifs_title">Benachrichtigungen</string>
     <string name="glyph_settings_notifs_toggle_title">Benachrichtigungsanimation</string>
     <string name="glyph_settings_notifs_toggle_summary">LEDs bei neuen Benachrichtigungen blinken lassen</string>
+    <string name="glyph_settings_notifs_sub_title">Zugelassene Apps</string>
     <string name="glyph_settings_notifs_sub_toggle_title">Benachrichtigungsanimation aktivieren</string>
     <string name="glyph_settings_notifs_sub_animations_title">Muster</string>
     <string name="glyph_settings_volume_title">Lautstärke</string>
