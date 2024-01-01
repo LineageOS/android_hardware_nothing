@@ -17,6 +17,12 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="glyph_settings_app_name">Интерфейс Glyph</string>
+    <string name="glyph_settings_enable">Подсветка Glyph</string>
+    <string name="glyph_settings_title">Интерфейс Glyph</string>
+    <string name="glyph_settings_summary">Настройки подсветки Glyph</string>
+    <string name="glyph_settings_flip_toggle_title">Перевернуть для Glyph</string>
+    <string name="glyph_settings_flip_toggle_summary">Отключить звук и показать Glyph, если телефон лежит экраном вниз</string>
     <string name="glyph_settings_brightness">Яркость</string>
     <string name="glyph_settings_charging_title">Заряжается</string>
     <string name="glyph_settings_charging_level_title">Уровень заряда батареи</string>
@@ -39,6 +45,9 @@
     <string name="glyph_settings_volume_level_toggle_summary">Показывать уровень громкости при регулировке</string>
     <string name="glyph_settings_misc_title">Прочее</string>
     <string name="glyph_settings_music_visualizer_toggle_title">Визуализация музыки</string>
+    <string name="glyph_settings_music_visualizer_toggle_summary">Подсветка Glyph будет реагировать на проигрыватель устройства.\nВсе остальные функции Glyph будут отключены.</string>
+    <string name="glyph_accessibility_quick_settings">Glyph</string>
+    <string name="glyph_accessibility_quick_settings_torch">Фонарик Glyph</string>
     <string name="glyph_accessibility_quick_settings_off">Выкл</string>
     <string name="glyph_accessibility_quick_settings_on">Вкл</string>
 </resources>
