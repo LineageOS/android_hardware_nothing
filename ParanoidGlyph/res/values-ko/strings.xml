@@ -17,5 +17,37 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="glyph_settings_app_name">Glyph 인터페이스</string>
+    <string name="glyph_settings_enable">Glyph 조명</string>
+    <string name="glyph_settings_title">Glyph 인터페이스</string>
+    <string name="glyph_settings_summary">Glyph 조명 옵션</string>
+    <string name="glyph_settings_flip_toggle_title">뒤집어서 Glyph 사용</string>
+    <string name="glyph_settings_flip_toggle_summary">폰을 아래로 향하게 두면 음소거하고 Glyph 표시</string>
+    <string name="glyph_settings_brightness">밝기</string>
+    <string name="glyph_settings_charging_title">충전 중</string>
+    <string name="glyph_settings_charging_level_title">배터리 잔량</string>
+    <string name="glyph_settings_charging_level_summary">충전 중 배터리 잔량 표시</string>
+    <string name="glyph_settings_charging_powershare_title">무선 배터리 공유</string>
+    <string name="glyph_settings_charging_powershare_summary">무선 배터리 공유를 사용할 때 애니메이션 표시</string>
+    <string name="glyph_settings_call_title">통화</string>
+    <string name="glyph_settings_call_toggle_title">통화 애니메이션</string>
+    <string name="glyph_settings_call_toggle_summary">통화 수신 중 LED 깜빡이기</string>
+    <string name="glyph_settings_call_sub_toggle_title">통화 애니메이션 사용</string>
+    <string name="glyph_settings_call_sub_animations_title">패턴</string>
+    <string name="glyph_settings_notifs_title">알림</string>
+    <string name="glyph_settings_notifs_toggle_title">알림 애니메이션</string>
+    <string name="glyph_settings_notifs_toggle_summary">새 알림이 올 때 LED 깜빡이기</string>
+    <string name="glyph_settings_notifs_sub_title">허용할 앱</string>
+    <string name="glyph_settings_notifs_sub_toggle_title">알림 애니메이션 사용</string>
+    <string name="glyph_settings_notifs_sub_animations_title">패턴</string>
+    <string name="glyph_settings_volume_title">볼륨</string>
+    <string name="glyph_settings_volume_level_toggle_title">볼륨 표시기</string>
     <string name="glyph_settings_volume_level_toggle_summary">조절 시 볼륨 수준 표시</string>
+    <string name="glyph_settings_misc_title">기타</string>
+    <string name="glyph_settings_music_visualizer_toggle_title">음악 시각화</string>
+    <string name="glyph_settings_music_visualizer_toggle_summary">Glyph 조명이 기기의 오디오 플레이어에 반응하게 됩니다.\n이 기능을 사용하면 다른 모든 Glyph 기능이 비활성화됩니다.</string>
+    <string name="glyph_accessibility_quick_settings">Glyph</string>
+    <string name="glyph_accessibility_quick_settings_torch">Glyph 손전등</string>
+    <string name="glyph_accessibility_quick_settings_off">꺼짐</string>
+    <string name="glyph_accessibility_quick_settings_on">켜짐</string>
 </resources>
