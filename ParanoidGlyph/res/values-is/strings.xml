@@ -24,6 +24,8 @@
     <string name="glyph_settings_flip_toggle_title">Velta til að nota Glyph-bakljós</string>
     <string name="glyph_settings_flip_toggle_summary">Þagga og birta Glyph-bakljós ef síminn er með skjáinn niður</string>
     <string name="glyph_settings_charging_level_summary">Sýna hleðslu rafhlöðu þegar stungið er í samband</string>
+    <string name="glyph_settings_charging_powershare_title">Öfug þráðlaus hleðsla</string>
+    <string name="glyph_settings_charging_powershare_summary">Sýna myndlífgun þegar öfug þráðlaus hleðsla greinist</string>
     <string name="glyph_settings_call_toggle_title">Myndlífgun símhringinga</string>
     <string name="glyph_settings_call_toggle_summary">Blikka LED-ljósum við innhringingar</string>
     <string name="glyph_settings_call_sub_toggle_title">Virkja myndlífgun símhringinga</string>
