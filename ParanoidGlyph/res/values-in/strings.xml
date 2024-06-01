@@ -19,11 +19,15 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="glyph_settings_app_name">Antarmuka Glyph</string>
     <string name="glyph_settings_title">Antarmuka Glyph</string>
+    <string name="glyph_settings_brightness">Kecerahan</string>
+    <string name="glyph_settings_charging_level_title">Level baterai</string>
     <string name="glyph_settings_call_title">Panggilan</string>
     <string name="glyph_settings_call_toggle_title">Animasi panggilan</string>
+    <string name="glyph_settings_call_sub_toggle_title">Aktifkan animasi panggilan</string>
     <string name="glyph_settings_call_sub_animations_title">Pola</string>
     <string name="glyph_settings_notifs_title">Notifikasi</string>
     <string name="glyph_settings_notifs_toggle_title">Animasi notifikasi</string>
+    <string name="glyph_settings_notifs_toggle_summary">Kedipkan LED ketika ada notifikasi baru</string>
     <string name="glyph_settings_notifs_sub_title">Aplikasi yang diizinkan</string>
     <string name="glyph_settings_notifs_sub_toggle_title">Aktifkan animasi notifikasi</string>
     <string name="glyph_settings_notifs_sub_animations_title">Pola</string>
