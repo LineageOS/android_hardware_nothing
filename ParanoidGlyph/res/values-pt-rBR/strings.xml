@@ -37,7 +37,7 @@
     <string name="glyph_settings_notifs_title">Notificações</string>
     <string name="glyph_settings_notifs_toggle_title">Animação de notificação</string>
     <string name="glyph_settings_notifs_toggle_summary">Piscar LEDs para novas notificações</string>
-    <string name="glyph_settings_notifs_sub_title">Aplicativos permitidos</string>
+    <string name="glyph_settings_notifs_sub_title">Apps permitidos</string>
     <string name="glyph_settings_notifs_sub_toggle_title">Ativar animação de notificação</string>
     <string name="glyph_settings_notifs_sub_animations_title">Padrão</string>
     <string name="glyph_settings_volume_title">Volume</string>
