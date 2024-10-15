@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2013-2016 The CyanogenMod Project
+                   2017 The LineageOS Project
+                   2020-2023 Paranoid Android
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="glyph_settings_app_name">Comhéadan glyph</string>
+    <string name="glyph_settings_enable">Soilse Glyph</string>
+    <string name="glyph_settings_title">Comhéadan glyph</string>
+    <string name="glyph_settings_summary">Roghanna le haghaidh soilse Glyph</string>
+    <string name="glyph_settings_flip_toggle_title">Smeach go Glyph</string>
+    <string name="glyph_settings_flip_toggle_summary">Balbhaigh agus taispeáin Glyphs má tá an fón aghaidh síos</string>
+    <string name="glyph_settings_brightness">Gile</string>
+    <string name="glyph_settings_charging_title">Ag muirearú</string>
+    <string name="glyph_settings_charging_level_title">Leibhéal ceallraí</string>
+    <string name="glyph_settings_charging_level_summary">Taispeáin leibhéal na ceallraí nuair a bhíonn tú á plugáil isteach</string>
+    <string name="glyph_settings_charging_powershare_title">Muirearú droim ar ais gan sreang</string>
+    <string name="glyph_settings_charging_powershare_summary">Taispeáin beochan nuair a bhraitear muirearú droim ar ais gan sreang</string>
+    <string name="glyph_settings_call_title">Glaonna</string>
+    <string name="glyph_settings_call_toggle_title">Beochan glao</string>
+    <string name="glyph_settings_call_toggle_summary">Las soilse flash ar ghlaonna isteach</string>
+    <string name="glyph_settings_call_sub_toggle_title">Cumasaigh beochan glao</string>
+    <string name="glyph_settings_call_sub_animations_title">Patrún</string>
+    <string name="glyph_settings_notifs_title">Fógraí</string>
+    <string name="glyph_settings_notifs_toggle_title">Beochan fógra</string>
+    <string name="glyph_settings_notifs_toggle_summary">Las soilse flash le haghaidh fógraí nua</string>
+    <string name="glyph_settings_notifs_sub_title">Aipeanna le ceadú</string>
+    <string name="glyph_settings_notifs_sub_toggle_title">Cumasaigh beochan fógra</string>
+    <string name="glyph_settings_notifs_sub_animations_title">Patrún</string>
+    <string name="glyph_settings_volume_title">Toirt</string>
+    <string name="glyph_settings_volume_level_toggle_title">Táscaire toirte</string>
+    <string name="glyph_settings_volume_level_toggle_summary">Taispeáin leibhéal toirte agus tú ag coigeartú</string>
+    <string name="glyph_settings_misc_title">Llghnéitheach</string>
+    <string name="glyph_settings_music_visualizer_toggle_title">Amharcléiriú Ceoil</string>
+    <string name="glyph_settings_music_visualizer_toggle_summary">Cuirfidh sé seo ar shoilse Glyph freagairt d\'seinnteoir fuaime ar an ngléas.\nDéanfar gach feidhm Glyph eile a dhíchumasú nuair a úsáidtear é seo.</string>
+    <string name="glyph_accessibility_quick_settings">Glyph</string>
+    <string name="glyph_accessibility_quick_settings_torch">Tóirse Glyph</string>
+    <string name="glyph_accessibility_quick_settings_off">As</string>
+    <string name="glyph_accessibility_quick_settings_on">Ar</string>
+</resources>
