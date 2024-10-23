@@ -328,8 +328,10 @@ void BiometricsFingerprint::notify(const fingerprint_msg_t* msg) {
             if (thisPtr->mUdfpsHandler) {
                 thisPtr->mUdfpsHandler->onAcquired(static_cast<int32_t>(result), vendorCode);
             }
-            if (!thisPtr->mClientCallback->onAcquired(devId, result, vendorCode).isOk()) {
-                ALOGE("failed to invoke fingerprint onAcquired callback");
+            if (result != FingerprintAcquiredInfo::ACQUIRED_VENDOR) {
+                if (!thisPtr->mClientCallback->onAcquired(devId, result, vendorCode).isOk()) {
+                    ALOGE("failed to invoke fingerprint onAcquired callback");
+                }
             }
         } break;
         case FINGERPRINT_TEMPLATE_ENROLLING:
