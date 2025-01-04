@@ -121,7 +121,7 @@
             </intent-filter>
             <meta-data
                 android:name="com.android.settings.category"
-                android:value="com.android.settings.category.ia.system" />
+                android:value="com.android.settings.category.ia.homepage" />
             <meta-data
                 android:name="com.android.settings.icon"
                 android:resource="@drawable/ic_glyphs_logo" />
@@ -130,7 +130,10 @@
                 android:value="@string/glyph_settings_summary" />
              <meta-data
                 android:name="com.android.settings.order"
-                android:value="-255" />
+                android:value="-115" />
+             <meta-data
+		android:name="com.android.settings.group_key"
+		android:value="top_level_personalize_category" />
         </activity>
 
         <activity
