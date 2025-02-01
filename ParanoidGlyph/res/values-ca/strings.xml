@@ -21,7 +21,7 @@
     <string name="glyph_settings_enable">Llums Glyph</string>
     <string name="glyph_settings_title">Interfície Glyph</string>
     <string name="glyph_settings_summary">Opcions per a les llums Glyph</string>
-    <string name="glyph_settings_flip_toggle_title">Gira a Glyph</string>
+    <string name="glyph_settings_flip_toggle_title">Canvia a Glyph</string>
     <string name="glyph_settings_flip_toggle_summary">Silencia i mostra Glyph si el telèfon és cap per avall</string>
     <string name="glyph_settings_brightness">Brillantor</string>
     <string name="glyph_settings_charging_title">S\'està carregant</string>
@@ -29,7 +29,7 @@
     <string name="glyph_settings_charging_level_summary">Mostra el nivell de bateria en endollar</string>
     <string name="glyph_settings_charging_powershare_title">Càrrega sense fils inversa</string>
     <string name="glyph_settings_charging_powershare_summary">Mostra una animació quan es detecti càrrega sense fils inversa</string>
-    <string name="glyph_settings_call_title">Telefonades</string>
+    <string name="glyph_settings_call_title">Trucades</string>
     <string name="glyph_settings_call_toggle_title">Animació de la trucada</string>
     <string name="glyph_settings_call_toggle_summary">Pampalluga els LED per a les trucades entrants</string>
     <string name="glyph_settings_call_sub_toggle_title">Activa l\'animació de la trucada</string>

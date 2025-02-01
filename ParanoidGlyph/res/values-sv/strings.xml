@@ -17,5 +17,11 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="glyph_accessibility_quick_settings_off">I ffwrdd</string>
+    <string name="glyph_settings_charging_title">Laddar</string>
+    <string name="glyph_settings_charging_level_title">Batterinivå</string>
+    <string name="glyph_settings_call_title">Samtal</string>
+    <string name="glyph_settings_volume_title">Volym</string>
+    <string name="glyph_settings_volume_level_toggle_title">Volym indikator</string>
+    <string name="glyph_accessibility_quick_settings_off">Av</string>
+    <string name="glyph_accessibility_quick_settings_on">På</string>
 </resources>

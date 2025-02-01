@@ -20,7 +20,7 @@
     <string name="glyph_settings_app_name">Glyph vmesnik</string>
     <string name="glyph_settings_enable">Glyph lučke</string>
     <string name="glyph_settings_title">Glyph vmesnik</string>
-    <string name="glyph_settings_summary">Nastavitve za Glyph lučke</string>
+    <string name="glyph_settings_summary">Možnosti za Glyph lučke</string>
     <string name="glyph_settings_flip_toggle_title">Obrat za Glyph</string>
     <string name="glyph_settings_flip_toggle_summary">Utišaj in prikaži Glyphe, če je telefon obrnjen s sprednjo stranjo navzdol</string>
     <string name="glyph_settings_brightness">Svetlost</string>

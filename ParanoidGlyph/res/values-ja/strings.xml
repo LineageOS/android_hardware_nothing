@@ -29,7 +29,7 @@
     <string name="glyph_settings_charging_level_summary">電源接続時にバッテリー残量を表示します</string>
     <string name="glyph_settings_charging_powershare_title">リバースワイヤレス充電</string>
     <string name="glyph_settings_charging_powershare_summary">リバースワイヤレス充電時にアニメーションを表示します</string>
-    <string name="glyph_settings_call_title">電話</string>
+    <string name="glyph_settings_call_title">通話</string>
     <string name="glyph_settings_call_toggle_title">通話アニメーション</string>
     <string name="glyph_settings_call_toggle_summary">着信時に LED を点滅させます</string>
     <string name="glyph_settings_call_sub_toggle_title">通話アニメーションを有効化</string>
@@ -48,6 +48,6 @@
     <string name="glyph_settings_music_visualizer_toggle_summary">Glyph ライトがデバイスのオーディオプレーヤーに連動します。\n使用中は他のすべての Glyph 機能は無効になります</string>
     <string name="glyph_accessibility_quick_settings">Glyph</string>
     <string name="glyph_accessibility_quick_settings_torch">Glyph トーチ</string>
-    <string name="glyph_accessibility_quick_settings_off">オフ</string>
-    <string name="glyph_accessibility_quick_settings_on">オン</string>
+    <string name="glyph_accessibility_quick_settings_off">OFF</string>
+    <string name="glyph_accessibility_quick_settings_on">ON</string>
 </resources>

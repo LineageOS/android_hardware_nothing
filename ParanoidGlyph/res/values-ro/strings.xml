@@ -21,14 +21,14 @@
     <string name="glyph_settings_enable">Lumini Glyph</string>
     <string name="glyph_settings_title">Interfață Glyph</string>
     <string name="glyph_settings_summary">Opțiuni pentru lumini Glyph</string>
-    <string name="glyph_settings_flip_toggle_title">Întoarce la Glyph</string>
+    <string name="glyph_settings_flip_toggle_title">Flip to Glyph</string>
     <string name="glyph_settings_flip_toggle_summary">Pune pe silențios și afișează Glyphs dacă telefonul este cu fața în jos</string>
     <string name="glyph_settings_brightness">Luminozitate</string>
-    <string name="glyph_settings_charging_title">Încărcare</string>
+    <string name="glyph_settings_charging_title">Se încarcă</string>
     <string name="glyph_settings_charging_level_title">Nivel baterie</string>
     <string name="glyph_settings_charging_level_summary">Arată nivelul bateriei când se încarcă</string>
     <string name="glyph_settings_charging_powershare_title">Încărcare wireless inversă</string>
-    <string name="glyph_settings_charging_powershare_summary">Afișează o animație atunci când este detectată încărcarea inversă wireless</string>
+    <string name="glyph_settings_charging_powershare_summary">Afișează o animație atunci când este detectată încărcarea wireless inversă</string>
     <string name="glyph_settings_call_title">Apeluri</string>
     <string name="glyph_settings_call_toggle_title">Animație apel</string>
     <string name="glyph_settings_call_toggle_summary">Blițează cu LED-urile la primirea de apeluri</string>

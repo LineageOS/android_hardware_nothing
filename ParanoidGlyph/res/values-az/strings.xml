@@ -24,7 +24,7 @@
     <string name="glyph_settings_flip_toggle_title">Glyph-ə çevir</string>
     <string name="glyph_settings_flip_toggle_summary">Telefon üzü aşağı olarsa, səssizə al və \"Glyph\"ləri göstər</string>
     <string name="glyph_settings_brightness">Parlaqlıq</string>
-    <string name="glyph_settings_charging_title">Doldurma</string>
+    <string name="glyph_settings_charging_title">Dolur</string>
     <string name="glyph_settings_charging_level_title">Batareya səviyyəsi</string>
     <string name="glyph_settings_charging_level_summary">Taxdıqda batareya səviyyəsini göstər</string>
     <string name="glyph_settings_charging_powershare_title">Tərsinə naqilsiz doldurma</string>
@@ -41,8 +41,8 @@
     <string name="glyph_settings_notifs_sub_toggle_title">Bildiriş animasiyası fəallaşdır</string>
     <string name="glyph_settings_notifs_sub_animations_title">Naxış</string>
     <string name="glyph_settings_volume_title">Səs səviyyəsi</string>
-    <string name="glyph_settings_volume_level_toggle_title">Səviyyə göstəricisi</string>
-    <string name="glyph_settings_volume_level_toggle_summary">Ayarlanarkən səs səviyyəsini göstər</string>
+    <string name="glyph_settings_volume_level_toggle_title">Həcm göstəricisi</string>
+    <string name="glyph_settings_volume_level_toggle_summary">Ayarlanarkən həcm səviyyəsini göstər</string>
     <string name="glyph_settings_misc_title">Müxtəlif</string>
     <string name="glyph_settings_music_visualizer_toggle_title">Musiqi Vizuallaşdırıcı</string>
     <string name="glyph_settings_music_visualizer_toggle_summary">Bu, Glyph işıqlarının cihazdakı audio pleyerə reaksiya verməyini təmin edəcək.\nBu istifadə ediləndə bütün digər Glyph funksiyaları sıradan çıxarılacaq.</string>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2013-2016 The CyanogenMod Project
+                   2017 The LineageOS Project
+                   2020-2023 Paranoid Android
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="glyph_settings_app_name">Глиф интерфейс</string>
+    <string name="glyph_settings_enable">Глиф светлини</string>
+    <string name="glyph_settings_title">Глиф интерфейс</string>
+    <string name="glyph_settings_summary">Опции за Глиф светлини</string>
+    <string name="glyph_settings_flip_toggle_title">Превключване към Глиф</string>
+    <string name="glyph_settings_flip_toggle_summary">Заглуши и покажи Глифове, ако телефонът е обърнат надолу</string>
+    <string name="glyph_settings_brightness">Яркост</string>
+    <string name="glyph_settings_charging_title">Зареждане</string>
+    <string name="glyph_settings_charging_level_title">Ниво на батерията</string>
+    <string name="glyph_settings_charging_level_summary">Покажи ниво на батерията по време на зареждане</string>
+    <string name="glyph_settings_charging_powershare_title">Безжично отдаване на енергия</string>
+    <string name="glyph_settings_charging_powershare_summary">Показване на анимация, когато безжично отдаване на енергия е засечено</string>
+    <string name="glyph_settings_call_title">Повиквания</string>
+    <string name="glyph_settings_call_toggle_title">Анимация за повикване</string>
+    <string name="glyph_settings_call_toggle_summary">Премигване на LED светлините при входящи повиквания</string>
+    <string name="glyph_settings_call_sub_toggle_title">Включване на анимация за повикване</string>
+    <string name="glyph_settings_call_sub_animations_title">Шаблон</string>
+    <string name="glyph_settings_notifs_title">Известия</string>
+    <string name="glyph_settings_notifs_toggle_title">Анимация за известия</string>
+    <string name="glyph_settings_notifs_toggle_summary">Премигване на LED светлините при нови известия</string>
+    <string name="glyph_settings_notifs_sub_title">Позволени приложения</string>
+    <string name="glyph_settings_notifs_sub_toggle_title">Включване на анимация за известия</string>
+    <string name="glyph_settings_notifs_sub_animations_title">Шаблон</string>
+    <string name="glyph_settings_volume_title">Ниво на звука</string>
+    <string name="glyph_settings_volume_level_toggle_title">Индикатор за ниво на звук</string>
+    <string name="glyph_settings_volume_level_toggle_summary">Показване нивото на звука</string>
+    <string name="glyph_settings_misc_title">Други</string>
+    <string name="glyph_settings_music_visualizer_toggle_title">Музикален визуализатор</string>
+    <string name="glyph_settings_music_visualizer_toggle_summary">Глиф светлините ще реагират на аудио плеъра на устройството.\nВсички други функции на Глифовете ще бъдат изключени, когато опцията се използва.</string>
+    <string name="glyph_accessibility_quick_settings">Глиф</string>
+    <string name="glyph_accessibility_quick_settings_torch">Глиф фенерче</string>
+    <string name="glyph_accessibility_quick_settings_off">Изключено</string>
+    <string name="glyph_accessibility_quick_settings_on">Включено</string>
+</resources>

@@ -22,7 +22,7 @@
     <string name="glyph_settings_title">Ndërfaqja e glyph</string>
     <string name="glyph_settings_summary">Opsionet për dritat glyph</string>
     <string name="glyph_settings_flip_toggle_title">Kthejeni në Glyph</string>
-    <string name="glyph_settings_flip_toggle_summary">Çaktivizo dhe shfaq Glyphs nëse telefoni është me fytyrë poshtë</string>
+    <string name="glyph_settings_flip_toggle_summary">Hesht dhe shfaq Glyphs nëse telefoni është me fytyrë poshtë</string>
     <string name="glyph_settings_brightness">Ndriçimi</string>
     <string name="glyph_settings_charging_title">Duke u karikuar</string>
     <string name="glyph_settings_charging_level_title">Niveli i baterisë</string>
@@ -30,7 +30,7 @@
     <string name="glyph_settings_charging_powershare_title">Karikimi i kundërt me valë</string>
     <string name="glyph_settings_charging_powershare_summary">Shfaq një animacion kur zbulohet karikimi i kundërt me valë</string>
     <string name="glyph_settings_call_title">Thirrjet</string>
-    <string name="glyph_settings_call_toggle_title">Thirrje animacion</string>
+    <string name="glyph_settings_call_toggle_title">Animacioni i thirrjeve</string>
     <string name="glyph_settings_call_toggle_summary">Blic LED në thirrjet hyrëse</string>
     <string name="glyph_settings_call_sub_toggle_title">Aktivizo animacionin e thirrjeve</string>
     <string name="glyph_settings_call_sub_animations_title">Motivi</string>

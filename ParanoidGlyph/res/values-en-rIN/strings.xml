@@ -45,7 +45,7 @@
     <string name="glyph_settings_volume_level_toggle_summary">Show volume level when adjusting</string>
     <string name="glyph_settings_misc_title">Miscellaneous</string>
     <string name="glyph_settings_music_visualizer_toggle_title">Music Visualiser</string>
-    <string name="glyph_settings_music_visualizer_toggle_summary">This will make Glyph lights react to audio player on the device.\n All other Glyph functions will get disabled when this is used.</string>
+    <string name="glyph_settings_music_visualizer_toggle_summary">This will make Glyph lights react to audio player on the device.\nAll other Glyph functions will get disabled when this is used.</string>
     <string name="glyph_accessibility_quick_settings">Glyph</string>
     <string name="glyph_accessibility_quick_settings_torch">Glyph torch</string>
     <string name="glyph_accessibility_quick_settings_off">Off</string>

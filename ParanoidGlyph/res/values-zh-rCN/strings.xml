@@ -31,7 +31,7 @@
     <string name="glyph_settings_charging_powershare_summary">使用无线反向充电时显示动画</string>
     <string name="glyph_settings_call_title">来电</string>
     <string name="glyph_settings_call_toggle_title">来电动画</string>
-    <string name="glyph_settings_call_toggle_summary">有来电时闪烁</string>
+    <string name="glyph_settings_call_toggle_summary">有来电时闪烁 LED</string>
     <string name="glyph_settings_call_sub_toggle_title">启用来电动画</string>
     <string name="glyph_settings_call_sub_animations_title">图案</string>
     <string name="glyph_settings_notifs_title">通知</string>

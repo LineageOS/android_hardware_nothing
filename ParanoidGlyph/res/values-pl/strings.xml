@@ -27,8 +27,8 @@
     <string name="glyph_settings_charging_title">Ładowanie</string>
     <string name="glyph_settings_charging_level_title">Poziom baterii</string>
     <string name="glyph_settings_charging_level_summary">Pokaż poziom naładowania baterii przy podłączaniu</string>
-    <string name="glyph_settings_charging_powershare_title">Bezprzewodowe ładowanie zwrotne</string>
-    <string name="glyph_settings_charging_powershare_summary">Pokaż animację po wykryciu bezprzewodowego ładowania zwrotnego  </string>
+    <string name="glyph_settings_charging_powershare_title">Zwrotne ładowanie bezprzewodowe</string>
+    <string name="glyph_settings_charging_powershare_summary">Pokaż animację po wykryciu bezprzewodowego ładowania zwrotnego</string>
     <string name="glyph_settings_call_title">Połączenia</string>
     <string name="glyph_settings_call_toggle_title">Animacja połączeń</string>
     <string name="glyph_settings_call_toggle_summary">Migaj diodą przy połączeniach przychodzących</string>
@@ -43,7 +43,7 @@
     <string name="glyph_settings_volume_title">Głośność</string>
     <string name="glyph_settings_volume_level_toggle_title">Wskaźnik głośności</string>
     <string name="glyph_settings_volume_level_toggle_summary">Pokaż poziom głośności podczas dostosowywania</string>
-    <string name="glyph_settings_misc_title">Inne</string>
+    <string name="glyph_settings_misc_title">Różne</string>
     <string name="glyph_settings_music_visualizer_toggle_title">Wizualizacja muzyki</string>
     <string name="glyph_settings_music_visualizer_toggle_summary">Ta opcja sprawia, że światła Glyph reagują na odtwarzacz audio na urządzeniu.\nWszystkie inne funkcje Glyph zostaną wyłączone, gdy ta opcja będzie w użytku.</string>
     <string name="glyph_accessibility_quick_settings">Glyph</string>
