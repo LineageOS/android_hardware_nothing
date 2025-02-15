@@ -27,8 +27,8 @@
     <string name="glyph_settings_charging_title">Зареждане</string>
     <string name="glyph_settings_charging_level_title">Ниво на батерията</string>
     <string name="glyph_settings_charging_level_summary">Покажи ниво на батерията по време на зареждане</string>
-    <string name="glyph_settings_charging_powershare_title">Безжично отдаване на енергия</string>
-    <string name="glyph_settings_charging_powershare_summary">Показване на анимация, когато безжично отдаване на енергия е засечено</string>
+    <string name="glyph_settings_charging_powershare_title">Безжично обратно зареждане</string>
+    <string name="glyph_settings_charging_powershare_summary">Показване на анимация, когато безжичното обратно зареждане е засечено</string>
     <string name="glyph_settings_call_title">Повиквания</string>
     <string name="glyph_settings_call_toggle_title">Анимация за повикване</string>
     <string name="glyph_settings_call_toggle_summary">Премигване на LED светлините при входящи повиквания</string>
@@ -42,7 +42,7 @@
     <string name="glyph_settings_notifs_sub_animations_title">Шаблон</string>
     <string name="glyph_settings_volume_title">Ниво на звука</string>
     <string name="glyph_settings_volume_level_toggle_title">Индикатор за ниво на звук</string>
-    <string name="glyph_settings_volume_level_toggle_summary">Показване нивото на звука</string>
+    <string name="glyph_settings_volume_level_toggle_summary">Показване нивото на звука при настройване</string>
     <string name="glyph_settings_misc_title">Други</string>
     <string name="glyph_settings_music_visualizer_toggle_title">Музикален визуализатор</string>
     <string name="glyph_settings_music_visualizer_toggle_summary">Глиф светлините ще реагират на аудио плеъра на устройството.\nВсички други функции на Глифовете ще бъдат изключени, когато опцията се използва.</string>
