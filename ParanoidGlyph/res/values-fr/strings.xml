@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2013-2016 The CyanogenMod Project
+                   2017 The LineageOS Project
+                   2020-2024 Paranoid Android
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="glyph_settings_app_name">Interface Glyph</string>
+    <string name="glyph_settings_title">Interface Glyph</string>
+    <string name="glyph_settings_flip_toggle_title">Basculer vers Glyph</string>
+    <string name="glyph_settings_flip_toggle_summary">Mettre en silencieux et afficher Glyph lorsque le téléphone est face vers le bas</string>
+    <string name="glyph_settings_brightness">Luminosité</string>
+    <string name="glyph_settings_charging_level_title">Niveau de batterie</string>
+    <string name="glyph_settings_charging_level_summary">Afficher le niveau de batterie lors du branchement</string>
+    <string name="glyph_settings_call_title">Appels</string>
+    <string name="glyph_settings_call_toggle_title">Animation d\'appel</string>
+    <string name="glyph_settings_call_sub_toggle_title">Activer l\'animation d\'appel</string>
+    <string name="glyph_settings_call_sub_animations_title">Motif</string>
+    <string name="glyph_settings_notifs_title">Notifications</string>
+    <string name="glyph_settings_notifs_toggle_title">Animation de notification</string>
+    <string name="glyph_settings_notifs_sub_title">Applis à autoriser</string>
+    <string name="glyph_settings_notifs_sub_toggle_title">Activer l\'animation de notification</string>
+    <string name="glyph_settings_notifs_sub_animations_title">Motif</string>
+    <string name="glyph_settings_volume_title">Volume</string>
+    <string name="glyph_settings_volume_level_toggle_title">Indicateur de volume</string>
+    <string name="glyph_settings_misc_title">Divers</string>
+    <string name="glyph_accessibility_quick_settings">Glyph</string>
+    <string name="glyph_accessibility_quick_settings_torch">Torche Glyph</string>
+    <string name="glyph_accessibility_quick_settings_off">Désactivé</string>
+    <string name="glyph_accessibility_quick_settings_on">Activé</string>
+</resources>
