@@ -25,7 +25,7 @@
     <string name="glyph_settings_flip_toggle_summary">屏幕朝下时静音并显示 Glyph 灯效</string>
     <string name="glyph_settings_brightness">亮度</string>
     <string name="glyph_settings_charging_title">正在充电</string>
-    <string name="glyph_settings_charging_level_title">电量等级</string>
+    <string name="glyph_settings_charging_level_title">电池电量</string>
     <string name="glyph_settings_charging_level_summary">充电时显示电量</string>
     <string name="glyph_settings_charging_powershare_title">无线反向充电</string>
     <string name="glyph_settings_charging_powershare_summary">使用无线反向充电时显示动画</string>
@@ -36,7 +36,7 @@
     <string name="glyph_settings_call_sub_animations_title">图案</string>
     <string name="glyph_settings_notifs_title">通知</string>
     <string name="glyph_settings_notifs_toggle_title">通知动画</string>
-    <string name="glyph_settings_notifs_toggle_summary">有新通知时闪烁</string>
+    <string name="glyph_settings_notifs_toggle_summary">有新通知时闪烁 LED 灯</string>
     <string name="glyph_settings_notifs_sub_title">允许的应用</string>
     <string name="glyph_settings_notifs_sub_toggle_title">启用通知动画</string>
     <string name="glyph_settings_notifs_sub_animations_title">图案</string>
