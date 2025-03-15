@@ -22,13 +22,13 @@
     <string name="glyph_settings_title">Interfejs Glyph</string>
     <string name="glyph_settings_summary">Opcje dla świateł Glyph</string>
     <string name="glyph_settings_flip_toggle_title">Odwróć, aby aktywować Glyph</string>
-    <string name="glyph_settings_flip_toggle_summary">Wycisz i pokaż Glyph, jeśli telefon jest skierowany ekranem w dół</string>
+    <string name="glyph_settings_flip_toggle_summary">Wyciszaj oraz pokazuj Glyph, jeśli telefon jest skierowany ekranem w dół</string>
     <string name="glyph_settings_brightness">Jasność</string>
     <string name="glyph_settings_charging_title">Ładowanie</string>
     <string name="glyph_settings_charging_level_title">Poziom baterii</string>
-    <string name="glyph_settings_charging_level_summary">Pokaż poziom naładowania baterii przy podłączaniu</string>
+    <string name="glyph_settings_charging_level_summary">Pokazuj poziom naładowania baterii przy podłączaniu</string>
     <string name="glyph_settings_charging_powershare_title">Zwrotne ładowanie bezprzewodowe</string>
-    <string name="glyph_settings_charging_powershare_summary">Pokaż animację po wykryciu bezprzewodowego ładowania zwrotnego</string>
+    <string name="glyph_settings_charging_powershare_summary">Pokazuj animację po wykryciu bezprzewodowego ładowania zwrotnego</string>
     <string name="glyph_settings_call_title">Połączenia</string>
     <string name="glyph_settings_call_toggle_title">Animacja połączeń</string>
     <string name="glyph_settings_call_toggle_summary">Migaj diodą przy połączeniach przychodzących</string>
@@ -42,7 +42,7 @@
     <string name="glyph_settings_notifs_sub_animations_title">Wzór</string>
     <string name="glyph_settings_volume_title">Głośność</string>
     <string name="glyph_settings_volume_level_toggle_title">Wskaźnik głośności</string>
-    <string name="glyph_settings_volume_level_toggle_summary">Pokaż poziom głośności podczas dostosowywania</string>
+    <string name="glyph_settings_volume_level_toggle_summary">Pokazuj poziom głośności podczas dostosowywania</string>
     <string name="glyph_settings_misc_title">Różne</string>
     <string name="glyph_settings_music_visualizer_toggle_title">Wizualizacja muzyki</string>
     <string name="glyph_settings_music_visualizer_toggle_summary">Ta opcja sprawia, że światła Glyph reagują na odtwarzacz audio na urządzeniu.\nWszystkie inne funkcje Glyph zostaną wyłączone, gdy ta opcja będzie w użytku.</string>
