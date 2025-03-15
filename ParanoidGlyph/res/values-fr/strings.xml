@@ -24,6 +24,7 @@
     <string name="glyph_settings_brightness">Luminosité</string>
     <string name="glyph_settings_charging_level_title">Niveau de batterie</string>
     <string name="glyph_settings_charging_level_summary">Afficher le niveau de batterie lors du branchement</string>
+    <string name="glyph_settings_charging_powershare_title">Recharge sans fil inversée</string>
     <string name="glyph_settings_call_title">Appels</string>
     <string name="glyph_settings_call_toggle_title">Animation d\'appel</string>
     <string name="glyph_settings_call_sub_toggle_title">Activer l\'animation d\'appel</string>
