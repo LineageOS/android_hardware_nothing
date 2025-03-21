@@ -9,6 +9,7 @@ cc_library_static {
     srcs: ["UdfpsHandler.cpp"],
     vendor: true,
     header_libs: ["nothingfingerprint_headers"],
+    defaults: ["nothing_hardware_biometrics_config_default"],
 }
 
 cc_library_headers {
