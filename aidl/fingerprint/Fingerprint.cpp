@@ -24,7 +24,9 @@ constexpr char SW_COMPONENT_ID[] = "matchingAlgorithm";
 constexpr char SW_VERSION[] = "vendor/version/revision";
 }  // namespace
 
+#ifndef IMPL_V2
 static const uint16_t kVersion = HARDWARE_MODULE_API_VERSION(2, 1);
+#endif
 static Fingerprint* sInstance;
 
 Fingerprint::Fingerprint(std::shared_ptr<FingerprintConfig> config) : mConfig(std::move(config)) {
@@ -92,11 +94,13 @@ fingerprint_device_t* Fingerprint::openHal() {
         return nullptr;
     }
 
+#ifndef IMPL_V2
     if (kVersion != device->version) {
         // enforce version on new devices because of HIDL@2.1 translation layer
         ALOGE("Wrong fp version. Expected %d, got %d", kVersion, device->version);
         return nullptr;
     }
+#endif
 
     fingerprint_device_t* fp_device = reinterpret_cast<fingerprint_device_t*>(device);
 
