@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2013-2016 The CyanogenMod Project
+                   2017 The LineageOS Project
+                   2020-2024 Paranoid Android
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="glyph_settings_app_name">Glif arayüzü</string>
+    <string name="glyph_settings_enable">Glif ışıkları</string>
+    <string name="glyph_settings_title">Glif arayüzü</string>
+    <string name="glyph_settings_summary">Glif ışıkları ayarları</string>
+    <string name="glyph_settings_flip_toggle_title">Glif için yatır</string>
+    <string name="glyph_settings_flip_toggle_summary">Telefonu ters çevirerek sessize al ve Glif ışıklarını yak</string>
+    <string name="glyph_settings_brightness">Parlaklık</string>
+    <string name="glyph_settings_charging_title">Şarj</string>
+    <string name="glyph_settings_charging_level_title">Pil seviyesi</string>
+    <string name="glyph_settings_charging_level_summary">Şarja takıldığında pil yüzdesini göster</string>
+    <string name="glyph_settings_charging_powershare_title">Ters kablosuz şarj</string>
+    <string name="glyph_settings_charging_powershare_summary">Ters kablosuz şarj algılandığında bir animasyon göster</string>
+    <string name="glyph_settings_call_title">Aramalar</string>
+    <string name="glyph_settings_call_toggle_title">Arama animasyonu</string>
+    <string name="glyph_settings_call_toggle_summary">Gelen aramalarda LED\'leri flaşla</string>
+    <string name="glyph_settings_call_sub_toggle_title">Arama animasyonunu etkinleştir</string>
+    <string name="glyph_settings_call_sub_animations_title">Desen</string>
+    <string name="glyph_settings_notifs_title">Bildirimler</string>
+    <string name="glyph_settings_notifs_toggle_title">Bildirim animasyonu</string>
+    <string name="glyph_settings_notifs_toggle_summary">Yeni bildirimlerde LED\'leri flaşla</string>
+    <string name="glyph_settings_notifs_sub_title">İzin verilecek uygulamalar</string>
+    <string name="glyph_settings_notifs_sub_toggle_title">Bildirim animasyonunu etkinleştir</string>
+    <string name="glyph_settings_notifs_sub_animations_title">Desen</string>
+    <string name="glyph_settings_notifs_sub_essential_title">Önemli bildirimler</string>
+    <string name="glyph_settings_notifs_sub_essential_summary">\"Önemli Glyph\", Önemli bildirimler okunana veya silinene kadar açık kalacaktır.</string>
+    <string name="glyph_settings_volume_title">Ses</string>
+    <string name="glyph_settings_volume_level_toggle_title">Ses göstergesi</string>
+    <string name="glyph_settings_volume_level_toggle_summary">Ayarlama yaparken ses seviyesini göster</string>
+    <string name="glyph_settings_misc_title">Diğer Ayarlar</string>
+    <string name="glyph_settings_music_visualizer_toggle_title">Müzik görselleştirici</string>
+    <string name="glyph_settings_music_visualizer_toggle_summary">Bu, Glif ışıklarının hoparlörlere tepki vermesini sağlar. Aktifleştirildiğinde diğer tüm Glif özellikleri devre dışı kalır.</string>
+    <string name="glyph_accessibility_quick_settings">Glif</string>
+    <string name="glyph_accessibility_quick_settings_torch">Glif feneri</string>
+    <string name="glyph_accessibility_quick_settings_off">Kapalı</string>
+    <string name="glyph_accessibility_quick_settings_on">Açık</string>
+</resources>
