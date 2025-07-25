@@ -1,0 +1,40 @@
+//
+// Copyright (C) 2025 The LineageOS Project
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
+android_app {
+    name: "NothingFelicaDisabler",
+
+    srcs: ["src/**/*.kt"],
+
+    system_ext_specific: true,
+    certificate: "platform",
+    platform_apis: true,
+    privileged: true,
+
+    optimize: {
+        proguard_flags_files: ["proguard.flags"],
+    },
+    required: [
+        "org.lineageos.felica.xml",
+        "hidden-api-whitelist-org.lineageos.felica.xml",
+    ],
+}
+
+prebuilt_etc {
+    sub_dir: "permissions",
+    name: "org.lineageos.felica.xml",
+    filename: "org.lineageos.felica.xml",
+    src: "org.lineageos.felica.xml",
+    system_ext_specific: true,
+}
+
+prebuilt_etc {
+    sub_dir: "sysconfig",
+    name: "hidden-api-whitelist-org.lineageos.felica.xml",
+    filename: "hidden-api-whitelist-org.lineageos.felica.xml",
+    src: "hidden-api-whitelist-org.lineageos.felica.xml",
+    system_ext_specific: true,
+}
