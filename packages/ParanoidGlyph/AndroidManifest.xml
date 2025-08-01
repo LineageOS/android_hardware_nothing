@@ -136,12 +136,15 @@
             <meta-data
                 android:name="com.android.settings.summary"
                 android:value="@string/glyph_settings_summary" />
-             <meta-data
+            <meta-data
                 android:name="com.android.settings.order"
                 android:value="-115" />
-             <meta-data
-		android:name="com.android.settings.group_key"
-		android:value="top_level_personalize_category" />
+            <meta-data
+                android:name="com.android.settings.group_key"
+                android:value="top_level_personalize_category" />
+            <meta-data
+                android:name="com.android.settings.icon_color_scheme"
+                android:value="blue" />
         </activity>
 
         <activity
