@@ -142,6 +142,9 @@
              <meta-data
 		android:name="com.android.settings.group_key"
 		android:value="top_level_personalize_category" />
+	     <meta-data
+		android:name="com.android.settings.icon_color_scheme"
+		android:value="blue" />
         </activity>
 
         <activity
