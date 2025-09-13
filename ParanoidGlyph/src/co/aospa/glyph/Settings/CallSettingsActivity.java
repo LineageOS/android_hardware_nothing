@@ -16,7 +16,7 @@
 
 package co.aospa.glyph.Settings;
 
-import android.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
@@ -24,18 +24,16 @@ import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
 public class CallSettingsActivity extends CollapsingToolbarBaseActivity {
 
     private CallSettingsFragment mCallSettingsFragment;
-    private static final String TAG_GLYPH = "glyphcall";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Fragment fragment = getFragmentManager().findFragmentById(com.android.settingslib.collapsingtoolbar.R.id.content_frame);
+        Fragment fragment = getSupportFragmentManager().findFragmentById(com.android.settingslib.collapsingtoolbar.R.id.content_frame);
         if (fragment == null) {
             mCallSettingsFragment = new CallSettingsFragment();
-            getFragmentManager().beginTransaction()
-                .add(com.android.settingslib.collapsingtoolbar.R.id.content_frame,
-                    mCallSettingsFragment, TAG_GLYPH)
+            getSupportFragmentManager().beginTransaction()
+                .add(com.android.settingslib.collapsingtoolbar.R.id.content_frame, mCallSettingsFragment)
                 .commit();
         } else {
             mCallSettingsFragment = (CallSettingsFragment) fragment;
