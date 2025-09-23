@@ -27,6 +27,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
+import co.aospa.glyph.utils.AnimationUtils;
 import co.aospa.glyph.utils.Constants;
 import co.aospa.glyph.utils.FileUtils;
 import co.aospa.glyph.utils.ResourceUtils;
@@ -351,6 +352,25 @@ public final class AnimationManager {
     private static void updateLedFrame(float[] pattern) {
         //if (DEBUG) Log.d(TAG, "Updating pattern: " + pattern);
         float maxBrightness = (float) Constants.getMaxBrightness();
+        if (Constants.getDevice().equals("phone3a")) {
+            int[] zoneDefs = ResourceUtils.getIntArray("glyph_zone_channel_count");
+            int frameLength = Arrays.stream(zoneDefs).sum();
+            if (pattern.length == ResourceUtils.getInteger("glyph_settings_battery_levels_num")) {
+                pattern = AnimationUtils.buildPatternArray(new float[zoneDefs[1]],
+                        AnimationUtils.reverseFrameArray(pattern), new float[zoneDefs[2]]);
+            } else if (pattern.length == ResourceUtils.getInteger("glyph_settings_volume_levels_num")) {
+                pattern = AnimationUtils.buildPatternArray(pattern, new float[zoneDefs[0]],
+                        new float[zoneDefs[2]]);
+            } else if (pattern.length != frameLength) {
+                for (float brightness : pattern) {
+                    if (brightness != 0) {
+                        Log.w(TAG, "Unsupported pattern length: " + pattern.length);
+                        return;
+                    }
+                }
+                pattern = new float[frameLength];
+            }
+        }
         int essentialLed = ResourceUtils.getInteger("glyph_settings_notifs_essential_led");
         if (StatusManager.isEssentialLedActive()) {
             if (pattern.length == 5) { // Phone (1) pattern
