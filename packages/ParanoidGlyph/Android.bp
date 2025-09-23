@@ -58,6 +58,15 @@ android_app {
     resource_dirs: ["phone2/res"],
 }
 
+android_app {
+    name: "ParanoidGlyphPhone3a",
+
+    defaults: ["ParanoidGlyph-defaults"],
+
+    asset_dirs: ["phone3a/assets"],
+    resource_dirs: ["phone3a/res"],
+}
+
 prebuilt_etc {
     name: "whitelist_co.aospa.glyph",
     system_ext_specific: true,
