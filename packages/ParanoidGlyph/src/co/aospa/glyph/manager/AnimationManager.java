@@ -142,13 +142,13 @@ public final class AnimationManager {
                     if (checkInterruption("charging")) throw new InterruptedException();
                     batteryArray[i] = Constants.getBrightness();
                     if (batteryDot && i == 0) continue;
-                    updateLedFrame(batteryArray);
+                    updateLedFrameAdapted(batteryArray);
                     Thread.sleep(15);
                 }
                 for (int i = batteryArray.length - 1; i > amount - 1; i--) {
                     if (checkInterruption("charging")) throw new InterruptedException();
                     batteryArray[i] = 0;
-                    updateLedFrame(batteryArray);
+                    updateLedFrameAdapted(batteryArray);
                     Thread.sleep(5);
                 }
                 long start = System.currentTimeMillis();
@@ -158,7 +158,7 @@ public final class AnimationManager {
                 for (int i = amount - 1; i >= 0; i--) {
                     if (checkInterruption("charging")) throw new InterruptedException();
                     batteryArray[i] = 0;
-                    updateLedFrame(batteryArray);
+                    updateLedFrameAdapted(batteryArray);
                     Thread.sleep(11);
                 }
                 long start2 = System.currentTimeMillis();
@@ -168,7 +168,7 @@ public final class AnimationManager {
             } catch (InterruptedException e) {
                 if (DEBUG) Log.d(TAG, "Exception while playing animation, interrupted | name: charging");
                 if (!StatusManager.isAllLedActive()) {
-                    updateLedFrame(new int[batteryArray.length]);
+                    updateLedFrameAdapted(new int[batteryArray.length]);
                 }
             } finally {
                 StatusManager.setAnimationActive(false);
@@ -194,21 +194,21 @@ public final class AnimationManager {
                     if (volumeLevel == 0) {
                         if (checkInterruption("volume")) throw new InterruptedException();
                         StatusManager.setVolumeLedLast(0);
-                        updateLedFrame(new int[volumeArray.length]);
+                        updateLedFrameAdapted(new int[volumeArray.length]);
                         break;
                     } else if ( i <= amount - 1 && volumeLevel > 0) {
                         if (checkInterruption("volume")) throw new InterruptedException();
                         StatusManager.setVolumeLedLast(i);
                         volumeArray[i] = Constants.getBrightness();
                         if (last == 0) {
-                            updateLedFrame(volumeArray);
+                            updateLedFrameAdapted(volumeArray);
                             Thread.sleep(15);
                         }
                     }
                 }
                 if (last != 0) {
                     if (checkInterruption("volume")) throw new InterruptedException();
-                    updateLedFrame(volumeArray);
+                    updateLedFrameAdapted(volumeArray);
                 }
                 long start = System.currentTimeMillis();
                 while (System.currentTimeMillis() - start <= 1800) {
@@ -219,7 +219,7 @@ public final class AnimationManager {
                     if (volumeArray[i] != 0) {
                         StatusManager.setVolumeLedLast(i);
                         volumeArray[i] = 0;
-                        updateLedFrame(volumeArray);
+                        updateLedFrameAdapted(volumeArray);
                         Thread.sleep(15);
                     }
                 }
@@ -230,7 +230,7 @@ public final class AnimationManager {
             } catch (InterruptedException e) {
                 if (DEBUG) Log.d(TAG, "Exception while playing animation, interrupted | name: volume");
                 if (!StatusManager.isAllLedActive() && !StatusManager.isVolumeLedUpdate()) {
-                    updateLedFrame(new int[volumeArray.length]);
+                    updateLedFrameAdapted(new int[volumeArray.length]);
                 }
             } finally {
                 if (!StatusManager.isVolumeLedUpdate()) {
@@ -412,6 +412,17 @@ public final class AnimationManager {
             floatPattern[i] = (float) pattern[i];
         }
         updateLedFrame(floatPattern);
+    }
+
+    private static void updateLedFrameAdapted(int[] array) {
+        if (Constants.getDevice().equals("phone3a")) {
+            updateLedFrame(ResourceUtils.buildPatternArray(
+                    new int[20],
+                    ResourceUtils.reverseFrameArray(array),
+                    new int[5]));
+        } else {
+            updateLedFrame(array);
+        }
     }
 
     private static void updateLedFrame(float[] pattern) {
