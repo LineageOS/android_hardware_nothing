@@ -384,6 +384,14 @@ public final class AnimationManager {
             } else if (pattern.length == ResourceUtils.getInteger("glyph_settings_volume_levels_num")) {
                 pattern = AnimationUtils.buildPatternArray(pattern, new float[zoneDefs[0]],
                         new float[zoneDefs[2]]);
+            } else if (pattern.length == 5) { // Phone (1) pattern
+                float[] left1 = new float[zoneDefs[1]];
+                float[] right = new float[zoneDefs[0]];
+                float[] left2 = new float[zoneDefs[2]];
+                Arrays.fill(left1, pattern[3]); // mid-low
+                Arrays.fill(right, pattern[2]); // mid
+                Arrays.fill(left2, pattern[1]); // high
+                pattern = AnimationUtils.buildPatternArray(left1, right, left2);
             } else if (pattern.length != frameLength) {
                 for (float brightness : pattern) {
                     if (brightness != 0) {
