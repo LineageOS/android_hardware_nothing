@@ -41,7 +41,7 @@
     <string name="glyph_settings_notifs_sub_toggle_title">Kích hoạt hoạt ảnh thông báo</string>
     <string name="glyph_settings_notifs_sub_animations_title">Mẫu</string>
     <string name="glyph_settings_notifs_sub_essential_title">Thông báo quan trọng</string>
-    <string name="glyph_settings_notifs_sub_essential_summary">Glyph quan trọng sẽ được hiển thị cho đến khi thông báo quan trọng được đọc hoặc bị loại bỏ</string>
+    <string name="glyph_settings_notifs_sub_essential_summary">Essential Glyph sẽ được hiển thị cho đến khi thông báo quan trọng được đọc hoặc bị loại bỏ</string>
     <string name="glyph_settings_volume_title">Âm lượng</string>
     <string name="glyph_settings_volume_level_toggle_title">Chỉ báo âm lượng</string>
     <string name="glyph_settings_volume_level_toggle_summary">Hiển thị mức âm lượng khi điều chỉnh</string>
