@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021-2024 The LineageOS Project
+ * Copyright (C) 2021-2025 The LineageOS Project
  * SPDX-License-Identifier: Apache-2.0
  */
 
@@ -11,6 +11,7 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.SystemClock
+import android.os.SystemProperties
 import android.util.Log
 
 import java.util.concurrent.Executors
@@ -32,7 +33,10 @@ class PocketSensor(
         }
         entryTimestamp = SystemClock.elapsedRealtime()
         if (event.values[0] == sensorValue) {
+            SystemProperties.set("sys.touch.pocket_mode", "1")
             Utils.launchDozePulse(context)
+        } else {
+            SystemProperties.set("sys.touch.pocket_mode", "0")
         }
     }
 
