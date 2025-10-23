@@ -24,4 +24,7 @@
     <integer-array name="glyph_settings_brightness_levels" translatable="false">
     </integer-array>
 
+    <integer-array name="glyph_settings_notifs_essential_led_array" translatable="false">
+    </integer-array>
+
 </resources>

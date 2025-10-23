@@ -380,11 +380,19 @@ public final class AnimationManager {
     private static void updateLedSingle(int led, float brightness) {
         //if (DEBUG) Log.d(TAG, "Updating led | led: " + led + " | brightness: " + brightness);
         float maxBrightness = (float) Constants.getMaxBrightness();
-        int essentialLed = ResourceUtils.getInteger("glyph_settings_notifs_essential_led");
-        if (StatusManager.isEssentialLedActive()
-                && led == essentialLed
-                && brightness < (maxBrightness / 100 * 7)) {
-            brightness = maxBrightness / 100 * 7;
+        if (Constants.getDevice().equals("phone3a") && StatusManager.isEssentialLedActive()) {
+            int[] ledArray = ResourceUtils.getIntArray("glyph_settings_notifs_essential_led_array");
+            boolean essentialLedFound = Arrays.stream(ledArray).anyMatch(x -> x == led);
+            if (essentialLedFound && brightness < (maxBrightness / 100 * 7)) {
+                brightness = maxBrightness / 100 * 7;
+            }
+        } else {
+            int essentialLed = ResourceUtils.getInteger("glyph_settings_notifs_essential_led");
+            if (StatusManager.isEssentialLedActive()
+                    && led == essentialLed
+                    && brightness < (maxBrightness / 100 * 7)) {
+                brightness = maxBrightness / 100 * 7;
+            }
         }
         FileUtils.writeSingleLed(led, brightness / maxBrightness * Constants.getBrightness());
     }
