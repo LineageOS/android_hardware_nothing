@@ -296,7 +296,6 @@ public final class AnimationManager {
 
     public static void playEssential() {
         if (DEBUG) Log.d(TAG, "Playing Essential Animation");
-        int led = ResourceUtils.getInteger("glyph_settings_notifs_essential_led");
         if (!StatusManager.isEssentialLedActive()) {
             submit(() -> {
                 if (!check("essential", true))
@@ -307,10 +306,22 @@ public final class AnimationManager {
                 try {
                     if (checkInterruption("essential")) throw new InterruptedException();
                     int[] steps = {1, 2, 4, 7};
-                    for (int i : steps) {
-                        if (checkInterruption("essential")) throw new InterruptedException();
-                        updateLedSingle(led, Constants.getMaxBrightness() / 100 * i);
-                        Thread.sleep(25);
+                    if (Constants.getDevice().equals("phone3a")) {
+                        int[] essentialPattern =
+                                new int[ResourceUtils.getIntArray("glyph_zone_channel_count")[0]];
+                        for (int i : steps) {
+                            if (checkInterruption("essential")) throw new InterruptedException();
+                            Arrays.fill(essentialPattern, Constants.getMaxBrightness() / 100 * i);
+                            updateLedFrame(essentialPattern);
+                            Thread.sleep(25);
+                        }
+                    } else {
+                        int led = ResourceUtils.getInteger("glyph_settings_notifs_essential_led");
+                        for (int i : steps) {
+                            if (checkInterruption("essential")) throw new InterruptedException();
+                            updateLedSingle(led, Constants.getMaxBrightness() / 100 * i);
+                            Thread.sleep(25);
+                        }
                     }
                     Thread.sleep(250);
                 } catch (InterruptedException e) {}
@@ -320,7 +331,15 @@ public final class AnimationManager {
                 if (DEBUG) Log.d(TAG, "Done playing animation | name: essential");
             });
         } else {
-            updateLedSingle(led, Constants.getMaxBrightness() / 100 * 7);
+            if (Constants.getDevice().equals("phone3a")) {
+                int[] essentialPattern =
+                        new int[ResourceUtils.getIntArray("glyph_zone_channel_count")[0]];
+                Arrays.fill(essentialPattern, Constants.getMaxBrightness() / 100 * 7);
+                updateLedFrame(essentialPattern);
+            } else {
+                int led = ResourceUtils.getInteger("glyph_settings_notifs_essential_led");
+                updateLedSingle(led, Constants.getMaxBrightness() / 100 * 7);
+            }
             return;
         }
 
@@ -330,8 +349,12 @@ public final class AnimationManager {
         if (DEBUG) Log.d(TAG, "Disabling Essential Animation");
         StatusManager.setEssentialLedActive(false);
         if (!StatusManager.isAnimationActive() && !StatusManager.isAllLedActive()) {
-            int led = ResourceUtils.getInteger("glyph_settings_notifs_essential_led");
-            updateLedSingle(led, 0);
+            if (Constants.getDevice().equals("phone3a")) {
+                updateLedFrame(new float[5]);
+            } else {
+                int led = ResourceUtils.getInteger("glyph_settings_notifs_essential_led");
+                updateLedSingle(led, 0);
+            }
         }
     }
 
@@ -371,7 +394,6 @@ public final class AnimationManager {
                 pattern = new float[frameLength];
             }
         }
-        int essentialLed = ResourceUtils.getInteger("glyph_settings_notifs_essential_led");
         if (StatusManager.isEssentialLedActive()) {
             if (pattern.length == 5) { // Phone (1) pattern
                 if (pattern[1] < (maxBrightness / 100 * 7)) {
@@ -380,6 +402,10 @@ public final class AnimationManager {
             } else if (pattern.length == 33) { // Phone (2) pattern
                 if (pattern[2] < (maxBrightness / 100 * 7)) {
                     pattern[2] = maxBrightness / 100 * 7;
+                }
+            } else if (pattern.length == 36) { // Phone (3a) / Phone (3a) Pro pattern
+                if (pattern[21] < (maxBrightness / 100 * 7)) {
+                    Arrays.fill(pattern, 20, 31, maxBrightness / 100 * 7);
                 }
             }
         }
