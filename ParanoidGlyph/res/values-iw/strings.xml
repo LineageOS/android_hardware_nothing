@@ -17,6 +17,12 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="glyph_settings_app_name">ממשק Glyph</string>
+    <string name="glyph_settings_enable">תאורת Glyph</string>
+    <string name="glyph_settings_title">ממשק Glyph</string>
+    <string name="glyph_settings_summary">אפשרויות תאורת Glyph</string>
+    <string name="glyph_settings_flip_toggle_title">הפיכה להפעלת Glyph</string>
+    <string name="glyph_settings_flip_toggle_summary">השתקה והצגת Glyph בעת הפיכת הטלפון</string>
     <string name="glyph_settings_brightness">בהירות</string>
     <string name="glyph_settings_charging_title">בטעינה</string>
     <string name="glyph_settings_charging_level_title">רמת סוללה</string>
@@ -41,6 +47,9 @@
     <string name="glyph_settings_volume_level_toggle_summary">הצגת עוצמה בעת כוונון</string>
     <string name="glyph_settings_misc_title">שונות</string>
     <string name="glyph_settings_music_visualizer_toggle_title">הדמיה מוזיקלית</string>
+    <string name="glyph_settings_music_visualizer_toggle_summary">הדבר יגרום לתאורת Glyph להגיב לנגן המדיה בהתקן.\nכל שאר פונקציות ה־Glyph יושבתו בעת השימוש.</string>
+    <string name="glyph_accessibility_quick_settings">Glyph</string>
+    <string name="glyph_accessibility_quick_settings_torch">פנס Glyph</string>
     <string name="glyph_accessibility_quick_settings_off">כבוי</string>
     <string name="glyph_accessibility_quick_settings_on">מופעל</string>
 </resources>
