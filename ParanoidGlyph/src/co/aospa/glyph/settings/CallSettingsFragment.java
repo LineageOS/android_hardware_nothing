@@ -19,9 +19,6 @@ package co.aospa.glyph.settings;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceChangeListener;
@@ -38,12 +35,9 @@ import co.aospa.glyph.preference.GlyphAnimationPreference;
 import co.aospa.glyph.utils.ResourceUtils;
 import co.aospa.glyph.utils.ServiceUtils;
 
-public class CallSettingsFragment extends PreferenceFragment implements OnPreferenceChangeListener,
-        OnCheckedChangeListener {
+public class CallSettingsFragment extends PreferenceFragment implements OnPreferenceChangeListener {
 
     private PreferenceScreen mScreen;
-
-    private MainSwitchPreference mSwitchBar;
 
     private ListPreference mListPreference;
 
@@ -58,9 +52,9 @@ public class CallSettingsFragment extends PreferenceFragment implements OnPrefer
         mScreen = this.getPreferenceScreen();
         getActivity().setTitle(R.string.glyph_settings_call_toggle_title);
 
-        mSwitchBar = (MainSwitchPreference) findPreference(Constants.GLYPH_CALL_SUB_ENABLE);
-        mSwitchBar.addOnSwitchChangeListener(this);
-        mSwitchBar.setChecked(SettingsManager.isGlyphCallEnabled());
+        MainSwitchPreference switchBar = findPreference(Constants.GLYPH_CALL_SUB_ENABLE);
+        switchBar.setOnPreferenceChangeListener(this);
+        switchBar.setChecked(SettingsManager.isGlyphCallEnabled());
 
         mListPreference = (ListPreference) findPreference(Constants.GLYPH_CALL_SUB_ANIMATIONS);
         mListPreference.setOnPreferenceChangeListener(this);
@@ -84,6 +78,14 @@ public class CallSettingsFragment extends PreferenceFragment implements OnPrefer
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         final String preferenceKey = preference.getKey();
 
+        if (preferenceKey.equals(Constants.GLYPH_CALL_SUB_ENABLE)) {
+            boolean isChecked = (Boolean) newValue;
+            SettingsManager.setGlyphCallEnabled(isChecked);
+            ServiceUtils.checkGlyphService();
+            mGlyphAnimationPreference.updateAnimation(isChecked,
+                    SettingsManager.getGlyphCallAnimation());
+        }
+
         if (preferenceKey.equals(Constants.GLYPH_CALL_SUB_ANIMATIONS)) {
             mGlyphAnimationPreference.updateAnimation(SettingsManager.isGlyphCallEnabled(),
                 newValue.toString());
@@ -92,14 +94,6 @@ public class CallSettingsFragment extends PreferenceFragment implements OnPrefer
         //mHandler.post(() -> ServiceUtils.checkGlyphService());
 
         return true;
-    }
-
-    @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        SettingsManager.setGlyphCallEnabled(isChecked);
-        ServiceUtils.checkGlyphService();
-        mGlyphAnimationPreference.updateAnimation(isChecked,
-                SettingsManager.getGlyphCallAnimation());
     }
 
 }
