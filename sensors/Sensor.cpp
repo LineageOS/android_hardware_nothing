@@ -221,7 +221,9 @@ SysfsPollingOneShotSensor::SysfsPollingOneShotSensor(
         int32_t sensorHandle, ISensorsEventCallback* callback, const std::string& pollPath,
         std::optional<std::string> enablePath, std::optional<std::string> coordinatePath,
         const std::string& name, const std::string& typeAsString, SensorType type)
-    : OneShotSensor(sensorHandle, callback), mCoordinatePath(std::move(coordinatePath)) {
+    : OneShotSensor(sensorHandle, callback),
+      mCoordinatePath(std::move(coordinatePath)),
+      mEnablePath(std::move(enablePath)) {
     mSensorInfo.name = name;
     mSensorInfo.type = type;
     mSensorInfo.typeAsString = typeAsString;
@@ -230,15 +232,7 @@ SysfsPollingOneShotSensor::SysfsPollingOneShotSensor(
     mSensorInfo.power = 0;
     mSensorInfo.flags |= SensorFlagBits::WAKE_UP;
 
-    handleEnable = enablePath.has_value();
-
-    if (handleEnable) {
-        mEnableStream.open(enablePath->c_str());
-        if (!mEnableStream) {
-            ALOGE("failed to open enable path %s", enablePath->c_str());
-            return;
-        }
-    }
+    handleEnable = mEnablePath.has_value();
 
     int rc;
 
@@ -268,10 +262,6 @@ SysfsPollingOneShotSensor::SysfsPollingOneShotSensor(
 }
 
 bool SysfsPollingOneShotSensor::opened() {
-    if (handleEnable) {
-        return mEnableStream && mWaitPipeFd[0] >= 0 && mWaitPipeFd[1] >= 0 && mPollFd >= 0;
-    }
-
     return mWaitPipeFd[0] >= 0 && mWaitPipeFd[1] >= 0 && mPollFd >= 0;
 }
 
@@ -280,8 +270,14 @@ SysfsPollingOneShotSensor::~SysfsPollingOneShotSensor() {
 }
 
 void SysfsPollingOneShotSensor::writeEnable(bool enable) {
-    if (handleEnable && mEnableStream) {
+    if (!handleEnable) return;
+
+    std::call_once(mEnableOpenOnce, [&] { mEnableStream.open(*mEnablePath); });
+
+    if (mEnableStream) {
         mEnableStream << (enable ? '1' : '0') << std::flush;
+    } else {
+        ALOGE("Failed to write enable to %s", mEnablePath->c_str());
     }
 }
 
