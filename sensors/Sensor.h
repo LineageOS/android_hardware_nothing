@@ -124,6 +124,8 @@ class SysfsPollingOneShotSensor : public OneShotSensor {
     struct pollfd mPolls[2];
     int mWaitPipeFd[2];
     int mPollFd;
+    std::optional<std::string> mEnablePath;
+    std::once_flag mEnableOpenOnce;
 
     bool handleEnable;
 };
