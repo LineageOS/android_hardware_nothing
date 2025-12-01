@@ -40,6 +40,8 @@
     <string name="glyph_settings_notifs_sub_title">Applis à autoriser</string>
     <string name="glyph_settings_notifs_sub_toggle_title">Activer l\'animation de notification</string>
     <string name="glyph_settings_notifs_sub_animations_title">Motif</string>
+    <string name="glyph_settings_notifs_sub_essential_title">Notifications Essential</string>
+    <string name="glyph_settings_notifs_sub_essential_summary">Glyph Essential sera affiché jusqu\'à ce que les notifications Essential soient lues ou rejetées</string>
     <string name="glyph_settings_volume_title">Volume</string>
     <string name="glyph_settings_volume_level_toggle_title">Indicateur de volume</string>
     <string name="glyph_settings_volume_level_toggle_summary">Afficher le niveau du volume lors du réglage</string>
