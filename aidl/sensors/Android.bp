@@ -19,6 +19,12 @@ package {
     default_applicable_licenses: ["Android-Apache-2.0"],
 }
 
+vintf_fragment {
+    name: "android.hardware.sensors.nothing-multihal.xml",
+    src: "android.hardware.sensors.nothing-multihal.xml",
+    vendor: true,
+}
+
 cc_binary {
     name: "android.hardware.sensors-service.nothing-multihal",
     vendor: true,
@@ -33,7 +39,7 @@ cc_binary {
         "android.hardware.sensors@2.X-shared-utils",
     ],
     init_rc: ["android.hardware.sensors-service.nothing-multihal.rc"],
-    vintf_fragments: ["android.hardware.sensors.nothing-multihal.xml"],
+    vintf_fragment_modules: ["android.hardware.sensors.nothing-multihal.xml"],
     shared_libs: [
         "android.hardware.sensors@2.0-ScopedWakelock",
         "android.hardware.sensors@2.0",
