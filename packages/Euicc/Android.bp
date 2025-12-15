@@ -1,0 +1,17 @@
+//
+// SPDX-FileCopyrightText: 2025 The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+phony {
+    name: "NothingEuicc",
+    required: [
+        "EuiccPolicy",
+        "EuiccPolicyNothing",
+    ],
+}
+
+runtime_resource_overlay {
+    name: "EuiccPolicyNothing",
+    product_specific: true,
+}
