@@ -17,6 +17,11 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="glyph_settings_app_name">Interfaghe Glyph</string>
+    <string name="glyph_settings_enable">Lughes Glyph</string>
+    <string name="glyph_settings_title">Interfaghe Glyph</string>
+    <string name="glyph_settings_summary">Optziones pro is lughes Glyph</string>
+    <string name="glyph_settings_flip_toggle_title">Cola a Glyph</string>
     <string name="glyph_settings_flip_toggle_summary">Pone a sa muda e ammustra Glyphs si su telèfonu est a conca in bàsciu</string>
     <string name="glyph_settings_brightness">Lugore</string>
     <string name="glyph_settings_charging_title">Carrighende</string>
@@ -25,6 +30,7 @@
     <string name="glyph_settings_charging_powershare_title">Càrriga chene filos inversa</string>
     <string name="glyph_settings_call_title">Mutidas</string>
     <string name="glyph_settings_call_toggle_title">Animatzione de sa mutida</string>
+    <string name="glyph_settings_call_sub_toggle_title">Ativa s\'animatzione de sa mutida</string>
     <string name="glyph_settings_call_sub_animations_title">Cumbinada</string>
     <string name="glyph_settings_notifs_title">Notìficas</string>
     <string name="glyph_settings_notifs_toggle_title">Animatzione de is notìficas</string>
@@ -35,6 +41,8 @@
     <string name="glyph_settings_notifs_sub_essential_summary">S\'at a ammustrare su Glyph essentziale finas a cando is notìficas essentziales siant lèghidas o iscartadas</string>
     <string name="glyph_settings_volume_title">Volùmene</string>
     <string name="glyph_settings_volume_level_toggle_title">Indicadore de su volùmene</string>
+    <string name="glyph_settings_misc_title">Vàrias</string>
+    <string name="glyph_settings_music_visualizer_toggle_title">Visualizadore de mùsica</string>
     <string name="glyph_accessibility_quick_settings">Glyph</string>
     <string name="glyph_accessibility_quick_settings_torch">Tortza Glyph</string>
     <string name="glyph_accessibility_quick_settings_off">Istudada</string>
