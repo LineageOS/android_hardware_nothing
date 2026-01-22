@@ -16,6 +16,24 @@
       "message": "Remove tabs.",
       "revId": "ba23d6833c971cc36545e131af7e45065ea4bdf2",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33a14741_07208b46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2026-01-22T09:28:23Z",
+      "side": 1,
+      "message": "It\u0027s been discussed in the past as well, this whole app is of questionable quality state even for basic code formatting style, eg. there are tabs everywhere, lines over 100 characters etc.",
+      "parentUuid": "cadd4799_ae18d4ca",
+      "revId": "ba23d6833c971cc36545e131af7e45065ea4bdf2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
