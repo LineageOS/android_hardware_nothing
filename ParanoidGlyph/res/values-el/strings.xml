@@ -40,6 +40,8 @@
     <string name="glyph_settings_notifs_sub_title">Εφαρμογές που επιτρέπονται</string>
     <string name="glyph_settings_notifs_sub_toggle_title">Ενεργοποίηση εφέ ειδοποιήσεων</string>
     <string name="glyph_settings_notifs_sub_animations_title">Μοτίβο</string>
+    <string name="glyph_settings_notifs_sub_essential_title">Essential ειδοποιήσεις</string>
+    <string name="glyph_settings_notifs_sub_essential_summary">Το Essential Glyph θα προβάλλεται μέχρι οι Essential ειδοποιήσεις να έχουν διαβαστεί ή απορριφθεί.</string>
     <string name="glyph_settings_volume_title">Ένταση</string>
     <string name="glyph_settings_volume_level_toggle_title">Δείκτης έντασης</string>
     <string name="glyph_settings_volume_level_toggle_summary">Εμφάνιση επιπέδου έντασης κατά τη ρύθμιση</string>
