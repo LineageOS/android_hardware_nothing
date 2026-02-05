@@ -27,6 +27,7 @@
         android:title="@string/glyph_settings_notifs_sub_toggle_title" />
 
         <ListPreference
+            android:dependency="glyph_settings_notifs_sub_toggle"
             android:key="glyph_settings_notifs_sub_animations"
             android:title="@string/glyph_settings_notifs_sub_animations_title"
             android:defaultValue="@string/glyph_settings_notifs_animations_default"
@@ -34,6 +35,7 @@
             android:summary="%s" />
 
         <MultiSelectListPreference
+            android:dependency="glyph_settings_notifs_sub_toggle"
             android:key="glyph_settings_notifs_sub_essential"
             android:title="@string/glyph_settings_notifs_sub_essential_title"
             android:dialogTitle="@string/glyph_settings_notifs_sub_essential_title"

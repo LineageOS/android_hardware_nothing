@@ -26,7 +26,6 @@ import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.PreferenceFragment;
-import androidx.preference.PreferenceScreen;
 
 import com.android.internal.util.ArrayUtils;
 import com.android.settingslib.widget.MainSwitchPreference;
@@ -41,11 +40,7 @@ import co.aospa.glyph.Utils.ServiceUtils;
 public class CallSettingsFragment extends PreferenceFragment implements OnPreferenceChangeListener,
         OnCheckedChangeListener {
 
-    private PreferenceScreen mScreen;
-
     private MainSwitchPreference mSwitchBar;
-
-    private ListPreference mListPreference;
 
     private GlyphAnimationPreference mGlyphAnimationPreference;
 
@@ -55,19 +50,18 @@ public class CallSettingsFragment extends PreferenceFragment implements OnPrefer
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.glyph_call_settings);
 
-        mScreen = this.getPreferenceScreen();
         getActivity().setTitle(R.string.glyph_settings_call_toggle_title);
 
         mSwitchBar = (MainSwitchPreference) findPreference(Constants.GLYPH_CALL_SUB_ENABLE);
         mSwitchBar.addOnSwitchChangeListener(this);
         mSwitchBar.setChecked(SettingsManager.isGlyphCallEnabled());
 
-        mListPreference = (ListPreference) findPreference(Constants.GLYPH_CALL_SUB_ANIMATIONS);
-        mListPreference.setOnPreferenceChangeListener(this);
-        mListPreference.setEntries(ResourceUtils.getCallAnimations());
-        mListPreference.setEntryValues(ResourceUtils.getCallAnimations());
-        if (!ArrayUtils.contains(ResourceUtils.getCallAnimations(), mListPreference.getValue())) {
-            mListPreference.setValue(ResourceUtils.getString("glyph_settings_call_animations_default"));
+        ListPreference listPreference = findPreference(Constants.GLYPH_CALL_SUB_ANIMATIONS);
+        listPreference.setOnPreferenceChangeListener(this);
+        listPreference.setEntries(ResourceUtils.getCallAnimations());
+        listPreference.setEntryValues(ResourceUtils.getCallAnimations());
+        if (!ArrayUtils.contains(ResourceUtils.getCallAnimations(), listPreference.getValue())) {
+            listPreference.setValue(ResourceUtils.getString("glyph_settings_call_animations_default"));
         }
 
         mGlyphAnimationPreference = (GlyphAnimationPreference) findPreference(Constants.GLYPH_CALL_SUB_PREVIEW);
