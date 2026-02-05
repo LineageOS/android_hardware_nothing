@@ -53,15 +53,11 @@ public class NotifsSettingsFragment extends PreferenceFragment implements OnPref
     private PreferenceScreen mScreen;
 
     private MainSwitchPreference mSwitchBar;
-    private PreferenceCategory mCategory;
 
     private List<String> mEssentialApps = new ArrayList<String>();
     private List<String> mEssentialAppsNames = new ArrayList<String>();
 
     private PackageManager mPackageManager;
-
-    private ListPreference mListPreference;
-    private MultiSelectListPreference mMultiSelectListPreference;
 
     private GlyphAnimationPreference mGlyphAnimationPreference;
 
@@ -78,14 +74,14 @@ public class NotifsSettingsFragment extends PreferenceFragment implements OnPref
         mSwitchBar.addOnSwitchChangeListener(this);
         mSwitchBar.setChecked(SettingsManager.isGlyphNotifsEnabled());
 
-        mCategory = (PreferenceCategory) findPreference(Constants.GLYPH_NOTIFS_SUB_CATEGORY);
+        PreferenceCategory category = (PreferenceCategory) findPreference(Constants.GLYPH_NOTIFS_SUB_CATEGORY);
 
-        mListPreference = (ListPreference) findPreference(Constants.GLYPH_NOTIFS_SUB_ANIMATIONS);
-        mListPreference.setOnPreferenceChangeListener(this);
-        mListPreference.setEntries(ResourceUtils.getNotificationAnimations());
-        mListPreference.setEntryValues(ResourceUtils.getNotificationAnimations());
-        if (!ArrayUtils.contains(ResourceUtils.getNotificationAnimations(), mListPreference.getValue())) {
-            mListPreference.setValue(ResourceUtils.getString("glyph_settings_notifs_animations_default"));
+        ListPreference listPreference = findPreference(Constants.GLYPH_NOTIFS_SUB_ANIMATIONS);
+        listPreference.setOnPreferenceChangeListener(this);
+        listPreference.setEntries(ResourceUtils.getNotificationAnimations());
+        listPreference.setEntryValues(ResourceUtils.getNotificationAnimations());
+        if (!ArrayUtils.contains(ResourceUtils.getNotificationAnimations(), listPreference.getValue())) {
+            listPreference.setValue(ResourceUtils.getString("glyph_settings_notifs_animations_default"));
         }
 
         mGlyphAnimationPreference = (GlyphAnimationPreference) findPreference(Constants.GLYPH_NOTIFS_SUB_PREVIEW);
@@ -101,17 +97,17 @@ public class NotifsSettingsFragment extends PreferenceFragment implements OnPref
                 mSwitchPreference.setIcon(app.loadIcon(mPackageManager));
                 mSwitchPreference.setDefaultValue(true);
                 mSwitchPreference.setOnPreferenceChangeListener(this);
-                mCategory.addPreference(mSwitchPreference);
+                category.addPreference(mSwitchPreference);
 
                 mEssentialApps.add(app.packageName);
                 mEssentialAppsNames.add(app.loadLabel(mPackageManager).toString());
             }
         }
 
-        mMultiSelectListPreference = (MultiSelectListPreference) findPreference(Constants.GLYPH_NOTIFS_SUB_ESSENTIAL);
-        mMultiSelectListPreference.setOnPreferenceChangeListener(this);
-        mMultiSelectListPreference.setEntries(mEssentialAppsNames.toArray(new CharSequence[0]));
-        mMultiSelectListPreference.setEntryValues(mEssentialApps.toArray(new CharSequence[0]));
+        MultiSelectListPreference multiSelectListPreference = findPreference(Constants.GLYPH_NOTIFS_SUB_ESSENTIAL);
+        multiSelectListPreference.setOnPreferenceChangeListener(this);
+        multiSelectListPreference.setEntries(mEssentialAppsNames.toArray(new CharSequence[0]));
+        multiSelectListPreference.setEntryValues(mEssentialApps.toArray(new CharSequence[0]));
 
     }
 
