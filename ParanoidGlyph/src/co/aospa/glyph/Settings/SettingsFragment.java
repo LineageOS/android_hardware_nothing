@@ -29,7 +29,6 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceChangeListener;
-import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.SeekBarPreference;
 import androidx.preference.SwitchPreferenceCompat;
@@ -48,7 +47,6 @@ public class SettingsFragment extends PreferenceFragment implements OnPreference
     private MainSwitchPreference mSwitchBar;
 
     private SwitchPreferenceCompat mFlipPreference;
-    private SeekBarPreference mBrightnessPreference;
     private PrimarySwitchPreference mNotifsPreference;
     private PrimarySwitchPreference mCallPreference;
     private SwitchPreferenceCompat mChargingLevelPreference;
@@ -76,43 +74,33 @@ public class SettingsFragment extends PreferenceFragment implements OnPreference
         mSwitchBar.setChecked(glyphEnabled);
 
         mFlipPreference = (SwitchPreferenceCompat) findPreference(Constants.GLYPH_FLIP_ENABLE);
-        mFlipPreference.setEnabled(glyphEnabled);
         mFlipPreference.setOnPreferenceChangeListener(this);
 
-        mBrightnessPreference = (SeekBarPreference) findPreference(Constants.GLYPH_BRIGHTNESS);
-        mBrightnessPreference.setEnabled(glyphEnabled);
-        mBrightnessPreference.setMin(1);
-        mBrightnessPreference.setMax(Constants.getBrightnessLevels().length);
-        mBrightnessPreference.setValue(SettingsManager.getGlyphBrightnessSetting());
-        mBrightnessPreference.setUpdatesContinuously(true);
-        mBrightnessPreference.setOnPreferenceChangeListener(this);
+        SeekBarPreference brightnessPreference = findPreference(Constants.GLYPH_BRIGHTNESS);
+        brightnessPreference.setMin(1);
+        brightnessPreference.setMax(Constants.getBrightnessLevels().length);
+        brightnessPreference.setValue(SettingsManager.getGlyphBrightnessSetting());
+        brightnessPreference.setUpdatesContinuously(true);
+        brightnessPreference.setOnPreferenceChangeListener(this);
 
         mNotifsPreference = (PrimarySwitchPreference) findPreference(Constants.GLYPH_NOTIFS_ENABLE);
         mNotifsPreference.setChecked(SettingsManager.isGlyphNotifsEnabled());
-        mNotifsPreference.setEnabled(glyphEnabled);
-        mNotifsPreference.setSwitchEnabled(glyphEnabled);
         mNotifsPreference.setOnPreferenceChangeListener(this);
 
         mCallPreference = (PrimarySwitchPreference) findPreference(Constants.GLYPH_CALL_ENABLE);
         mCallPreference.setChecked(SettingsManager.isGlyphCallEnabled());
-        mCallPreference.setEnabled(glyphEnabled);
-        mCallPreference.setSwitchEnabled(glyphEnabled);
         mCallPreference.setOnPreferenceChangeListener(this);
 
         mChargingLevelPreference = (SwitchPreferenceCompat) findPreference(Constants.GLYPH_CHARGING_LEVEL_ENABLE);
-        mChargingLevelPreference.setEnabled(glyphEnabled);
         mChargingLevelPreference.setOnPreferenceChangeListener(this);
 
         mChargingPowersharePreference = (SwitchPreferenceCompat) findPreference(Constants.GLYPH_CHARGING_POWERSHARE_ENABLE);
-        mChargingPowersharePreference.setEnabled(glyphEnabled);
         mChargingPowersharePreference.setOnPreferenceChangeListener(this);
 
         mVolumeLevelPreference = (SwitchPreferenceCompat) findPreference(Constants.GLYPH_VOLUME_LEVEL_ENABLE);
-        mVolumeLevelPreference.setEnabled(glyphEnabled);
         mVolumeLevelPreference.setOnPreferenceChangeListener(this);
 
         mMusicVisualizerPreference = (SwitchPreferenceCompat) findPreference(Constants.GLYPH_MUSIC_VISUALIZER_ENABLE);
-        mMusicVisualizerPreference.setEnabled(glyphEnabled);
         mMusicVisualizerPreference.setOnPreferenceChangeListener(this);
         if (mMusicVisualizerPreference.isChecked()) {
             mFlipPreference.setEnabled(false);
@@ -166,7 +154,6 @@ public class SettingsFragment extends PreferenceFragment implements OnPreference
         mSwitchBar.setChecked(isChecked);
 
         mFlipPreference.setEnabled(isChecked && !mMusicVisualizerPreference.isChecked());
-        mBrightnessPreference.setEnabled(isChecked);
         mNotifsPreference.setEnabled(isChecked && !mMusicVisualizerPreference.isChecked());
         mNotifsPreference.setSwitchEnabled(isChecked && !mMusicVisualizerPreference.isChecked());
         mCallPreference.setEnabled(isChecked && !mMusicVisualizerPreference.isChecked());
@@ -174,7 +161,6 @@ public class SettingsFragment extends PreferenceFragment implements OnPreference
         mChargingLevelPreference.setEnabled(isChecked && !mMusicVisualizerPreference.isChecked());
         mChargingPowersharePreference.setEnabled(isChecked && !mMusicVisualizerPreference.isChecked());
         mVolumeLevelPreference.setEnabled(isChecked && !mMusicVisualizerPreference.isChecked());
-        mMusicVisualizerPreference.setEnabled(isChecked);
 
         mHandler.post(() -> ServiceUtils.checkGlyphService());
     }

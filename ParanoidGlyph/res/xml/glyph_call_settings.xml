@@ -27,6 +27,7 @@
         android:title="@string/glyph_settings_call_sub_toggle_title" />
 
         <ListPreference
+            android:dependency="glyph_settings_call_sub_toggle"
             android:key="glyph_settings_call_sub_animations"
             android:title="@string/glyph_settings_call_sub_animations_title"
             android:defaultValue="@string/glyph_settings_call_animations_default"
