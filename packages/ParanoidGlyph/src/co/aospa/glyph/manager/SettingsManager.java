@@ -71,8 +71,10 @@ public final class SettingsManager {
     }
 
     public static boolean isGlyphPowershareEnabled() {
-        return PreferenceManager.getDefaultSharedPreferences(context)
-                .getBoolean(Constants.GLYPH_CHARGING_POWERSHARE_ENABLE, false) && isGlyphEnabled();
+        return Constants.isPowershareSupported()
+                && PreferenceManager.getDefaultSharedPreferences(context)
+                .getBoolean(Constants.GLYPH_CHARGING_POWERSHARE_ENABLE, false)
+                && isGlyphEnabled();
     }
 
     public static boolean isGlyphCallEnabled() {
