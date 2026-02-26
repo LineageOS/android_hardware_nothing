@@ -27,7 +27,7 @@ import android.provider.Settings;
 
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceChangeListener;
-import androidx.preference.PreferenceFragment;
+import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.SeekBarPreference;
 import androidx.preference.SwitchPreferenceCompat;
 
@@ -42,7 +42,7 @@ import co.aospa.glyph.manager.AnimationManager;
 import co.aospa.glyph.manager.SettingsManager;
 import co.aospa.glyph.utils.ServiceUtils;
 
-public class SettingsFragment extends PreferenceFragment implements OnPreferenceChangeListener {
+public class SettingsFragment extends PreferenceFragmentCompat implements OnPreferenceChangeListener {
 
     private SwitchPreferenceCompat mFlipPreference;
     private PrimarySwitchPreference mNotifsPreference;
