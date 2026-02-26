@@ -60,6 +60,9 @@ public class NotificationService extends NotificationListenerService
     @Override
     public void onCreate() {
         if (DEBUG) Log.d(TAG, "Creating service");
+        if (Constants.CONTEXT == null) {
+            Constants.CONTEXT = getApplicationContext();
+        }
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         mPowerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
         mWakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG);
@@ -94,7 +97,6 @@ public class NotificationService extends NotificationListenerService
 
     @Override
     public void onNotificationPosted(StatusBarNotification sbn){
-        if (Constants.CONTEXT == null) return;
         if (DEBUG) Log.d(TAG, "onNotificationPosted");
         if (!SettingsManager.isGlyphNotifsEnabled()) return;
         String packageName = sbn.getPackageName();
