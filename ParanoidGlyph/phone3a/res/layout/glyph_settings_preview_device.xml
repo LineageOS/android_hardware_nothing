@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/bg_device_background" 
+    android:padding="10.0dip" 
+    android:layout_width="163.0dp" 
+    android:layout_height="343.99dip" 
+    android:clipChildren="false"
+    android:layout_gravity="center_horizontal">
+      <ImageView 
+          android:layout_gravity="left" 
+          android:id="@+id/preview_device_left_1" 
+          android:layout_width="wrap_content" 
+          android:layout_height="wrap_content" 
+          android:layout_marginLeft="3.5dip" 
+          android:layout_marginTop="3.1dip" 
+          android:src="@drawable/glyph_led_a1" />
+      <ImageView 
+          android:layout_gravity="left" 
+          android:id="@+id/preview_device_left_2" 
+          android:layout_width="wrap_content" 
+          android:layout_height="wrap_content" 
+          android:layout_marginLeft="9.25dip" 
+          android:layout_marginTop="93.88dip" 
+          android:src="@drawable/glyph_led_a2" />
+      <ImageView 
+          android:layout_gravity="right" 
+          android:id="@+id/preview_device_right" 
+          android:layout_width="wrap_content" 
+          android:layout_height="wrap_content" 
+          android:layout_marginLeft="16.53dip" 
+          android:layout_marginTop="39.88dip" 
+          android:src="@drawable/glyph_led_b1" />
+</FrameLayout>
