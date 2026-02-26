@@ -1,0 +1,3 @@
+rw_dir_file(glyph_app, sysfs_leds)
+rw_dir_file(glyph_app, vendor_sysfs_battery_supply)
+rw_dir_file(glyph_app, vendor_sysfs_wireless)
