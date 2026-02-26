@@ -23,8 +23,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import co.aospa.glyph.Constants.Constants;
-import co.aospa.glyph.Utils.ServiceUtils;
+import co.aospa.glyph.utils.Constants;
+import co.aospa.glyph.utils.ServiceUtils;
 
 public class BootCompletedReceiver extends BroadcastReceiver {
 

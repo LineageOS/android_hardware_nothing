@@ -46,7 +46,7 @@
             android:summary="@string/glyph_settings_call_toggle_summary" >
             <intent android:action="android.intent.action.MAIN"
                  android:targetPackage="co.aospa.glyph"
-                 android:targetClass="co.aospa.glyph.Settings.CallSettingsActivity"/>
+                 android:targetClass="co.aospa.glyph.settings.CallSettingsActivity"/>
         </com.android.settingslib.PrimarySwitchPreference>
 
     <PreferenceCategory
@@ -60,7 +60,7 @@
             android:summary="@string/glyph_settings_notifs_toggle_summary" >
             <intent android:action="android.intent.action.MAIN"
                  android:targetPackage="co.aospa.glyph"
-                 android:targetClass="co.aospa.glyph.Settings.NotifsSettingsActivity"/>
+                 android:targetClass="co.aospa.glyph.settings.NotifsSettingsActivity"/>
         </com.android.settingslib.PrimarySwitchPreference>
 
     <PreferenceCategory
