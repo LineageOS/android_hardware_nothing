@@ -110,4 +110,9 @@ public final class Constants {
         return supportedAnimationPatternLengths;
     }
 
+    public static boolean isPowershareSupported() {
+        String path = ResourceUtils.getString("glyph_settings_paths_powershare_active_absolute");
+        return path != null && !path.isEmpty();
+    }
+
 }
