@@ -166,8 +166,6 @@ public class SettingsFragment extends PreferenceFragment implements OnPreference
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         SettingsManager.enableGlyph(isChecked);
 
-        mSwitchBar.setChecked(isChecked);
-
         mFlipPreference.setEnabled(isChecked && !mMusicVisualizerPreference.isChecked());
         mBrightnessPreference.setEnabled(isChecked);
         mNotifsPreference.setEnabled(isChecked && !mMusicVisualizerPreference.isChecked());
