@@ -35,8 +35,11 @@ import androidx.preference.SwitchPreferenceCompat;
 import com.android.settingslib.PrimarySwitchPreference;
 import com.android.settingslib.widget.MainSwitchPreference;
 
+import java.util.Arrays;
+
 import co.aospa.glyph.R;
 import co.aospa.glyph.utils.Constants;
+import co.aospa.glyph.manager.AnimationManager;
 import co.aospa.glyph.manager.SettingsManager;
 import co.aospa.glyph.utils.ServiceUtils;
 
@@ -55,6 +58,7 @@ public class SettingsFragment extends PreferenceFragment implements OnPreference
     private SettingObserver mSettingObserver;
 
     private Handler mHandler = new Handler();
+    private Runnable mBrightnessPreviewOff;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -147,6 +151,18 @@ public class SettingsFragment extends PreferenceFragment implements OnPreference
             mMusicVisualizerPreference.setEnabled(isChecked);
         }
 
+        if (preferenceKey.equals(Constants.GLYPH_BRIGHTNESS)) {
+            int brightness = Constants.getBrightnessLevels()[(Integer) newValue - 1];
+            Constants.setBrightness(brightness);
+            int patternLen = Constants.getSupportedAnimationPatternLengths()[0];
+            int[] preview = new int[patternLen];
+            Arrays.fill(preview, Constants.getMaxBrightness());
+            new Thread(() -> AnimationManager.updateLedFrame(preview)).start();
+            if (mBrightnessPreviewOff != null) mHandler.removeCallbacks(mBrightnessPreviewOff);
+            mBrightnessPreviewOff = () -> new Thread(() -> AnimationManager.updateLedFrame(new int[patternLen])).start();
+            mHandler.postDelayed(mBrightnessPreviewOff, 500);
+        }
+
         if (preferenceKey.equals(Constants.GLYPH_CALL_ENABLE)) {
             SettingsManager.setGlyphCallEnabled(!mCallPreference.isChecked());
         }
@@ -171,6 +187,17 @@ public class SettingsFragment extends PreferenceFragment implements OnPreference
         mHandler.post(() -> ServiceUtils.checkGlyphService());
 
         return true;
+    }
+
+    @Override
+    public void onDestroyView() {
+        if (mBrightnessPreviewOff != null) {
+            mHandler.removeCallbacks(mBrightnessPreviewOff);
+            int patternLen = Constants.getSupportedAnimationPatternLengths()[0];
+            new Thread(() -> AnimationManager.updateLedFrame(new int[patternLen])).start();
+            mBrightnessPreviewOff = null;
+        }
+        super.onDestroyView();
     }
 
     @Override
