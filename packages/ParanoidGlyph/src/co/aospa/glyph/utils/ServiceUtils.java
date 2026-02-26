@@ -90,8 +90,10 @@ public final class ServiceUtils {
 
     private static void startPowershareService() {
         if (DEBUG) Log.d(TAG, "Starting Glyph powershare service");
-        context.startServiceAsUser(new Intent(context, PowershareService.class),
-                UserHandle.CURRENT);
+        if (Constants.isPowershareSupported()) {
+            context.startServiceAsUser(new Intent(context, PowershareService.class),
+                    UserHandle.CURRENT);
+        }
     }
 
     private static void stopPowershareService() {
