@@ -22,11 +22,20 @@ import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
 
 import co.aospa.glyph.R;
+import co.aospa.glyph.utils.Constants;
 import co.aospa.glyph.manager.SettingsManager;
 import co.aospa.glyph.utils.ServiceUtils;
 
 /** Quick settings tile: Glyph **/
 public class GlyphTileService extends TileService {
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        if (Constants.CONTEXT == null) {
+            Constants.CONTEXT = getApplicationContext();
+        }
+    }
 
     @Override
     public void onStartListening() {
