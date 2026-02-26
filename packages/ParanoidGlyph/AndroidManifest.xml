@@ -48,32 +48,32 @@
         </receiver>
 
         <service
-            android:name=".Services.CallReceiverService"
+            android:name=".services.CallReceiverService"
             android:permission="android.permission.READ_PHONE_STATE">
         </service>
 
         <service
-            android:name=".Services.ChargingService">
+            android:name=".services.ChargingService">
         </service>
 
         <service
-            android:name=".Services.PowershareService">
+            android:name=".services.PowershareService">
         </service>
 
         <service
-            android:name=".Services.FlipToGlyphService">
+            android:name=".services.FlipToGlyphService">
         </service>
 
         <service
-            android:name=".Services.MusicVisualizerService">
+            android:name=".services.MusicVisualizerService">
         </service>
 
         <service
-            android:name=".Services.VolumeLevelService">
+            android:name=".services.VolumeLevelService">
         </service>
 
         <service
-            android:name=".Services.NotificationService"
+            android:name=".services.NotificationService"
             android:exported="false"
             android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
             <intent-filter>
@@ -82,7 +82,7 @@
         </service>
 
         <service
-            android:name=".Tiles.GlyphTileService"
+            android:name=".tiles.GlyphTileService"
             android:exported="true"
             android:label="@string/glyph_accessibility_quick_settings"
             android:icon="@drawable/ic_glyphs_logo"
@@ -92,7 +92,7 @@
             </intent-filter>
         </service>
         <service
-            android:name=".Tiles.TorchTileService"
+            android:name=".tiles.TorchTileService"
             android:exported="true"
             android:label="@string/glyph_accessibility_quick_settings_torch"
             android:icon="@drawable/qs_glyphs_torch_icon"
@@ -102,15 +102,15 @@
             </intent-filter>
         </service>
         <service
-            android:name=".Services.ThirdPartyService"
+            android:name=".services.ThirdPartyService"
             android:exported="true"
             android:permission="android.permission.BIND_SERVICE">
             <intent-filter>
-                <action android:name="co.aospa.glyph.Services.ThirdPartyService" />
+                <action android:name="co.aospa.glyph.services.ThirdPartyService" />
             </intent-filter>
         </service>
         <activity
-            android:name=".Tiles.TileActivity"
+            android:name=".tiles.TileActivity"
             android:exported="true"
             android:theme="@style/Theme.SubSettingsBase">
             <intent-filter>
@@ -119,7 +119,7 @@
         </activity>
 
         <activity
-            android:name=".Settings.SettingsActivity"
+            android:name=".settings.SettingsActivity"
             android:configChanges="orientation|screenSize"
             android:exported="true"
             android:label="@string/glyph_settings_title"
@@ -145,7 +145,7 @@
         </activity>
 
         <activity
-            android:name=".Settings.CallSettingsActivity"
+            android:name=".settings.CallSettingsActivity"
             android:configChanges="orientation|screenSize"
             android:exported="false"
             android:theme="@style/Theme.SubSettingsBase">
@@ -155,7 +155,7 @@
         </activity>
 
         <activity
-            android:name=".Settings.NotifsSettingsActivity"
+            android:name=".settings.NotifsSettingsActivity"
             android:configChanges="orientation|screenSize"
             android:exported="false"
             android:theme="@style/Theme.SubSettingsBase">
