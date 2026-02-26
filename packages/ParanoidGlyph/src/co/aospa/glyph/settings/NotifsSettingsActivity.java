@@ -16,26 +16,29 @@
 
 package co.aospa.glyph.settings;
 
-import android.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
 
+import co.aospa.glyph.utils.Constants;
+
 public class NotifsSettingsActivity extends CollapsingToolbarBaseActivity {
 
     private NotifsSettingsFragment mNotifsSettingsFragment;
-    private static final String TAG_GLYPH = "glyphnotifs";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Constants.CONTEXT == null) {
+            Constants.CONTEXT = getApplicationContext();
+        }
 
-        Fragment fragment = getFragmentManager().findFragmentById(com.android.settingslib.collapsingtoolbar.R.id.content_frame);
+        Fragment fragment = getSupportFragmentManager().findFragmentById(com.android.settingslib.collapsingtoolbar.R.id.content_frame);
         if (fragment == null) {
             mNotifsSettingsFragment = new NotifsSettingsFragment();
-            getFragmentManager().beginTransaction()
-                .add(com.android.settingslib.collapsingtoolbar.R.id.content_frame,
-                    mNotifsSettingsFragment, TAG_GLYPH)
+            getSupportFragmentManager().beginTransaction()
+                .add(com.android.settingslib.collapsingtoolbar.R.id.content_frame, mNotifsSettingsFragment)
                 .commit();
         } else {
             mNotifsSettingsFragment = (NotifsSettingsFragment) fragment;

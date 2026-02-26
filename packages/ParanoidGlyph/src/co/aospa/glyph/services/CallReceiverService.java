@@ -28,6 +28,7 @@ import android.util.Log;
 
 import java.util.concurrent.Executors;
 
+import co.aospa.glyph.utils.Constants;
 import co.aospa.glyph.manager.AnimationManager;
 import co.aospa.glyph.manager.SettingsManager;
 
@@ -41,6 +42,9 @@ public class CallReceiverService extends Service {
     @Override
     public void onCreate() {
         if (DEBUG) Log.d(TAG, "Creating service");
+        if (Constants.CONTEXT == null) {
+            Constants.CONTEXT = getApplicationContext();
+        }
 
         mAudioManager = getSystemService(AudioManager.class);
         mAudioManager.addOnModeChangedListener(Executors.newSingleThreadExecutor(), mAudioManagerOnModeChangedListener);
