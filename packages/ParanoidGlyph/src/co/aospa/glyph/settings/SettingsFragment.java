@@ -95,6 +95,9 @@ public class SettingsFragment extends PreferenceFragment implements OnPreference
 
         mChargingPowersharePreference = (SwitchPreferenceCompat) findPreference(Constants.GLYPH_CHARGING_POWERSHARE_ENABLE);
         mChargingPowersharePreference.setOnPreferenceChangeListener(this);
+        if (!Constants.isPowershareSupported()) {
+            mChargingPowersharePreference.setVisible(false);
+        }
 
         mVolumeLevelPreference = (SwitchPreferenceCompat) findPreference(Constants.GLYPH_VOLUME_LEVEL_ENABLE);
         mVolumeLevelPreference.setOnPreferenceChangeListener(this);
