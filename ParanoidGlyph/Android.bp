@@ -73,6 +73,20 @@ android_app {
     ],
 }
 
+android_app {
+    name: "ParanoidGlyphPhone3a",
+    defaults: ["glyph_app_defaults"],
+    asset_dirs: ["phone3a/assets"],
+    resource_dirs: ["phone3a/res"],
+    static_libs: [
+        "ParanoidGlyph-core",
+    ],
+    required: [
+        "privapp_whitelist_co.aospa.glyph.xml",
+        "whitelist_co.aospa.glyph.xml",
+    ],
+}
+
 prebuilt_etc {
     name: "privapp_whitelist_co.aospa.glyph.xml",
     src: "permissions/privapp_whitelist_co.aospa.glyph.xml",
