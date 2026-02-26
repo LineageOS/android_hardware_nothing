@@ -18,7 +18,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/glyph_settings_notifs_toggle_title">
 
-    <co.aospa.glyph.Preference.GlyphAnimationPreference
+    <co.aospa.glyph.preference.GlyphAnimationPreference
         android:key="glyph_settings_notifs_sub_preview"
         android:selectable="false" />
 
