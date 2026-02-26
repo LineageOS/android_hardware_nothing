@@ -29,7 +29,7 @@ import androidx.preference.MultiSelectListPreference;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.PreferenceCategory;
-import androidx.preference.PreferenceFragment;
+import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
 
@@ -47,7 +47,7 @@ import co.aospa.glyph.preference.GlyphAnimationPreference;
 import co.aospa.glyph.utils.ResourceUtils;
 import co.aospa.glyph.utils.ServiceUtils;
 
-public class NotifsSettingsFragment extends PreferenceFragment implements OnPreferenceChangeListener,
+public class NotifsSettingsFragment extends PreferenceFragmentCompat implements OnPreferenceChangeListener,
         OnCheckedChangeListener {
 
     private PreferenceScreen mScreen;
