@@ -34,36 +34,67 @@ public final class ResourceUtils {
     private static final String TAG = "GlyphResourceUtils";
     private static final boolean DEBUG = true;
 
-    private static Context context = Constants.CONTEXT;
-
-    private static final AssetManager assetManager = context.getAssets();
-    private static final Resources resources = context.getResources();
+    private static final AssetManager assetManager = Constants.CONTEXT.getAssets();
 
     private static String[] callAnimations = null;
     private static String[] notificationAnimations = null;
 
     public static int getIdentifier(String id, String type) {
-        return context.getResources().getIdentifier(id, type, context.getPackageName());
+        return Constants.CONTEXT.getResources().getIdentifier(id, type, Constants.CONTEXT.getPackageName());
     }
 
     public static Boolean getBoolean(String id) {
-        return context.getResources().getBoolean(getIdentifier(id, "bool"));
+        int resId = getIdentifier(id, "bool");
+        if (resId == 0) return false;
+        try {
+            return Constants.CONTEXT.getResources().getBoolean(resId);
+        } catch (Resources.NotFoundException e) {
+            return false;
+        }
     }
 
     public static String getString(String id) {
-        return context.getResources().getString(getIdentifier(id, "string"));
+        int resId = getIdentifier(id, "string");
+        if (resId == 0) return "";
+        try {
+            return Constants.CONTEXT.getResources().getString(resId);
+        } catch (Resources.NotFoundException e) {
+            return "";
+        }
     }
 
     public static int getInteger(String id) {
-        return context.getResources().getInteger(getIdentifier(id, "integer"));
+        return getInteger(id, 0);
+    }
+
+    public static int getInteger(String id, int defaultValue) {
+        int resId = getIdentifier(id, "integer");
+        if (resId == 0) return defaultValue;
+        try {
+            return Constants.CONTEXT.getResources().getInteger(resId);
+        } catch (Resources.NotFoundException e) {
+            return defaultValue;
+        }
     }
 
     public static String[] getStringArray(String id) {
-        return context.getResources().getStringArray(getIdentifier(id, "array"));
+        int resId = getIdentifier(id, "array");
+        if (resId == 0) return new String[0];
+        try {
+            return Constants.CONTEXT.getResources().getStringArray(resId);
+        } catch (Resources.NotFoundException e) {
+            return new String[0];
+        }
     }
 
     public static int[] getIntArray(String id) {
-        return context.getResources().getIntArray(getIdentifier(id, "array"));
+        int resId = getIdentifier(id, "array");
+        if (resId == 0) return new int[0];
+        try {
+            return Constants.CONTEXT.getResources().getIntArray(resId);
+        } catch (Resources.NotFoundException e) {
+            return new int[0];
+        }
     }
 
     public static String[] getCallAnimations() {
