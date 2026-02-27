@@ -97,6 +97,36 @@ public final class ResourceUtils {
         }
     }
 
+    public static float[] buildPatternArray(float[]... arrays) {
+        int totalLength = 0;
+        for (float[] arr : arrays) {
+            totalLength += arr.length;
+        }
+
+        float[] result = new float[totalLength];
+        int pos = 0;
+        for (float[] arr : arrays) {
+            System.arraycopy(arr, 0, result, pos, arr.length);
+            pos += arr.length;
+        }
+        return result;
+    }
+
+    public static int[] buildPatternArray(int[]... arrays) {
+        int totalLength = 0;
+        for (int[] arr : arrays) {
+            totalLength += arr.length;
+        }
+
+        int[] result = new int[totalLength];
+        int pos = 0;
+        for (int[] arr : arrays) {
+            System.arraycopy(arr, 0, result, pos, arr.length);
+            pos += arr.length;
+        }
+        return result;
+    }
+
     public static String[] getCallAnimations() {
         if (callAnimations == null) {
             try {
