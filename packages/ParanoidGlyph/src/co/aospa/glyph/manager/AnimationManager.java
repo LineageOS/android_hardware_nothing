@@ -36,6 +36,9 @@ public final class AnimationManager {
     private static final String TAG = "GlyphAnimationManager";
     private static final boolean DEBUG = true;
 
+    private static volatile int previewOnceSeq = 0;
+    private static volatile boolean previewOnceActive = false;
+
     private static int getDevicePatternLength() {
         int[] lengths = Constants.getSupportedAnimationPatternLengths();
         if (lengths.length == 0) return 0;
@@ -146,6 +149,55 @@ public final class AnimationManager {
             }
         });
     }
+
+    public static void previewOnce(String name, boolean isCallAnimation) {
+        stopPreviewOnce();
+        final int seq = ++previewOnceSeq;
+        submit(() -> {
+            if (StatusManager.isAllLedActive()
+                    || StatusManager.isCallLedActive()
+                    || (StatusManager.isAnimationActive() && !previewOnceActive)) {
+                return;
+            }
+
+            previewOnceActive = true;
+            StatusManager.setAnimationActive(true);
+            int lastPatternLength = 0;
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(
+                    isCallAnimation
+                            ? ResourceUtils.getCallAnimation(name)
+                            : ResourceUtils.getNotificationAnimation(name)))) {
+                String line;
+                long start = System.currentTimeMillis();
+                while (seq == previewOnceSeq && (line = reader.readLine()) != null) {
+                    line = line.replace(" ", "");
+                    line = line.endsWith(",") ? line.substring(0, line.length() - 1) : line;
+                    String[] pattern = line.split(",");
+                    if (ArrayUtils.contains(Constants.getSupportedAnimationPatternLengths(), pattern.length)) {
+                        int[] frame = Arrays.stream(pattern).mapToInt(Integer::parseInt).toArray();
+                        lastPatternLength = frame.length;
+                        updateLedFrame(frame);
+                    }
+                    long delay = 16666L - (System.currentTimeMillis() - start);
+                    Thread.sleep(delay / 1000);
+                }
+            } catch (Exception e) {
+                if (DEBUG) Log.d(TAG, "Exception while previewing animation | name: " + name
+                        + " | exception: " + e);
+            } finally {
+                if (lastPatternLength > 0) {
+                    updateLedFrame(new int[lastPatternLength]);
+                }
+                StatusManager.setAnimationActive(false);
+                previewOnceActive = false;
+            }
+        });
+    }
+
+    public static void stopPreviewOnce() {
+        previewOnceSeq++;
+    }
+
 
     public static void playCharging(int batteryLevel, boolean wait) {
         submit(() -> {
@@ -321,7 +373,6 @@ public final class AnimationManager {
 
     public static void playEssential() {
         if (DEBUG) Log.d(TAG, "Playing Essential Animation");
-        int led = ResourceUtils.getInteger("glyph_settings_notifs_essential_led");
         if (!StatusManager.isEssentialLedActive()) {
             submit(() -> {
                 if (!check("essential", true))
@@ -331,13 +382,27 @@ public final class AnimationManager {
 
                 try {
                     if (checkInterruption("essential")) throw new InterruptedException();
-                    int[] steps = {1, 2, 4, 7};
-                    for (int i : steps) {
-                        if (checkInterruption("essential")) throw new InterruptedException();
-                        updateLedSingle(led, Constants.getMaxBrightness() / 100 * i);
-                        Thread.sleep(25);
+                    if (Constants.getDevice().equals("phone3a")) {
+                        int[] steps = {12, 24, 36, 48, 60};
+                        int[] essentialPattern = new int[11];
+                        for (int i : steps) {
+                            if (checkInterruption("essential")) throw new InterruptedException();
+                            int patternBrightness = Constants.getMaxBrightness() / 100 * i;
+                            Arrays.fill(essentialPattern, patternBrightness);
+                            updateLedFrame(ResourceUtils.buildPatternArray(
+                                    new int[20], essentialPattern, new int[5]));
+                            Thread.sleep(16, 666000);
+                        }
+                    } else {
+                        int led = ResourceUtils.getInteger("glyph_settings_notifs_essential_led");
+                        int[] steps = {1, 2, 4, 7};
+                        for (int i : steps) {
+                            if (checkInterruption("essential")) throw new InterruptedException();
+                            updateLedSingle(led, Constants.getMaxBrightness() / 100 * i);
+                            Thread.sleep(25);
+                        }
+                        Thread.sleep(250);
                     }
-                    Thread.sleep(250);
                 } catch (InterruptedException e) {}
 
                 StatusManager.setAnimationActive(false);
@@ -345,7 +410,16 @@ public final class AnimationManager {
                 if (DEBUG) Log.d(TAG, "Done playing animation | name: essential");
             });
         } else {
-            updateLedSingle(led, Constants.getMaxBrightness() / 100 * 7);
+            if (Constants.getDevice().equals("phone3a")) {
+                int[] essentialPattern = new int[11];
+                int patternBrightness = Constants.getMaxBrightness() / 100 * 60;
+                Arrays.fill(essentialPattern, patternBrightness);
+                updateLedFrame(ResourceUtils.buildPatternArray(
+                        new int[20], essentialPattern, new int[5]));
+            } else {
+                int led = ResourceUtils.getInteger("glyph_settings_notifs_essential_led");
+                updateLedSingle(led, Constants.getMaxBrightness() / 100 * 7);
+            }
             return;
         }
 
@@ -454,7 +528,6 @@ public final class AnimationManager {
     private static void updateLedFrame(float[] pattern) {
         //if (DEBUG) Log.d(TAG, "Updating pattern: " + pattern);
         float maxBrightness = (float) Constants.getMaxBrightness();
-        int essentialLed = ResourceUtils.getInteger("glyph_settings_notifs_essential_led");
         if (StatusManager.isEssentialLedActive()) {
             if (pattern.length == 5) { // Phone (1) pattern
                 if (pattern[1] < (maxBrightness / 100 * 7)) {
@@ -465,20 +538,8 @@ public final class AnimationManager {
                     pattern[2] = maxBrightness / 100 * 7;
                 }
             } else if (pattern.length == 36) { // Phone (3a) pattern
-                int[] essentialLeds = ResourceUtils.getIntArray("glyph_settings_notifs_essential_led_array");
-                if (essentialLeds.length == 0) {
-                    int led = ResourceUtils.getInteger("glyph_settings_notifs_essential_led");
-                    if (led >= 0 && led < pattern.length
-                            && pattern[led] < (maxBrightness / 100 * 7)) {
-                        pattern[led] = maxBrightness / 100 * 7;
-                    }
-                } else {
-                    for (int led : essentialLeds) {
-                        if (led >= 0 && led < pattern.length
-                                && pattern[led] < (maxBrightness / 100 * 7)) {
-                            pattern[led] = maxBrightness / 100 * 7;
-                        }
-                    }
+                if (pattern[21] < (maxBrightness / 100 * 60)) {
+                    Arrays.fill(pattern, 20, 31, maxBrightness / 100 * 60);
                 }
             }
         }
