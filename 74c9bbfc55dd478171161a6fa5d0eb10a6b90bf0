@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e5e817d_eba346f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2026-02-27T12:40:42Z",
+      "side": 1,
+      "message": "Pick these before anything else:\n\nhttps://github.com/LineageOS/android_hardware_oplus/commits/lineage-23.2/.pre-commit-config.yaml",
+      "revId": "74c9bbfc55dd478171161a6fa5d0eb10a6b90bf0",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
