@@ -146,6 +146,18 @@ public class NotifsSettingsFragment extends SettingsBasePreferenceFragment imple
     }
 
     @Override
+    public void onDisplayPreferenceDialog(Preference preference) {
+        if (Constants.GLYPH_NOTIFS_SUB_ANIMATIONS.equals(preference.getKey())) {
+            AnimationListPreferenceDialogFragment fragment =
+                    AnimationListPreferenceDialogFragment.newInstance(preference.getKey(), false);
+            fragment.setTargetFragment(this, 0);
+            fragment.show(getParentFragmentManager(), "AnimationListPreferenceDialog");
+            return;
+        }
+        super.onDisplayPreferenceDialog(preference);
+    }
+
+    @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         if (isChecked && !hasNotificationAccess()) {
             mSwitchBar.setChecked(false);

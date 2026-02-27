@@ -33,6 +33,7 @@ import com.android.settingslib.widget.SettingsBasePreferenceFragment;
 
 import co.aospa.glyph.R;
 import co.aospa.glyph.utils.Constants;
+import co.aospa.glyph.manager.AnimationManager;
 import co.aospa.glyph.manager.SettingsManager;
 import co.aospa.glyph.preference.GlyphAnimationPreference;
 import co.aospa.glyph.utils.ResourceUtils;
@@ -92,6 +93,18 @@ public class CallSettingsFragment extends SettingsBasePreferenceFragment impleme
         //mHandler.post(() -> ServiceUtils.checkGlyphService());
 
         return true;
+    }
+
+    @Override
+    public void onDisplayPreferenceDialog(Preference preference) {
+        if (Constants.GLYPH_CALL_SUB_ANIMATIONS.equals(preference.getKey())) {
+            AnimationListPreferenceDialogFragment fragment =
+                    AnimationListPreferenceDialogFragment.newInstance(preference.getKey(), true);
+            fragment.setTargetFragment(this, 0);
+            fragment.show(getParentFragmentManager(), "AnimationListPreferenceDialog");
+            return;
+        }
+        super.onDisplayPreferenceDialog(preference);
     }
 
     @Override
