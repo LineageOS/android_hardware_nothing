@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "929feb35_86bdb322",
+        "filename": "ParanoidGlyph/src/co/aospa/glyph/settings/SettingsFragment.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2026-02-27T12:53:53Z",
+      "side": 1,
+      "message": "It seems to me that you could convert a lot of these to XML android.dependencies. Something like: Ie36c0bd45ec43888c76705fcde0e4710edeb1dfe",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 61
+      },
+      "revId": "4ccde6de0c8602ae6e924779d3d5de339d67a6fe",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
