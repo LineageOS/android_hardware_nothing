@@ -154,6 +154,18 @@ public class NotifsSettingsFragment extends SettingsBasePreferenceFragment imple
         return true;
     }
 
+    @Override
+    public void onDisplayPreferenceDialog(Preference preference) {
+        if (Constants.GLYPH_NOTIFS_SUB_ANIMATIONS.equals(preference.getKey())) {
+            AnimationListPreferenceDialogFragment fragment =
+                    AnimationListPreferenceDialogFragment.newInstance(preference.getKey(), false);
+            fragment.setTargetFragment(this, 0);
+            fragment.show(getParentFragmentManager(), "AnimationListPreferenceDialog");
+            return;
+        }
+        super.onDisplayPreferenceDialog(preference);
+    }
+
     private boolean hasNotificationAccess() {
         NotificationManager notificationManager =
                 (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
