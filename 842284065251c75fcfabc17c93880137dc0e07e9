@@ -16,6 +16,24 @@
       "message": "https://review.lineageos.org/q/I0617a92d7689d39b93cd9e7f44c2daa43064fcaa",
       "revId": "842284065251c75fcfabc17c93880137dc0e07e9",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cb89e4b_1907e7c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 28798
+      },
+      "writtenOn": "2026-02-27T09:28:08Z",
+      "side": 1,
+      "message": "I didnt see that there was a change for it, I switched because preferencefragmentcompat was giving a pink tint due to its base colors on toggle",
+      "parentUuid": "81a6fe85_e2d3d685",
+      "revId": "842284065251c75fcfabc17c93880137dc0e07e9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
