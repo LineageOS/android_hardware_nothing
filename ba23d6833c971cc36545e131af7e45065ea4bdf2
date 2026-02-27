@@ -52,6 +52,24 @@
       "parentUuid": "33a14741_07208b46",
       "revId": "ba23d6833c971cc36545e131af7e45065ea4bdf2",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb174f91_ce92bdf5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2026-02-27T10:09:53Z",
+      "side": 1,
+      "message": "Tabs still need to be replaced by spaces.",
+      "parentUuid": "e9f4ea73_5120d33a",
+      "revId": "ba23d6833c971cc36545e131af7e45065ea4bdf2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
