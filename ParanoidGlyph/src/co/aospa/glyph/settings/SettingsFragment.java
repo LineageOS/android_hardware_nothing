@@ -30,12 +30,12 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.PreferenceCategory;
-import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.SeekBarPreference;
 import androidx.preference.SwitchPreferenceCompat;
 
 import com.android.settingslib.PrimarySwitchPreference;
 import com.android.settingslib.widget.MainSwitchPreference;
+import com.android.settingslib.widget.SettingsBasePreferenceFragment;
 
 import java.util.Arrays;
 
@@ -45,7 +45,7 @@ import co.aospa.glyph.manager.AnimationManager;
 import co.aospa.glyph.manager.SettingsManager;
 import co.aospa.glyph.utils.ServiceUtils;
 
-public class SettingsFragment extends PreferenceFragmentCompat implements OnPreferenceChangeListener,
+public class SettingsFragment extends SettingsBasePreferenceFragment implements OnPreferenceChangeListener,
         OnCheckedChangeListener {
 
     private MainSwitchPreference mSwitchBar;

@@ -25,11 +25,11 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceChangeListener;
-import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
 
 import com.android.internal.util.ArrayUtils;
 import com.android.settingslib.widget.MainSwitchPreference;
+import com.android.settingslib.widget.SettingsBasePreferenceFragment;
 
 import co.aospa.glyph.R;
 import co.aospa.glyph.utils.Constants;
@@ -38,7 +38,7 @@ import co.aospa.glyph.preference.GlyphAnimationPreference;
 import co.aospa.glyph.utils.ResourceUtils;
 import co.aospa.glyph.utils.ServiceUtils;
 
-public class CallSettingsFragment extends PreferenceFragmentCompat implements OnPreferenceChangeListener,
+public class CallSettingsFragment extends SettingsBasePreferenceFragment implements OnPreferenceChangeListener,
         OnCheckedChangeListener {
 
     private PreferenceScreen mScreen;
