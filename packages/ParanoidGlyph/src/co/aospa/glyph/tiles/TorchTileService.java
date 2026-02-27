@@ -23,12 +23,21 @@ import android.service.quicksettings.TileService;
 
 import co.aospa.glyph.R;
 import co.aospa.glyph.utils.Constants;
+import co.aospa.glyph.manager.SettingsManager;
 import co.aospa.glyph.manager.StatusManager;
 import co.aospa.glyph.utils.FileUtils;
 import co.aospa.glyph.utils.ResourceUtils;
 
 /** Quick settings tile: Glyph **/
 public class TorchTileService extends TileService {
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        if (Constants.CONTEXT == null) {
+            Constants.CONTEXT = getApplicationContext();
+        }
+    }
 
     @Override
     public void onStartListening() {
@@ -57,11 +66,12 @@ public class TorchTileService extends TileService {
     }
 
     private void setEnabled(boolean enabled) {
+        int brightness = SettingsManager.getGlyphBrightness();
         StatusManager.setAllLedsActive(enabled);
-        FileUtils.writeAllLed(enabled ? Constants.getMaxBrightness() : 0);
+        FileUtils.writeAllLed(enabled ? brightness : 0);
         if (StatusManager.isEssentialLedActive() && !enabled)
             FileUtils.writeSingleLed(
                 ResourceUtils.getInteger("glyph_settings_notifs_essential_led"),
-                Constants.getMaxBrightness( )/ 100 * 7);
+                brightness / 100 * 7);
     }
 }
