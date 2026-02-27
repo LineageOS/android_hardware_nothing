@@ -20,9 +20,13 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.app.NotificationManager;
+import android.content.ComponentName;
+import android.content.Context;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.Toast;
 
 import androidx.preference.ListPreference;
 import androidx.preference.MultiSelectListPreference;
@@ -44,6 +48,7 @@ import co.aospa.glyph.R;
 import co.aospa.glyph.utils.Constants;
 import co.aospa.glyph.manager.SettingsManager;
 import co.aospa.glyph.preference.GlyphAnimationPreference;
+import co.aospa.glyph.services.NotificationService;
 import co.aospa.glyph.utils.ResourceUtils;
 import co.aospa.glyph.utils.ServiceUtils;
 
@@ -142,10 +147,24 @@ public class NotifsSettingsFragment extends SettingsBasePreferenceFragment imple
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        if (isChecked && !hasNotificationAccess()) {
+            mSwitchBar.setChecked(false);
+            Toast.makeText(getContext(), R.string.glyph_settings_notifs_permission_required,
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
         SettingsManager.setGlyphNotifsEnabled(isChecked);
         ServiceUtils.checkGlyphService();
         mGlyphAnimationPreference.updateAnimation(isChecked,
                 SettingsManager.getGlyphNotifsAnimation(), 1500);
+    }
+
+    private boolean hasNotificationAccess() {
+        NotificationManager notificationManager =
+                (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
+        return notificationManager != null
+                && notificationManager.isNotificationListenerAccessGranted(
+                        new ComponentName(getContext(), NotificationService.class));
     }
 
 }
