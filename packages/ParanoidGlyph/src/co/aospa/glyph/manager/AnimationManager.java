@@ -337,27 +337,51 @@ public final class AnimationManager {
     public static void playMusic(String name) {
         submit(() -> {
             float maxBrightness = (float) Constants.getMaxBrightness();
-            float[] pattern = new float[5];
+            float[] pattern;
 
-            switch (name) {
-                case "low":
-                    pattern[4] = maxBrightness;
-                    break;
-                case "mid_low":
-                    pattern[3] = maxBrightness;
-                    break;
-                case "mid":
-                    pattern[2] = maxBrightness;
-                    break;
-                case "mid_high":
-                    pattern[0] = maxBrightness;
-                    break;
-                case "high":
-                    pattern[1] = maxBrightness;
-                    break;
-                default:
-                    if (DEBUG) Log.d(TAG, "Name doesn't match any zone, returning | name: " + name);
-                    return;
+            if (Constants.getDevice().equals("phone3a")) {
+                float[] zone1 = new float[20]; // largest (left 2)
+                float[] zone2 = new float[11]; // medium (right 1)
+                float[] zone3 = new float[5]; // smallest (left)
+
+                switch (name) {
+                    case "low":
+                        Arrays.fill(zone1, maxBrightness);
+                        break;
+                    case "mid":
+                        Arrays.fill(zone2, maxBrightness);
+                        break;
+                    case "high":
+                        Arrays.fill(zone3, maxBrightness);
+                        break;
+                    default:
+                        if (DEBUG) Log.d(TAG, "Name doesn't match any zone, returning | name: " + name);
+                        return;
+                }
+                pattern = ResourceUtils.buildPatternArray(zone1, zone2, zone3);
+            } else {
+                pattern = new float[5];
+
+                switch (name) {
+                    case "low":
+                        pattern[4] = maxBrightness;
+                        break;
+                    case "mid_low":
+                        pattern[3] = maxBrightness;
+                        break;
+                    case "mid":
+                        pattern[2] = maxBrightness;
+                        break;
+                    case "mid_high":
+                        pattern[0] = maxBrightness;
+                        break;
+                    case "high":
+                        pattern[1] = maxBrightness;
+                        break;
+                    default:
+                        if (DEBUG) Log.d(TAG, "Name doesn't match any zone, returning | name: " + name);
+                        return;
+                }
             }
 
             try {
@@ -366,7 +390,11 @@ public final class AnimationManager {
             } catch (Exception e) {
                 if (DEBUG) Log.d(TAG, "Exception while playing animation | name: music: " + name + " | exception: " + e);
             } finally {
-                updateLedFrame(new float[5]);
+                if (Constants.getDevice().equals("phone3a")) {
+                    updateLedFrame(new float[36]);
+                } else {
+                    updateLedFrame(new float[5]);
+                }
                 if (DEBUG) Log.d(TAG, "Done playing animation | name: " + name);
             }
         });
@@ -398,6 +426,22 @@ public final class AnimationManager {
             } else if (pattern.length == 33) { // Phone (2) pattern
                 if (pattern[2] < (maxBrightness / 100 * 7)) {
                     pattern[2] = maxBrightness / 100 * 7;
+                }
+            } else if (pattern.length == 36) { // Phone (3a) pattern
+                int[] essentialLeds = ResourceUtils.getIntArray("glyph_settings_notifs_essential_led_array");
+                if (essentialLeds.length == 0) {
+                    int led = ResourceUtils.getInteger("glyph_settings_notifs_essential_led");
+                    if (led >= 0 && led < pattern.length
+                            && pattern[led] < (maxBrightness / 100 * 7)) {
+                        pattern[led] = maxBrightness / 100 * 7;
+                    }
+                } else {
+                    for (int led : essentialLeds) {
+                        if (led >= 0 && led < pattern.length
+                                && pattern[led] < (maxBrightness / 100 * 7)) {
+                            pattern[led] = maxBrightness / 100 * 7;
+                        }
+                    }
                 }
             }
         }
