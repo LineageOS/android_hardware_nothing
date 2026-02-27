@@ -35,10 +35,14 @@ public class MusicVisualizerService extends Service {
     private int bufferSize;
     private boolean isRecording = false;
 
-    private double mRunningSoundAvg[];             // Total sound energy in one second  (0=low, 1=mid low, 2=mid, 3=mid high, 4=high)
-    private double mCurrentAvgEnergyOneSec[];      // Average sound energy in one second (0=low, 1=mid low, 2=mid, 3=mid high, 4=high)
-    private int mNumberOfSamplesInOneSec;          // Number of samples in one second
-    private long mSystemTimeStartSec;              // System time at the start of a one second interval
+    private double
+            mRunningSoundAvg
+            []; // Total sound energy in one second  (0=low, 1=mid low, 2=mid, 3=mid high, 4=high)
+    private double
+            mCurrentAvgEnergyOneSec
+            []; // Average sound energy in one second (0=low, 1=mid low, 2=mid, 3=mid high, 4=high)
+    private int mNumberOfSamplesInOneSec; // Number of samples in one second
+    private long mSystemTimeStartSec; // System time at the start of a one second interval
 
     // Define the max value for a frequency band
     private static final int LOW_FREQUENCY = 200;
@@ -61,22 +65,23 @@ public class MusicVisualizerService extends Service {
         mVisualizer.setCaptureSize(bufferSize);
 
         mVisualizer.setDataCaptureListener(
-            new Visualizer.OnDataCaptureListener() {
-                @Override
-                public void onWaveFormDataCapture(
-                        Visualizer visualizer, byte[] waveform, int samplingRate) {
-                }
-
-                @Override
-                public void onFftDataCapture(
-                        Visualizer visualizer, byte[] fft, int samplingRate) {
-                    if (mAudioManager.isMusicActive()) {
-                        if (DEBUG) Log.d(TAG, "Music is active");
-                        processAudioFFT(fft);
+                new Visualizer.OnDataCaptureListener() {
+                    @Override
+                    public void onWaveFormDataCapture(
+                            Visualizer visualizer, byte[] waveform, int samplingRate) {
                     }
-                }
-            }, Visualizer.getMaxCaptureRate() / 2, false, true
-        );
+
+                    @Override
+                    public void onFftDataCapture(Visualizer visualizer, byte[] fft, int samplingRate) {
+                        if (mAudioManager.isMusicActive()) {
+                            if (DEBUG) Log.d(TAG, "Music is active");
+                            processAudioFFT(fft);
+                        }
+                    }
+                },
+                Visualizer.getMaxCaptureRate() / 2,
+                false,
+                true);
 
         mVisualizer.setEnabled(true);
 
@@ -91,7 +96,6 @@ public class MusicVisualizerService extends Service {
 
         // Set the start time for the current one second interval
         mSystemTimeStartSec = System.currentTimeMillis();
-
     }
 
     @Override
@@ -143,7 +147,7 @@ public class MusicVisualizerService extends Service {
         // A beat occurs when the average sound energy of a sample is greater than
         // the average sound energy of a one second part of a song
         // Also make sure the mCurrentAvgEnergy has been set, otherwise its -1 before its first pass
-        if( (sampleAvgAudioEnergy >  mCurrentAvgEnergyOneSec[0]) && (mCurrentAvgEnergyOneSec[0] > 0) ) {
+        if ((sampleAvgAudioEnergy > mCurrentAvgEnergyOneSec[0]) && (mCurrentAvgEnergyOneSec[0] > 0)) {
             if (DEBUG) Log.d(TAG, "Low frequency band beat detected");
             AnimationManager.playMusic("low");
         }
@@ -167,7 +171,7 @@ public class MusicVisualizerService extends Service {
         mRunningSoundAvg[1] += sampleAvgAudioEnergy;
 
         // Check for a beat in the mid-low frequency band
-        if((sampleAvgAudioEnergy >  mCurrentAvgEnergyOneSec[1]) && (mCurrentAvgEnergyOneSec[1] > 0)) {
+        if ((sampleAvgAudioEnergy > mCurrentAvgEnergyOneSec[1]) && (mCurrentAvgEnergyOneSec[1] > 0)) {
             if (DEBUG) Log.d(TAG, "Mid-low frequency band beat detected");
             AnimationManager.playMusic("mid_low");
         }
@@ -191,7 +195,7 @@ public class MusicVisualizerService extends Service {
         mRunningSoundAvg[2] += sampleAvgAudioEnergy;
 
         // Check for a beat in the mid frequency band
-        if( (sampleAvgAudioEnergy >  mCurrentAvgEnergyOneSec[2]) && (mCurrentAvgEnergyOneSec[2] > 0) ) {
+        if ((sampleAvgAudioEnergy > mCurrentAvgEnergyOneSec[2]) && (mCurrentAvgEnergyOneSec[2] > 0)) {
             if (DEBUG) Log.d(TAG, "Mid frequency band beat detected");
             AnimationManager.playMusic("mid");
         }
@@ -215,7 +219,7 @@ public class MusicVisualizerService extends Service {
         mRunningSoundAvg[3] += sampleAvgAudioEnergy;
 
         // Check for a beat in the mid-high frequency band
-        if( (sampleAvgAudioEnergy >  mCurrentAvgEnergyOneSec[3]) && (mCurrentAvgEnergyOneSec[3] > 0) ) {
+        if ((sampleAvgAudioEnergy > mCurrentAvgEnergyOneSec[3]) && (mCurrentAvgEnergyOneSec[3] > 0)) {
             if (DEBUG) Log.d(TAG, "Mid-high frequency band beat detected");
             AnimationManager.playMusic("mid_high");
         }
@@ -240,7 +244,7 @@ public class MusicVisualizerService extends Service {
         mRunningSoundAvg[4] += sampleAvgAudioEnergy;
 
         // Check for a beat in the high frequency band
-        if( (sampleAvgAudioEnergy >  mCurrentAvgEnergyOneSec[4]) && (mCurrentAvgEnergyOneSec[4] > 0) ) {
+        if ((sampleAvgAudioEnergy > mCurrentAvgEnergyOneSec[4]) && (mCurrentAvgEnergyOneSec[4] > 0)) {
             if (DEBUG) Log.d(TAG, "High frequency band beat detected");
             AnimationManager.playMusic("high");
         }
@@ -252,7 +256,6 @@ public class MusicVisualizerService extends Service {
             mCurrentAvgEnergyOneSec[2] = mRunningSoundAvg[2] / mNumberOfSamplesInOneSec;
             mCurrentAvgEnergyOneSec[3] = mRunningSoundAvg[3] / mNumberOfSamplesInOneSec;
             mCurrentAvgEnergyOneSec[4] = mRunningSoundAvg[4] / mNumberOfSamplesInOneSec;
-
 
             // Reset the running energy sum and sample count
             mRunningSoundAvg[0] = 0;
@@ -266,6 +269,5 @@ public class MusicVisualizerService extends Service {
             mSystemTimeStartSec = currentTime;
         }
         mNumberOfSamplesInOneSec++;
-
     }
 }

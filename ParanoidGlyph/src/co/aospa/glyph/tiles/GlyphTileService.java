@@ -22,11 +22,13 @@ import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
 
 import co.aospa.glyph.R;
-import co.aospa.glyph.utils.Constants;
 import co.aospa.glyph.manager.SettingsManager;
+import co.aospa.glyph.utils.Constants;
 import co.aospa.glyph.utils.ServiceUtils;
 
-/** Quick settings tile: Glyph **/
+/**
+ * Quick settings tile: Glyph *
+ */
 public class GlyphTileService extends TileService {
 
     @Override
@@ -45,9 +47,11 @@ public class GlyphTileService extends TileService {
 
     private void updateState() {
         boolean enabled = getEnabled();
-        getQsTile().setContentDescription(enabled ?
-                getString(R.string.glyph_accessibility_quick_settings_on) :
-                getString(R.string.glyph_accessibility_quick_settings_off));
+        getQsTile()
+                .setContentDescription(
+                        enabled
+                                ? getString(R.string.glyph_accessibility_quick_settings_on)
+                                : getString(R.string.glyph_accessibility_quick_settings_off));
         getQsTile().setState(enabled ? Tile.STATE_ACTIVE : Tile.STATE_INACTIVE);
         getQsTile().updateTile();
     }

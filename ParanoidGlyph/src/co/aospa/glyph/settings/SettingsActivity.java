@@ -18,12 +18,13 @@
 
 package co.aospa.glyph.settings;
 
-import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 
-import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
+import androidx.fragment.app.Fragment;
 
 import co.aospa.glyph.utils.Constants;
+
+import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
 
 public class SettingsActivity extends CollapsingToolbarBaseActivity {
 
@@ -36,12 +37,15 @@ public class SettingsActivity extends CollapsingToolbarBaseActivity {
             Constants.CONTEXT = getApplicationContext();
         }
 
-        Fragment fragment = getSupportFragmentManager().findFragmentById(com.android.settingslib.collapsingtoolbar.R.id.content_frame);
+        Fragment fragment =
+                getSupportFragmentManager()
+                        .findFragmentById(com.android.settingslib.collapsingtoolbar.R.id.content_frame);
         if (fragment == null) {
             mSettingsFragment = new SettingsFragment();
-            getSupportFragmentManager().beginTransaction()
-                .add(com.android.settingslib.collapsingtoolbar.R.id.content_frame, mSettingsFragment)
-                .commit();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(com.android.settingslib.collapsingtoolbar.R.id.content_frame, mSettingsFragment)
+                    .commit();
         } else {
             mSettingsFragment = (SettingsFragment) fragment;
         }

@@ -94,5 +94,4 @@ public final class StatusManager {
     public static void setCallLedEnabled(boolean status) {
         callLedEnabled = status;
     }
-
 }

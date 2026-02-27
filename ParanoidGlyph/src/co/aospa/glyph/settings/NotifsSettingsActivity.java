@@ -16,12 +16,13 @@
 
 package co.aospa.glyph.settings;
 
-import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 
-import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
+import androidx.fragment.app.Fragment;
 
 import co.aospa.glyph.utils.Constants;
+
+import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
 
 public class NotifsSettingsActivity extends CollapsingToolbarBaseActivity {
 
@@ -34,12 +35,16 @@ public class NotifsSettingsActivity extends CollapsingToolbarBaseActivity {
             Constants.CONTEXT = getApplicationContext();
         }
 
-        Fragment fragment = getSupportFragmentManager().findFragmentById(com.android.settingslib.collapsingtoolbar.R.id.content_frame);
+        Fragment fragment =
+                getSupportFragmentManager()
+                        .findFragmentById(com.android.settingslib.collapsingtoolbar.R.id.content_frame);
         if (fragment == null) {
             mNotifsSettingsFragment = new NotifsSettingsFragment();
-            getSupportFragmentManager().beginTransaction()
-                .add(com.android.settingslib.collapsingtoolbar.R.id.content_frame, mNotifsSettingsFragment)
-                .commit();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(
+                            com.android.settingslib.collapsingtoolbar.R.id.content_frame, mNotifsSettingsFragment)
+                    .commit();
         } else {
             mNotifsSettingsFragment = (NotifsSettingsFragment) fragment;
         }

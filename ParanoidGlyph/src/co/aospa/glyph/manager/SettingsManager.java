@@ -17,18 +17,15 @@
 package co.aospa.glyph.manager;
 
 import android.provider.Settings;
-import android.util.Log;
 
 import androidx.preference.PreferenceManager;
-
-import com.android.internal.util.ArrayUtils;
-
-import java.util.HashSet;
-import java.util.Set;
 
 import co.aospa.glyph.utils.Constants;
 import co.aospa.glyph.utils.FileUtils;
 import co.aospa.glyph.utils.ResourceUtils;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public final class SettingsManager {
 
@@ -36,18 +33,19 @@ public final class SettingsManager {
     private static final boolean DEBUG = true;
 
     public static boolean enableGlyph(boolean enable) {
-        return Settings.Secure.putInt(Constants.CONTEXT.getContentResolver(),
-                Constants.GLYPH_ENABLE, enable ? 1 : 0);
+        return Settings.Secure.putInt(
+                Constants.CONTEXT.getContentResolver(), Constants.GLYPH_ENABLE, enable ? 1 : 0);
     }
 
     public static boolean isGlyphEnabled() {
-        return Settings.Secure.getInt(Constants.CONTEXT.getContentResolver(),
-                Constants.GLYPH_ENABLE, 1) != 0;
+        return Settings.Secure.getInt(Constants.CONTEXT.getContentResolver(), Constants.GLYPH_ENABLE, 1)
+                != 0;
     }
 
     public static boolean isGlyphFlipEnabled() {
         return PreferenceManager.getDefaultSharedPreferences(Constants.CONTEXT)
-                .getBoolean(Constants.GLYPH_FLIP_ENABLE, false) && isGlyphEnabled();
+                .getBoolean(Constants.GLYPH_FLIP_ENABLE, false)
+                && isGlyphEnabled();
     }
 
     public static int getGlyphBrightness() {
@@ -57,14 +55,16 @@ public final class SettingsManager {
     }
 
     public static int getGlyphBrightnessSetting() {
-        int d = 3; if (FileUtils.readLine("/mnt/vendor/persist/color") == "white") d = 2;
+        int d = 3;
+        if (FileUtils.readLine("/mnt/vendor/persist/color") == "white") d = 2;
         return PreferenceManager.getDefaultSharedPreferences(Constants.CONTEXT)
                 .getInt(Constants.GLYPH_BRIGHTNESS, d);
     }
 
     public static boolean isGlyphChargingEnabled() {
         return PreferenceManager.getDefaultSharedPreferences(Constants.CONTEXT)
-                .getBoolean(Constants.GLYPH_CHARGING_LEVEL_ENABLE, false) && isGlyphEnabled();
+                .getBoolean(Constants.GLYPH_CHARGING_LEVEL_ENABLE, false)
+                && isGlyphEnabled();
     }
 
     public static boolean isGlyphPowershareEnabled() {
@@ -75,55 +75,64 @@ public final class SettingsManager {
     }
 
     public static boolean isGlyphCallEnabled() {
-        return Settings.Secure.getInt(Constants.CONTEXT.getContentResolver(),
-                Constants.GLYPH_CALL_ENABLE, 1) != 0 && isGlyphEnabled();
+        return Settings.Secure.getInt(
+                Constants.CONTEXT.getContentResolver(), Constants.GLYPH_CALL_ENABLE, 1)
+                != 0
+                && isGlyphEnabled();
     }
 
     public static boolean setGlyphCallEnabled(boolean enable) {
-        return Settings.Secure.putInt(Constants.CONTEXT.getContentResolver(),
-                Constants.GLYPH_CALL_ENABLE, enable ? 1 : 0);
+        return Settings.Secure.putInt(
+                Constants.CONTEXT.getContentResolver(), Constants.GLYPH_CALL_ENABLE, enable ? 1 : 0);
     }
 
     public static String getGlyphCallAnimation() {
         return PreferenceManager.getDefaultSharedPreferences(Constants.CONTEXT)
-                .getString(Constants.GLYPH_CALL_SUB_ANIMATIONS,
+                .getString(
+                        Constants.GLYPH_CALL_SUB_ANIMATIONS,
                         ResourceUtils.getString("glyph_settings_call_animations_default"));
     }
 
     public static boolean isGlyphMusicVisualizerEnabled() {
         return PreferenceManager.getDefaultSharedPreferences(Constants.CONTEXT)
-                .getBoolean(Constants.GLYPH_MUSIC_VISUALIZER_ENABLE, false) && isGlyphEnabled();
+                .getBoolean(Constants.GLYPH_MUSIC_VISUALIZER_ENABLE, false)
+                && isGlyphEnabled();
     }
 
     public static boolean isGlyphVolumeLevelEnabled() {
         return PreferenceManager.getDefaultSharedPreferences(Constants.CONTEXT)
-                .getBoolean(Constants.GLYPH_VOLUME_LEVEL_ENABLE, false) && isGlyphEnabled();
+                .getBoolean(Constants.GLYPH_VOLUME_LEVEL_ENABLE, false)
+                && isGlyphEnabled();
     }
 
     public static boolean isGlyphNotifsEnabled() {
-        return Settings.Secure.getInt(Constants.CONTEXT.getContentResolver(),
-                Constants.GLYPH_NOTIFS_ENABLE, 1) != 0 && isGlyphEnabled();
+        return Settings.Secure.getInt(
+                Constants.CONTEXT.getContentResolver(), Constants.GLYPH_NOTIFS_ENABLE, 1)
+                != 0
+                && isGlyphEnabled();
     }
 
     public static boolean setGlyphNotifsEnabled(boolean enable) {
-        return Settings.Secure.putInt(Constants.CONTEXT.getContentResolver(),
-                Constants.GLYPH_NOTIFS_ENABLE, enable ? 1 : 0);
+        return Settings.Secure.putInt(
+                Constants.CONTEXT.getContentResolver(), Constants.GLYPH_NOTIFS_ENABLE, enable ? 1 : 0);
     }
 
     public static String getGlyphNotifsAnimation() {
         return PreferenceManager.getDefaultSharedPreferences(Constants.CONTEXT)
-                .getString(Constants.GLYPH_NOTIFS_SUB_ANIMATIONS,
+                .getString(
+                        Constants.GLYPH_NOTIFS_SUB_ANIMATIONS,
                         ResourceUtils.getString("glyph_settings_notifs_animations_default"));
     }
 
     public static boolean isGlyphNotifsAppEnabled(String app) {
-        return PreferenceManager.getDefaultSharedPreferences(Constants.CONTEXT)
-                .getBoolean(app, true) && isGlyphNotifsEnabled();
+        return PreferenceManager.getDefaultSharedPreferences(Constants.CONTEXT).getBoolean(app, true)
+                && isGlyphNotifsEnabled();
     }
 
     public static boolean isGlyphNotifsAppEssential(String app) {
-        Set<String> selectedValues = PreferenceManager.getDefaultSharedPreferences(Constants.CONTEXT)
-                .getStringSet(Constants.GLYPH_NOTIFS_SUB_ESSENTIAL , new HashSet<String>());
+        Set<String> selectedValues =
+                PreferenceManager.getDefaultSharedPreferences(Constants.CONTEXT)
+                        .getStringSet(Constants.GLYPH_NOTIFS_SUB_ESSENTIAL, new HashSet<String>());
         return selectedValues.contains(app) && isGlyphNotifsEnabled();
     }
 }

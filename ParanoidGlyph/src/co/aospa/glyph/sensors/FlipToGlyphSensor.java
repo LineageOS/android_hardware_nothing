@@ -40,7 +40,8 @@ public class FlipToGlyphSensor implements SensorEventListener {
     private Sensor mSensorAccelerometer;
     private Context mContext;
 
-    private Duration mTimeThreshold = Duration.ofMillis(1_000L);;
+    private Duration mTimeThreshold = Duration.ofMillis(1_000L);
+    ;
     private float mAccelerationThreshold = 0.2f;
     private float mZAccelerationThreshold = -9.5f;
     private float mZAccelerationThresholdLenient = mZAccelerationThreshold + 1.0f;
@@ -83,9 +84,10 @@ public class FlipToGlyphSensor implements SensorEventListener {
                 isFlipped ? mZAccelerationThresholdLenient : mZAccelerationThreshold;
         final boolean isCurrentlyFaceDown =
                 mCurrentZAcceleration.mMovingAverage < zAccelerationThreshold;
-        final boolean isFaceDownForPeriod = isCurrentlyFaceDown
-                && mZAccelerationIsFaceDown
-                && curTime - mZAccelerationFaceDownTime > mTimeThreshold.toNanos();
+        final boolean isFaceDownForPeriod =
+                isCurrentlyFaceDown
+                        && mZAccelerationIsFaceDown
+                        && curTime - mZAccelerationFaceDownTime > mTimeThreshold.toNanos();
         if (isCurrentlyFaceDown && !mZAccelerationIsFaceDown) {
             mZAccelerationFaceDownTime = curTime;
             mZAccelerationIsFaceDown = true;
@@ -101,7 +103,8 @@ public class FlipToGlyphSensor implements SensorEventListener {
     }
 
     @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {}
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+    }
 
     private void onFlip(boolean flipped) {
         if (DEBUG) Log.d(TAG, "Flipped: " + flipped);
@@ -111,10 +114,13 @@ public class FlipToGlyphSensor implements SensorEventListener {
 
     public void enable() {
         if (DEBUG) Log.d(TAG, "Enabling Sensor");
-        mSensorManager.registerListener(this, mSensorAccelerometer,
-                    SensorManager.SENSOR_DELAY_NORMAL,
-                    mContext.getResources().getInteger(
-                        com.android.internal.R.integer.config_flipToScreenOffMaxLatencyMicros));
+        mSensorManager.registerListener(
+                this,
+                mSensorAccelerometer,
+                SensorManager.SENSOR_DELAY_NORMAL,
+                mContext
+                        .getResources()
+                        .getInteger(com.android.internal.R.integer.config_flipToScreenOffMaxLatencyMicros));
     }
 
     public void disable() {

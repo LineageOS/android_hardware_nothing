@@ -25,7 +25,6 @@ import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import android.util.Log;
 
-import co.aospa.glyph.utils.Constants;
 import co.aospa.glyph.manager.AnimationManager;
 import co.aospa.glyph.utils.FileUtils;
 import co.aospa.glyph.utils.ResourceUtils;
@@ -35,8 +34,10 @@ public class PowershareService extends Service {
     private static final String TAG = "GlyphPowershareService";
     private static final boolean DEBUG = true;
 
-    private static final String POWERSHARE_ACTIVE = ResourceUtils.getString("glyph_settings_paths_powershare_active_absolute");
-    private static final String POWERSHARE_ENABLED = ResourceUtils.getString("glyph_settings_paths_powershare_enabled_absolute");
+    private static final String POWERSHARE_ACTIVE =
+            ResourceUtils.getString("glyph_settings_paths_powershare_active_absolute");
+    private static final String POWERSHARE_ENABLED =
+            ResourceUtils.getString("glyph_settings_paths_powershare_enabled_absolute");
 
     private PowershareActiveObserver mPowershareActiveObserver;
     private PowerManager mPowerManager;
@@ -81,28 +82,33 @@ public class PowershareService extends Service {
         mPowershareActiveObserver.pauseWatching();
     }
 
-    private final FileObserver mFileObserver = new FileObserver(POWERSHARE_ENABLED, FileObserver.MODIFY) {
-        @Override
-        public void onEvent(int event, String file) {
-            this.checkIfPowerShareIsEnabled();
-        }
+    private final FileObserver mFileObserver =
+            new FileObserver(POWERSHARE_ENABLED, FileObserver.MODIFY) {
+                @Override
+                public void onEvent(int event, String file) {
+                    this.checkIfPowerShareIsEnabled();
+                }
 
-        @Override
-        public void startWatching() {
-            if (DEBUG) Log.e(TAG, "FileObserver: startWatching");
-            this.checkIfPowerShareIsEnabled();
-            super.startWatching();
-        }
+                @Override
+                public void startWatching() {
+                    if (DEBUG) Log.e(TAG, "FileObserver: startWatching");
+                    this.checkIfPowerShareIsEnabled();
+                    super.startWatching();
+                }
 
-        private void checkIfPowerShareIsEnabled() {
-            if (DEBUG) Log.e(TAG, "FileObserver: checkIfPowerShareIsEnabled: " + FileUtils.readLineInt(POWERSHARE_ENABLED));
-            if (FileUtils.readLineInt(POWERSHARE_ENABLED) == 1) {
-                onPowershareEnabled();
-            } else {
-                onPowershareDisabled();
-            }
-        }
-    };
+                private void checkIfPowerShareIsEnabled() {
+                    if (DEBUG)
+                        Log.e(
+                                TAG,
+                                "FileObserver: checkIfPowerShareIsEnabled: "
+                                        + FileUtils.readLineInt(POWERSHARE_ENABLED));
+                    if (FileUtils.readLineInt(POWERSHARE_ENABLED) == 1) {
+                        onPowershareEnabled();
+                    } else {
+                        onPowershareDisabled();
+                    }
+                }
+            };
 
     private class PowershareActiveObserver extends Thread {
 
@@ -141,7 +147,8 @@ public class PowershareService extends Service {
         }
 
         private void updatePowershareState() {
-            if (DEBUG) Log.d(TAG, "updatePowershareState: " + FileUtils.readLineInt(POWERSHARE_ACTIVE));
+            if (DEBUG)
+                Log.d(TAG, "updatePowershareState: " + FileUtils.readLineInt(POWERSHARE_ACTIVE));
             if (FileUtils.readLineInt(POWERSHARE_ACTIVE) == 1) {
                 if (lastState) return;
                 lastState = true;
@@ -161,13 +168,15 @@ public class PowershareService extends Service {
                         try {
                             if (DEBUG) Log.d(TAG, "mPowershareActiveObserverLock.wait()");
                             mPowershareActiveObserverLock.wait();
-                        } catch (InterruptedException e) { }
+                        } catch (InterruptedException e) {
+                        }
                     }
                 }
                 updatePowershareState();
                 try {
                     Thread.sleep(500);
-                } catch (InterruptedException e) { }
+                } catch (InterruptedException e) {
+                }
             }
         }
     }

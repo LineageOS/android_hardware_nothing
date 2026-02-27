@@ -20,14 +20,11 @@ import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
-
-import co.aospa.glyph.utils.Constants;
 
 public final class FileUtils {
 
@@ -49,7 +46,8 @@ public final class FileUtils {
                 if (reader != null) {
                     reader.close();
                 }
-            } catch (IOException e) { }
+            } catch (IOException e) {
+            }
         }
         return line;
     }
@@ -57,8 +55,7 @@ public final class FileUtils {
     public static int readLineInt(String fileName) {
         try {
             return Integer.parseInt(readLine(fileName).replace("0x", ""));
-        }
-        catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             Log.e(TAG, "Could not convert string to int from file " + fileName, e);
         }
         return 0;

@@ -22,13 +22,15 @@ import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
 
 import co.aospa.glyph.R;
-import co.aospa.glyph.utils.Constants;
 import co.aospa.glyph.manager.SettingsManager;
 import co.aospa.glyph.manager.StatusManager;
+import co.aospa.glyph.utils.Constants;
 import co.aospa.glyph.utils.FileUtils;
 import co.aospa.glyph.utils.ResourceUtils;
 
-/** Quick settings tile: Glyph **/
+/**
+ * Quick settings tile: Glyph *
+ */
 public class TorchTileService extends TileService {
 
     @Override
@@ -47,9 +49,11 @@ public class TorchTileService extends TileService {
 
     private void updateState() {
         boolean enabled = getEnabled();
-        getQsTile().setContentDescription(enabled ?
-                getString(R.string.glyph_accessibility_quick_settings_on) :
-                getString(R.string.glyph_accessibility_quick_settings_off));
+        getQsTile()
+                .setContentDescription(
+                        enabled
+                                ? getString(R.string.glyph_accessibility_quick_settings_on)
+                                : getString(R.string.glyph_accessibility_quick_settings_off));
         getQsTile().setState(enabled ? Tile.STATE_ACTIVE : Tile.STATE_INACTIVE);
         getQsTile().updateTile();
     }
@@ -71,7 +75,6 @@ public class TorchTileService extends TileService {
         FileUtils.writeAllLed(enabled ? brightness : 0);
         if (StatusManager.isEssentialLedActive() && !enabled)
             FileUtils.writeSingleLed(
-                ResourceUtils.getInteger("glyph_settings_notifs_essential_led"),
-                brightness / 100 * 7);
+                    ResourceUtils.getInteger("glyph_settings_notifs_essential_led"), brightness / 100 * 7);
     }
 }

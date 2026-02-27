@@ -16,18 +16,13 @@
 
 package co.aospa.glyph.utils;
 
-import android.content.Context;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
-import android.util.Log;
 
 import com.android.internal.util.ArrayUtils;
 
-import java.io.InputStream;
 import java.io.IOException;
-
-import co.aospa.glyph.R;
-import co.aospa.glyph.utils.Constants;
+import java.io.InputStream;
 
 public final class ResourceUtils {
 
@@ -40,7 +35,9 @@ public final class ResourceUtils {
     private static String[] notificationAnimations = null;
 
     public static int getIdentifier(String id, String type) {
-        return Constants.CONTEXT.getResources().getIdentifier(id, type, Constants.CONTEXT.getPackageName());
+        return Constants.CONTEXT
+                .getResources()
+                .getIdentifier(id, type, Constants.CONTEXT.getPackageName());
     }
 
     public static Boolean getBoolean(String id) {
@@ -147,11 +144,12 @@ public final class ResourceUtils {
         if (callAnimations == null) {
             try {
                 String[] assets = assetManager.list("call");
-                for (int i=0; i < assets.length; i++) {
+                for (int i = 0; i < assets.length; i++) {
                     assets[i] = assets[i].replaceAll(".csv", "");
                 }
                 callAnimations = assets;
-            } catch (IOException e) { }
+            } catch (IOException e) {
+            }
         }
         return callAnimations;
     }
@@ -160,11 +158,12 @@ public final class ResourceUtils {
         if (notificationAnimations == null) {
             try {
                 String[] assets = assetManager.list("notification");
-                for (int i=0; i < assets.length; i++) {
+                for (int i = 0; i < assets.length; i++) {
                     assets[i] = assets[i].replaceAll(".csv", "");
                 }
                 notificationAnimations = assets;
-            } catch (IOException e) { }
+            } catch (IOException e) {
+            }
         }
         return notificationAnimations;
     }
@@ -175,7 +174,8 @@ public final class ResourceUtils {
         if (ArrayUtils.contains(callAnimations, name))
             return assetManager.open("call/" + name + ".csv");
 
-        return assetManager.open("call/" + ResourceUtils.getString("glyph_settings_call_animations_default") + ".csv");
+        return assetManager.open(
+                "call/" + ResourceUtils.getString("glyph_settings_call_animations_default") + ".csv");
     }
 
     public static InputStream getNotificationAnimation(String name) throws IOException {
@@ -184,7 +184,8 @@ public final class ResourceUtils {
         if (ArrayUtils.contains(notificationAnimations, name))
             return assetManager.open("notification/" + name + ".csv");
 
-        return assetManager.open("call/" + ResourceUtils.getString("glyph_settings_notifs_animations_default") + ".csv");
+        return assetManager.open(
+                "call/" + ResourceUtils.getString("glyph_settings_notifs_animations_default") + ".csv");
     }
 
     public static InputStream getAnimation(String name) throws IOException {

@@ -16,14 +16,13 @@
 
 package co.aospa.glyph.services;
 
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.database.ContentObserver;
 import android.os.Handler;
 import android.os.IBinder;
@@ -35,12 +34,11 @@ import android.service.notification.NotificationListenerService;
 import android.service.notification.StatusBarNotification;
 import android.util.Log;
 
-import com.android.internal.util.ArrayUtils;
-
-import co.aospa.glyph.utils.Constants;
 import co.aospa.glyph.manager.AnimationManager;
 import co.aospa.glyph.manager.SettingsManager;
-import co.aospa.glyph.manager.StatusManager;
+import co.aospa.glyph.utils.Constants;
+
+import com.android.internal.util.ArrayUtils;
 
 public class NotificationService extends NotificationListenerService
         implements SharedPreferences.OnSharedPreferenceChangeListener {
@@ -96,7 +94,7 @@ public class NotificationService extends NotificationListenerService
     }
 
     @Override
-    public void onNotificationPosted(StatusBarNotification sbn){
+    public void onNotificationPosted(StatusBarNotification sbn) {
         if (DEBUG) Log.d(TAG, "onNotificationPosted");
         if (!SettingsManager.isGlyphNotifsEnabled()) return;
         String packageName = sbn.getPackageName();
@@ -106,37 +104,58 @@ public class NotificationService extends NotificationListenerService
         int interruptionFilter = mNotificationManager.getCurrentInterruptionFilter();
         try {
             Context packageContext = createPackageContext(packageName, 0);
-            NotificationManager packageNotificationManager = (NotificationManager) packageContext.getSystemService(Context.NOTIFICATION_SERVICE);
-            NotificationChannel packageChannel = packageNotificationManager.getNotificationChannel(packageChannelID);
+            NotificationManager packageNotificationManager =
+                    (NotificationManager) packageContext.getSystemService(Context.NOTIFICATION_SERVICE);
+            NotificationChannel packageChannel =
+                    packageNotificationManager.getNotificationChannel(packageChannelID);
             if (packageChannel != null) {
                 packageImportance = packageChannel.getImportance();
                 packageCanBypassDnd = packageChannel.canBypassDnd();
             }
-        } catch (PackageManager.NameNotFoundException e) {}
-        if (DEBUG) Log.d(TAG, "onNotificationPosted: package:" + packageName + " | channel id: " + packageChannelID + " | importance: " + packageImportance + " | can bypass dnd: " + packageCanBypassDnd);
+        } catch (PackageManager.NameNotFoundException e) {
+        }
+        if (DEBUG)
+            Log.d(
+                    TAG,
+                    "onNotificationPosted: package:"
+                            + packageName
+                            + " | channel id: "
+                            + packageChannelID
+                            + " | importance: "
+                            + packageImportance
+                            + " | can bypass dnd: "
+                            + packageCanBypassDnd);
         if (SettingsManager.isGlyphNotifsAppEnabled(packageName)
-                        && !sbn.isOngoing()
-                        && !ArrayUtils.contains(Constants.APPS_TO_IGNORE, packageName)
-                        && !ArrayUtils.contains(Constants.NOTIFS_TO_IGNORE, packageName + ":" + packageChannelID)
-                        && (packageImportance >= NotificationManager.IMPORTANCE_DEFAULT || packageImportance == -1)
-                        && (interruptionFilter <= NotificationManager.INTERRUPTION_FILTER_ALL || packageCanBypassDnd)) {
+                && !sbn.isOngoing()
+                && !ArrayUtils.contains(Constants.APPS_TO_IGNORE, packageName)
+                && !ArrayUtils.contains(Constants.NOTIFS_TO_IGNORE, packageName + ":" + packageChannelID)
+                && (packageImportance >= NotificationManager.IMPORTANCE_DEFAULT || packageImportance == -1)
+                && (interruptionFilter <= NotificationManager.INTERRUPTION_FILTER_ALL
+                || packageCanBypassDnd)) {
             mWakeLock.acquire(2500);
             AnimationManager.playCsv(SettingsManager.getGlyphNotifsAnimation());
         }
         if (SettingsManager.isGlyphNotifsAppEssential(packageName)
-                        && !sbn.isOngoing()
-                        && !ArrayUtils.contains(Constants.APPS_TO_IGNORE, packageName)
-                        && !ArrayUtils.contains(Constants.NOTIFS_TO_IGNORE, packageName + ":" + packageChannelID)
-                        && (packageImportance >= NotificationManager.IMPORTANCE_DEFAULT || packageImportance == -1)
-                        && (interruptionFilter <= NotificationManager.INTERRUPTION_FILTER_ALL || packageCanBypassDnd)
-                        && mNotificationManager.isNotificationPolicyAccessGranted()) {
+                && !sbn.isOngoing()
+                && !ArrayUtils.contains(Constants.APPS_TO_IGNORE, packageName)
+                && !ArrayUtils.contains(Constants.NOTIFS_TO_IGNORE, packageName + ":" + packageChannelID)
+                && (packageImportance >= NotificationManager.IMPORTANCE_DEFAULT || packageImportance == -1)
+                && (interruptionFilter <= NotificationManager.INTERRUPTION_FILTER_ALL
+                || packageCanBypassDnd)
+                && mNotificationManager.isNotificationPolicyAccessGranted()) {
             AnimationManager.playEssential();
         }
     }
 
     @Override
-    public void onNotificationRemoved(StatusBarNotification sbn){
-        if (DEBUG) Log.d(TAG, "onNotificationRemoved: package:" + sbn.getPackageName() + " | channel id: " + sbn.getNotification().getChannelId());
+    public void onNotificationRemoved(StatusBarNotification sbn) {
+        if (DEBUG)
+            Log.d(
+                    TAG,
+                    "onNotificationRemoved: package:"
+                            + sbn.getPackageName()
+                            + " | channel id: "
+                            + sbn.getNotification().getChannelId());
         onNotificationUpdated();
     }
 
@@ -162,21 +181,40 @@ public class NotificationService extends NotificationListenerService
                 int interruptionFilter = mNotificationManager.getCurrentInterruptionFilter();
                 try {
                     Context packageContext = createPackageContext(packageName, 0);
-                    NotificationManager packageNotificationManager = (NotificationManager) packageContext.getSystemService(Context.NOTIFICATION_SERVICE);
-                    NotificationChannel packageChannel = packageNotificationManager.getNotificationChannel(packageChannelID);
+                    NotificationManager packageNotificationManager =
+                            (NotificationManager) packageContext.getSystemService(Context.NOTIFICATION_SERVICE);
+                    NotificationChannel packageChannel =
+                            packageNotificationManager.getNotificationChannel(packageChannelID);
                     if (packageChannel != null) {
                         packageImportance = packageChannel.getImportance();
                         packageCanBypassDnd = packageChannel.canBypassDnd();
                     }
-                } catch (PackageManager.NameNotFoundException e) {}
-                if (DEBUG) Log.d(TAG, "onNotificationUpdated: package:" + packageName + " | channel id: " + packageChannelID + " | importance: " + packageImportance + " | can bypass dnd: " + packageCanBypassDnd);
+                } catch (PackageManager.NameNotFoundException e) {
+                }
+                if (DEBUG)
+                    Log.d(
+                            TAG,
+                            "onNotificationUpdated: package:"
+                                    + packageName
+                                    + " | channel id: "
+                                    + packageChannelID
+                                    + " | importance: "
+                                    + packageImportance
+                                    + " | can bypass dnd: "
+                                    + packageCanBypassDnd);
                 if (SettingsManager.isGlyphNotifsAppEssential(packageName)
-                                && !sbn.isOngoing()
-                                && !ArrayUtils.contains(Constants.APPS_TO_IGNORE, packageName)
-                                && !ArrayUtils.contains(Constants.NOTIFS_TO_IGNORE, packageName + ":" + packageChannelID)
-                                && (packageImportance >= NotificationManager.IMPORTANCE_DEFAULT || packageImportance == -1)
-                                && (interruptionFilter <= NotificationManager.INTERRUPTION_FILTER_ALL || packageCanBypassDnd)) {
-                    if (DEBUG) Log.d(TAG, "onNotificationUpdated: found essential notification | package:" + packageName);
+                        && !sbn.isOngoing()
+                        && !ArrayUtils.contains(Constants.APPS_TO_IGNORE, packageName)
+                        && !ArrayUtils.contains(
+                        Constants.NOTIFS_TO_IGNORE, packageName + ":" + packageChannelID)
+                        && (packageImportance >= NotificationManager.IMPORTANCE_DEFAULT
+                        || packageImportance == -1)
+                        && (interruptionFilter <= NotificationManager.INTERRUPTION_FILTER_ALL
+                        || packageCanBypassDnd)) {
+                    if (DEBUG)
+                        Log.d(
+                                TAG,
+                                "onNotificationUpdated: found essential notification | package:" + packageName);
                     playEssential = true;
                 }
             }
@@ -194,10 +232,9 @@ public class NotificationService extends NotificationListenerService
         }
 
         public void register(ContentResolver cr) {
-            cr.registerContentObserver(Settings.Secure.getUriFor(
-                Constants.GLYPH_ENABLE), false, this);
-            cr.registerContentObserver(Settings.Secure.getUriFor(
-                Constants.GLYPH_NOTIFS_ENABLE), false, this);
+            cr.registerContentObserver(Settings.Secure.getUriFor(Constants.GLYPH_ENABLE), false, this);
+            cr.registerContentObserver(
+                    Settings.Secure.getUriFor(Constants.GLYPH_NOTIFS_ENABLE), false, this);
         }
 
         public void unregister(ContentResolver cr) {

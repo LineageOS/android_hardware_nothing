@@ -91,45 +91,49 @@ public class ChargingService extends Service {
         if (DEBUG) Log.d(TAG, "Power connected");
         if (DEBUG) Log.d(TAG, "Battery level: " + getBatteryLevel());
         playChargingAnimation(true);
-        mSensorManager.registerListener(mSensorEventListener,
-            mAccelerometerSensor, SensorManager.SENSOR_DELAY_NORMAL);
+        mSensorManager.registerListener(
+                mSensorEventListener, mAccelerometerSensor, SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     private void onPowerDisconnected() {
         if (DEBUG) Log.d(TAG, "Power disconnected");
-	    mSensorManager.unregisterListener(mSensorEventListener);
+        mSensorManager.unregisterListener(mSensorEventListener);
     }
 
     private void playChargingAnimation(boolean wait) {
         AnimationManager.playCharging(getBatteryLevel(), wait);
     }
 
-    private final BroadcastReceiver mPowerMonitor = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (intent.getAction().equals(Intent.ACTION_POWER_CONNECTED)) {
-                onPowerConnected();
-            } else if (intent.getAction().equals(Intent.ACTION_POWER_DISCONNECTED)) {
-                onPowerDisconnected();
-            }
-        }
-    };
+    private final BroadcastReceiver mPowerMonitor =
+            new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    if (intent.getAction().equals(Intent.ACTION_POWER_CONNECTED)) {
+                        onPowerConnected();
+                    } else if (intent.getAction().equals(Intent.ACTION_POWER_DISCONNECTED)) {
+                        onPowerDisconnected();
+                    }
+                }
+            };
 
-    private final SensorEventListener mSensorEventListener = new SensorEventListener() {
-	    @Override
-	    public void onSensorChanged(SensorEvent event) {
-		    float x = event.values[0];
-		    float y = event.values[1];
-		    float z = event.values[2];
-		    float acceleration = (float) Math.sqrt(x * x + y * y + z * z);
+    private final SensorEventListener mSensorEventListener =
+            new SensorEventListener() {
+                @Override
+                public void onSensorChanged(SensorEvent event) {
+                    float x = event.values[0];
+                    float y = event.values[1];
+                    float z = event.values[2];
+                    float acceleration = (float) Math.sqrt(x * x + y * y + z * z);
 
-		    if (acceleration > ACCELEROMETER_THRESHOLD && z <= ZFACEDOWN_THRESHOLD && !mPowerManager.isInteractive() ) {
-			    playChargingAnimation(false);
-		    }
-	    }
+                    if (acceleration > ACCELEROMETER_THRESHOLD
+                            && z <= ZFACEDOWN_THRESHOLD
+                            && !mPowerManager.isInteractive()) {
+                        playChargingAnimation(false);
+                    }
+                }
 
-	    @Override
-	    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-	    }
-    };
+                @Override
+                public void onAccuracyChanged(Sensor sensor, int accuracy) {
+                }
+            };
 }

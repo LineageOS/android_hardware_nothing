@@ -26,11 +26,11 @@ import android.os.IBinder;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
-import java.util.concurrent.Executors;
-
-import co.aospa.glyph.utils.Constants;
 import co.aospa.glyph.manager.AnimationManager;
 import co.aospa.glyph.manager.SettingsManager;
+import co.aospa.glyph.utils.Constants;
+
+import java.util.concurrent.Executors;
 
 public class CallReceiverService extends Service {
 
@@ -47,7 +47,8 @@ public class CallReceiverService extends Service {
         }
 
         mAudioManager = getSystemService(AudioManager.class);
-        mAudioManager.addOnModeChangedListener(Executors.newSingleThreadExecutor(), mAudioManagerOnModeChangedListener);
+        mAudioManager.addOnModeChangedListener(
+                Executors.newSingleThreadExecutor(), mAudioManagerOnModeChangedListener);
         mAudioManagerOnModeChangedListener.onModeChanged(mAudioManager.getMode());
 
         IntentFilter callReceiver = new IntentFilter();
@@ -85,36 +86,38 @@ public class CallReceiverService extends Service {
         AnimationManager.stopCall();
     }
 
-    private final BroadcastReceiver mCallReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (intent.getAction().equals(TelephonyManager.ACTION_PHONE_STATE_CHANGED)) {
-                String state = intent.getStringExtra(TelephonyManager.EXTRA_STATE);
-                if(state.equals(TelephonyManager.EXTRA_STATE_RINGING)){
-                    if (DEBUG) Log.d(TAG, "EXTRA_STATE_RINGING");
-                    enableCallAnimation();
+    private final BroadcastReceiver mCallReceiver =
+            new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    if (intent.getAction().equals(TelephonyManager.ACTION_PHONE_STATE_CHANGED)) {
+                        String state = intent.getStringExtra(TelephonyManager.EXTRA_STATE);
+                        if (state.equals(TelephonyManager.EXTRA_STATE_RINGING)) {
+                            if (DEBUG) Log.d(TAG, "EXTRA_STATE_RINGING");
+                            enableCallAnimation();
+                        }
+                        if ((state.equals(TelephonyManager.EXTRA_STATE_OFFHOOK))) {
+                            if (DEBUG) Log.d(TAG, "EXTRA_STATE_OFFHOOK");
+                            disableCallAnimation();
+                        }
+                        if (state.equals(TelephonyManager.EXTRA_STATE_IDLE)) {
+                            if (DEBUG) Log.d(TAG, "EXTRA_STATE_IDLE");
+                            disableCallAnimation();
+                        }
+                    }
                 }
-                if ((state.equals(TelephonyManager.EXTRA_STATE_OFFHOOK))){
-                    if (DEBUG) Log.d(TAG, "EXTRA_STATE_OFFHOOK");
-                    disableCallAnimation();
-                }
-                if (state.equals(TelephonyManager.EXTRA_STATE_IDLE)){
-                    if (DEBUG) Log.d(TAG, "EXTRA_STATE_IDLE");
-                    disableCallAnimation();
-                }
-            }
-        }
-    };
+            };
 
-    private final AudioManager.OnModeChangedListener mAudioManagerOnModeChangedListener = new AudioManager.OnModeChangedListener() {
-        @Override
-        public void onModeChanged(int mode) {
-            if (DEBUG) Log.d(TAG, "mAudioManagerOnModeChangedListener: " + mode);
-            if (mode == AudioManager.MODE_RINGTONE) {
-                enableCallAnimation();
-            } else {
-                disableCallAnimation();
-            }
-        }
-    };
+    private final AudioManager.OnModeChangedListener mAudioManagerOnModeChangedListener =
+            new AudioManager.OnModeChangedListener() {
+                @Override
+                public void onModeChanged(int mode) {
+                    if (DEBUG) Log.d(TAG, "mAudioManagerOnModeChangedListener: " + mode);
+                    if (mode == AudioManager.MODE_RINGTONE) {
+                        enableCallAnimation();
+                    } else {
+                        disableCallAnimation();
+                    }
+                }
+            };
 }

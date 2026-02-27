@@ -29,9 +29,14 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceChangeListener;
-import androidx.preference.PreferenceCategory;
 import androidx.preference.SeekBarPreference;
 import androidx.preference.SwitchPreferenceCompat;
+
+import co.aospa.glyph.R;
+import co.aospa.glyph.manager.AnimationManager;
+import co.aospa.glyph.manager.SettingsManager;
+import co.aospa.glyph.utils.Constants;
+import co.aospa.glyph.utils.ServiceUtils;
 
 import com.android.settingslib.PrimarySwitchPreference;
 import com.android.settingslib.widget.MainSwitchPreference;
@@ -39,14 +44,8 @@ import com.android.settingslib.widget.SettingsBasePreferenceFragment;
 
 import java.util.Arrays;
 
-import co.aospa.glyph.R;
-import co.aospa.glyph.utils.Constants;
-import co.aospa.glyph.manager.AnimationManager;
-import co.aospa.glyph.manager.SettingsManager;
-import co.aospa.glyph.utils.ServiceUtils;
-
-public class SettingsFragment extends SettingsBasePreferenceFragment implements OnPreferenceChangeListener,
-        OnCheckedChangeListener {
+public class SettingsFragment extends SettingsBasePreferenceFragment
+        implements OnPreferenceChangeListener, OnCheckedChangeListener {
 
     private MainSwitchPreference mSwitchBar;
 
@@ -103,27 +102,31 @@ public class SettingsFragment extends SettingsBasePreferenceFragment implements 
         mCallPreference.setSwitchEnabled(glyphEnabled);
         mCallPreference.setOnPreferenceChangeListener(this);
 
-        mChargingLevelPreference = (SwitchPreferenceCompat) findPreference(Constants.GLYPH_CHARGING_LEVEL_ENABLE);
+        mChargingLevelPreference =
+                (SwitchPreferenceCompat) findPreference(Constants.GLYPH_CHARGING_LEVEL_ENABLE);
         mChargingLevelPreference.setEnabled(glyphEnabled);
         mChargingLevelPreference.setOnPreferenceChangeListener(this);
 
-        mChargingPowersharePreference = (SwitchPreferenceCompat) findPreference(Constants.GLYPH_CHARGING_POWERSHARE_ENABLE);
+        mChargingPowersharePreference =
+                (SwitchPreferenceCompat) findPreference(Constants.GLYPH_CHARGING_POWERSHARE_ENABLE);
         mChargingPowersharePreference.setEnabled(glyphEnabled);
         mChargingPowersharePreference.setOnPreferenceChangeListener(this);
         if (!Constants.isPowershareSupported()) {
             mChargingPowersharePreference.setVisible(false);
         }
 
-        mVolumeLevelPreference = (SwitchPreferenceCompat) findPreference(Constants.GLYPH_VOLUME_LEVEL_ENABLE);
+        mVolumeLevelPreference =
+                (SwitchPreferenceCompat) findPreference(Constants.GLYPH_VOLUME_LEVEL_ENABLE);
         mVolumeLevelPreference.setEnabled(glyphEnabled);
         mVolumeLevelPreference.setOnPreferenceChangeListener(this);
 
-        mMusicVisualizerPreference = (SwitchPreferenceCompat) findPreference(Constants.GLYPH_MUSIC_VISUALIZER_ENABLE);
+        mMusicVisualizerPreference =
+                (SwitchPreferenceCompat) findPreference(Constants.GLYPH_MUSIC_VISUALIZER_ENABLE);
         mMusicVisualizerPreference.setEnabled(glyphEnabled);
         mMusicVisualizerPreference.setOnPreferenceChangeListener(this);
         if (mMusicVisualizerPreference.isChecked()) {
             mFlipPreference.setEnabled(false);
-            //mBrightnessPreference.setEnabled(false);
+            // mBrightnessPreference.setEnabled(false);
             mNotifsPreference.setEnabled(false);
             mNotifsPreference.setSwitchEnabled(false);
             mCallPreference.setEnabled(false);
@@ -148,7 +151,8 @@ public class SettingsFragment extends SettingsBasePreferenceFragment implements 
             Arrays.fill(preview, Constants.getMaxBrightness());
             new Thread(() -> AnimationManager.updateLedFrame(preview)).start();
             if (mBrightnessPreviewOff != null) mHandler.removeCallbacks(mBrightnessPreviewOff);
-            mBrightnessPreviewOff = () -> new Thread(() -> AnimationManager.updateLedFrame(new int[patternLen])).start();
+            mBrightnessPreviewOff =
+                    () -> new Thread(() -> AnimationManager.updateLedFrame(new int[patternLen])).start();
             mHandler.postDelayed(mBrightnessPreviewOff, 500);
         }
 
@@ -163,7 +167,7 @@ public class SettingsFragment extends SettingsBasePreferenceFragment implements 
         if (preferenceKey.equals(Constants.GLYPH_MUSIC_VISUALIZER_ENABLE)) {
             boolean isChecked = mMusicVisualizerPreference.isChecked();
             mFlipPreference.setEnabled(isChecked);
-            //mBrightnessPreference.setEnabled(isChecked);
+            // mBrightnessPreference.setEnabled(isChecked);
             mNotifsPreference.setEnabled(isChecked);
             mNotifsPreference.setSwitchEnabled(isChecked);
             mCallPreference.setEnabled(isChecked);
@@ -219,10 +223,10 @@ public class SettingsFragment extends SettingsBasePreferenceFragment implements 
         }
 
         public void register(ContentResolver cr) {
-            cr.registerContentObserver(Settings.Secure.getUriFor(
-                Constants.GLYPH_CALL_ENABLE), false, this);
-            cr.registerContentObserver(Settings.Secure.getUriFor(
-                Constants.GLYPH_NOTIFS_ENABLE), false, this);
+            cr.registerContentObserver(
+                    Settings.Secure.getUriFor(Constants.GLYPH_CALL_ENABLE), false, this);
+            cr.registerContentObserver(
+                    Settings.Secure.getUriFor(Constants.GLYPH_NOTIFS_ENABLE), false, this);
         }
 
         public void unregister(ContentResolver cr) {

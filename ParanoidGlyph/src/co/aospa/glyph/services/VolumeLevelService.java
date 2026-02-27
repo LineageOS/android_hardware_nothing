@@ -18,13 +18,12 @@ package co.aospa.glyph.services;
 
 import android.app.Service;
 import android.content.ContentResolver;
-import android.content.Context;
 import android.content.Intent;
 import android.database.ContentObserver;
 import android.media.AudioManager;
 import android.net.Uri;
-import android.os.IBinder;
 import android.os.Handler;
+import android.os.IBinder;
 import android.util.Log;
 
 import co.aospa.glyph.manager.AnimationManager;
@@ -74,10 +73,7 @@ public class VolumeLevelService extends Service {
         public void register(ContentResolver cr) {
             audioManager = (AudioManager) getSystemService(AudioManager.class);
             previousVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
-            cr.registerContentObserver(
-                android.provider.Settings.System.CONTENT_URI,
-                true,
-                this);
+            cr.registerContentObserver(android.provider.Settings.System.CONTENT_URI, true, this);
         }
 
         public void unregister(ContentResolver cr) {
@@ -93,14 +89,16 @@ public class VolumeLevelService extends Service {
             int maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
             int delta = previousVolume - currentVolume;
 
-            if(delta > 0) {
-                if (DEBUG) Log.d(TAG, "Decreased: " + (int) (Math.floor(100D / maxVolume * currentVolume)));
+            if (delta > 0) {
+                if (DEBUG)
+                    Log.d(TAG, "Decreased: " + (int) (Math.floor(100D / maxVolume * currentVolume)));
                 AnimationManager.playVolume((int) (Math.floor(100D / maxVolume * currentVolume)), false);
-            } else if(delta < 0) {
-                if (DEBUG) Log.d(TAG, "Increased: " + (int) (Math.floor(100D / maxVolume * currentVolume)));
+            } else if (delta < 0) {
+                if (DEBUG)
+                    Log.d(TAG, "Increased: " + (int) (Math.floor(100D / maxVolume * currentVolume)));
                 AnimationManager.playVolume((int) (Math.floor(100D / maxVolume * currentVolume)), false);
             }
-            if (delta != 0) previousVolume=currentVolume;
+            if (delta != 0) previousVolume = currentVolume;
         }
     }
 }

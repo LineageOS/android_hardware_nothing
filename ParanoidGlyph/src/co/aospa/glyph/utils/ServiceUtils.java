@@ -23,7 +23,6 @@ import android.content.Intent;
 import android.os.UserHandle;
 import android.util.Log;
 
-import co.aospa.glyph.utils.Constants;
 import co.aospa.glyph.manager.SettingsManager;
 import co.aospa.glyph.services.CallReceiverService;
 import co.aospa.glyph.services.ChargingService;
@@ -42,87 +41,75 @@ public final class ServiceUtils {
 
     private static void startCallReceiverService() {
         if (DEBUG) Log.d(TAG, "Starting Glyph call receiver service");
-        context.startServiceAsUser(new Intent(context, CallReceiverService.class),
-                UserHandle.CURRENT);
+        context.startServiceAsUser(new Intent(context, CallReceiverService.class), UserHandle.CURRENT);
     }
 
     private static void stopCallReceiverService() {
         if (DEBUG) Log.d(TAG, "Stopping Glyph call receiver service");
-        context.stopServiceAsUser(new Intent(context, CallReceiverService.class),
-                UserHandle.CURRENT);
+        context.stopServiceAsUser(new Intent(context, CallReceiverService.class), UserHandle.CURRENT);
     }
 
     private static void startChargingService() {
         if (DEBUG) Log.d(TAG, "Starting Glyph charging service");
-        context.startServiceAsUser(new Intent(context, ChargingService.class),
-                UserHandle.CURRENT);
+        context.startServiceAsUser(new Intent(context, ChargingService.class), UserHandle.CURRENT);
     }
 
     private static void stopChargingService() {
         if (DEBUG) Log.d(TAG, "Stopping Glyph charging service");
-        context.stopServiceAsUser(new Intent(context, ChargingService.class),
-                UserHandle.CURRENT);
+        context.stopServiceAsUser(new Intent(context, ChargingService.class), UserHandle.CURRENT);
     }
 
     private static void startFlipToGlyphService() {
         if (DEBUG) Log.d(TAG, "Starting Flip to Glyph service");
-        context.startServiceAsUser(new Intent(context, FlipToGlyphService.class),
-                UserHandle.CURRENT);
+        context.startServiceAsUser(new Intent(context, FlipToGlyphService.class), UserHandle.CURRENT);
     }
 
     private static void stopFlipToGlyphService() {
         if (DEBUG) Log.d(TAG, "Stopping Flip to Glyph service");
-        context.stopServiceAsUser(new Intent(context, FlipToGlyphService.class),
-                UserHandle.CURRENT);
+        context.stopServiceAsUser(new Intent(context, FlipToGlyphService.class), UserHandle.CURRENT);
     }
 
     public static void startMusicVisualizerService() {
         if (DEBUG) Log.d(TAG, "Starting Music Visualizer service");
-        context.startServiceAsUser(new Intent(context, MusicVisualizerService.class),
-                UserHandle.CURRENT);
+        context.startServiceAsUser(
+                new Intent(context, MusicVisualizerService.class), UserHandle.CURRENT);
     }
 
     protected static void stopMusicVisualizerService() {
         if (DEBUG) Log.d(TAG, "Stopping Music Visualizer service");
-        context.stopServiceAsUser(new Intent(context, MusicVisualizerService.class),
-                UserHandle.CURRENT);
+        context.stopServiceAsUser(
+                new Intent(context, MusicVisualizerService.class), UserHandle.CURRENT);
     }
 
     private static void startPowershareService() {
         if (DEBUG) Log.d(TAG, "Starting Glyph powershare service");
         if (!Constants.isPowershareSupported()) return;
-        context.startServiceAsUser(new Intent(context, PowershareService.class),
-                UserHandle.CURRENT);
+        context.startServiceAsUser(new Intent(context, PowershareService.class), UserHandle.CURRENT);
     }
 
     private static void stopPowershareService() {
         if (DEBUG) Log.d(TAG, "Stopping Glyph powershare service");
-        context.stopServiceAsUser(new Intent(context, PowershareService.class),
-                UserHandle.CURRENT);
+        context.stopServiceAsUser(new Intent(context, PowershareService.class), UserHandle.CURRENT);
     }
 
     public static void startVolumeLevelService() {
         if (DEBUG) Log.d(TAG, "Starting Volume Level service");
-        context.startServiceAsUser(new Intent(context, VolumeLevelService.class),
-                UserHandle.CURRENT);
+        context.startServiceAsUser(new Intent(context, VolumeLevelService.class), UserHandle.CURRENT);
     }
 
     protected static void stopVolumeLevelService() {
         if (DEBUG) Log.d(TAG, "Stopping Volume Listener service");
-        context.stopServiceAsUser(new Intent(context, VolumeLevelService.class),
-                UserHandle.CURRENT);
+        context.stopServiceAsUser(new Intent(context, VolumeLevelService.class), UserHandle.CURRENT);
     }
 
     public static void startThirdPartyService() {
         if (DEBUG) Log.d(TAG, "Starting ThirdParty service");
-        context.startServiceAsUser(new Intent(context, ThirdPartyService.class),
-                UserHandle.CURRENT);
+        context.startServiceAsUser(new Intent(context, ThirdPartyService.class), UserHandle.CURRENT);
     }
 
     protected static void stopThirdPartyService() {
         if (DEBUG) Log.d(TAG, "Stopping ThirdParty service");
-        context.stopServiceAsUser(new Intent(context, ThirdPartyService.class),
-                UserHandle.CURRENT);
+        context.stopServiceAsUser(new Intent(context, ThirdPartyService.class), UserHandle.CURRENT);
     }
 
     public static void checkGlyphService() {

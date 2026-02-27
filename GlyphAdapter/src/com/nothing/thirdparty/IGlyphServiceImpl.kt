@@ -12,18 +12,24 @@ import android.content.ServiceConnection
 import android.os.IBinder
 import android.util.Log
 
-class IGlyphServiceImpl(private val context: Context) : IGlyphService.Stub() {
+class IGlyphServiceImpl(
+    private val context: Context,
+) : IGlyphService.Stub() {
     private var glyphService: IGlyphService? = null
 
-    private val connection = object : ServiceConnection {
-        override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
-            glyphService = IGlyphService.Stub.asInterface(service)
-        }
+    private val connection =
+        object : ServiceConnection {
+            override fun onServiceConnected(
+                name: ComponentName?,
+                service: IBinder?,
+            ) {
+                glyphService = IGlyphService.Stub.asInterface(service)
+            }
 
-        override fun onServiceDisconnected(name: ComponentName?) {
-            glyphService = null
+            override fun onServiceDisconnected(name: ComponentName?) {
+                glyphService = null
+            }
         }
-    }
 
     init {
         bindglyphService()
@@ -31,9 +37,10 @@ class IGlyphServiceImpl(private val context: Context) : IGlyphService.Stub() {
 
     private fun bindglyphService() {
         if (context != null) {
-            val intent = Intent("com.nothing.thirdparty.IGlyphService").apply {
-                component = ComponentName("co.aospa.glyph", "co.aospa.glyph.Services.ThirdPartyService")
-            }
+            val intent =
+                Intent("com.nothing.thirdparty.IGlyphService").apply {
+                    component = ComponentName("co.aospa.glyph", "co.aospa.glyph.Services.ThirdPartyService")
+                }
             context.bindService(intent, connection, Context.BIND_AUTO_CREATE)
         } else {
             Log.e("IGlyphServiceImpl", "Context is null, cannot bind service")
@@ -57,7 +64,10 @@ class IGlyphServiceImpl(private val context: Context) : IGlyphService.Stub() {
         glyphService?.setFrameColors(intArrayOf(0, 0, 0, 0, 0))
     }
 
-
     override fun register(str: String) = true
-    override fun registerSDK(str1: String, str2: String) = true
+
+    override fun registerSDK(
+        str1: String,
+        str2: String,
+    ) = true
 }

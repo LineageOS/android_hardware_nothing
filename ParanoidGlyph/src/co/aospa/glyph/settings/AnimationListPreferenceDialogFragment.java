@@ -32,8 +32,10 @@ public class AnimationListPreferenceDialogFragment extends ListPreferenceDialogF
 
     private int mClickedDialogEntryIndex;
 
-    public static AnimationListPreferenceDialogFragment newInstance(String key, boolean isCallAnimation) {
-        final AnimationListPreferenceDialogFragment fragment = new AnimationListPreferenceDialogFragment();
+    public static AnimationListPreferenceDialogFragment newInstance(
+            String key, boolean isCallAnimation) {
+        final AnimationListPreferenceDialogFragment fragment =
+                new AnimationListPreferenceDialogFragment();
         final Bundle b = new Bundle(2);
         b.putString(ARG_KEY, key);
         b.putBoolean(ARG_IS_CALL_ANIMATION, isCallAnimation);
@@ -61,15 +63,19 @@ public class AnimationListPreferenceDialogFragment extends ListPreferenceDialogF
 
         mClickedDialogEntryIndex = preference.findIndexOfValue(preference.getValue());
 
-        builder.setSingleChoiceItems(entries, mClickedDialogEntryIndex, (dialog, which) -> {
-            mClickedDialogEntryIndex = which;
-            boolean isCallAnimation = getArguments() != null
-                    && getArguments().getBoolean(ARG_IS_CALL_ANIMATION, false);
-            if (isCallAnimation ? SettingsManager.isGlyphCallEnabled()
-                    : SettingsManager.isGlyphNotifsEnabled()) {
-                AnimationManager.previewOnce(entryValues[which].toString(), isCallAnimation);
-            }
-        });
+        builder.setSingleChoiceItems(
+                entries,
+                mClickedDialogEntryIndex,
+                (dialog, which) -> {
+                    mClickedDialogEntryIndex = which;
+                    boolean isCallAnimation =
+                            getArguments() != null && getArguments().getBoolean(ARG_IS_CALL_ANIMATION, false);
+                    if (isCallAnimation
+                            ? SettingsManager.isGlyphCallEnabled()
+                            : SettingsManager.isGlyphNotifsEnabled()) {
+                        AnimationManager.previewOnce(entryValues[which].toString(), isCallAnimation);
+                    }
+                });
     }
 
     @Override
