@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6115d5b_37cf281d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 28798
+      },
+      "writtenOn": "2026-02-28T00:16:23Z",
+      "side": 1,
+      "message": "Will pick this up, once I setup a stable gradle for ParanoidGlyph",
+      "revId": "1740a9bb777be6b8306d717613af652713ff5618",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
