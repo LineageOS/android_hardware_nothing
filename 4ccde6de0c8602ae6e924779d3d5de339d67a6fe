@@ -22,6 +22,30 @@
       },
       "revId": "4ccde6de0c8602ae6e924779d3d5de339d67a6fe",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea48a23c_59d84183",
+        "filename": "ParanoidGlyph/src/co/aospa/glyph/settings/SettingsFragment.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 28798
+      },
+      "writtenOn": "2026-02-28T00:12:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "929feb35_86bdb322",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 61
+      },
+      "revId": "4ccde6de0c8602ae6e924779d3d5de339d67a6fe",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
