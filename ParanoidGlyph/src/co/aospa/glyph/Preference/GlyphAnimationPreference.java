@@ -223,7 +223,7 @@ public class GlyphAnimationPreference extends Preference {
                 }
             }
         }
-        
+
         private void setGlyphsDrawable(ImageView imageView, int brightness) {
             if (brightness <= 0) {
                 imageView.setAlpha(0.3f);
