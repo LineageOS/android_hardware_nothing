@@ -22,6 +22,30 @@
       },
       "revId": "0ceebf60f3401a1ad01811654fff2bcbf68678fc",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "493fc8c0_94b1ad73",
+        "filename": "sepolicy/nt-sepolicy.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 28798
+      },
+      "writtenOn": "2026-02-28T00:13:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c37375d_1028bc0a",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 62
+      },
+      "revId": "0ceebf60f3401a1ad01811654fff2bcbf68678fc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
