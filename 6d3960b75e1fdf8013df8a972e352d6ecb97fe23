@@ -24,6 +24,30 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26f964ac_da59f553",
+        "filename": "ParanoidGlyph/src/co/aospa/glyph/manager/SettingsManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 28798
+      },
+      "writtenOn": "2026-02-28T00:13:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95fe575d_987fdee3",
+      "range": {
+        "startLine": 77,
+        "startChar": 19,
+        "endLine": 77,
+        "endChar": 52
+      },
+      "revId": "6d3960b75e1fdf8013df8a972e352d6ecb97fe23",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f330ed17_a262e33e",
@@ -37,6 +61,30 @@
       "writtenOn": "2026-02-27T12:39:32Z",
       "side": 1,
       "message": "```suggestion\n        if (Constants.isPowershareSupported()) {\n            context.startServiceAsUser(new Intent(context, PowershareService.class),\n                    UserHandle.CURRENT);\n        }\n```",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 36
+      },
+      "revId": "6d3960b75e1fdf8013df8a972e352d6ecb97fe23",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21a52b27_f8e46947",
+        "filename": "ParanoidGlyph/src/co/aospa/glyph/utils/ServiceUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 28798
+      },
+      "writtenOn": "2026-02-28T00:13:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f330ed17_a262e33e",
       "range": {
         "startLine": 93,
         "startChar": 0,
