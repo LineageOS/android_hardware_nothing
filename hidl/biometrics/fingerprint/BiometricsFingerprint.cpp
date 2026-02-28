@@ -49,11 +49,11 @@ BiometricsFingerprint::BiometricsFingerprint()
         ALOGE("Can't get UdfpsHandlerFactory");
     } else {
         mUdfpsHandler = mUdfpsHandlerFactory->create();
-            if (!mUdfpsHandler) {
-                ALOGE("Can't create UdfpsHandler");
-            } else {
-                mUdfpsHandler->init(mDevice);
-            }
+        if (!mUdfpsHandler) {
+            ALOGE("Can't create UdfpsHandler");
+        } else {
+            mUdfpsHandler->init(mDevice);
+        }
     }
 }
 

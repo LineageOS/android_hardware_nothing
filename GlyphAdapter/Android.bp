@@ -30,4 +30,3 @@ aidl_interface {
         "aidl/com/nothing/thirdparty/IGlyphService.aidl",
     ],
 }
-
