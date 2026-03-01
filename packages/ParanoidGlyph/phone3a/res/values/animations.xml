@@ -51,4 +51,10 @@
     <!-- Volume Animations -->
     <integer name="glyph_settings_volume_levels_num" translatable="false">20</integer>
 
+    <integer-array name="glyph_zone_channel_count">
+        <item>11</item>
+        <item>20</item>
+        <item>5</item>
+    </integer-array>
+
 </resources>
