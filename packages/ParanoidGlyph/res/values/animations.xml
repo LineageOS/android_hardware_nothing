@@ -36,4 +36,8 @@
     <!-- Volume Animations -->
     <integer name="glyph_settings_volume_levels_num" translatable="false"></integer>
 
+    <!-- Zones -->
+    <!-- Must be the same length and aligned with the names for glyph_settings_animations_slugs -->
+    <integer-array name="glyph_zone_channel_count"></integer-array>
+
 </resources>
