@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5a7fb07_dbce2c33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2026-03-04T00:16:30Z",
+      "side": 1,
+      "message": "This needs to be merged to be able to trigger actions afterwards.",
+      "revId": "f08b6f3506fab04ff32e6d7824d9d8fb034bdf7b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
