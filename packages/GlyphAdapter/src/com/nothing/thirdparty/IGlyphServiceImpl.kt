@@ -35,7 +35,7 @@ class IGlyphServiceImpl(private val context: Context) : IGlyphService.Stub() {
             val intent =
                 Intent("com.nothing.thirdparty.IGlyphService").apply {
                     component =
-                        ComponentName("co.aospa.glyph", "co.aospa.glyph.Services.ThirdPartyService")
+                        ComponentName("co.aospa.glyph", "co.aospa.glyph.services.ThirdPartyService")
                 }
             context.bindService(intent, connection, Context.BIND_AUTO_CREATE)
         } else {
