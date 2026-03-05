@@ -50,6 +50,11 @@ class IGlyphServiceImpl(private val context: Context) : IGlyphService.Stub() {
         }
     }
 
+    override fun setGlyphTorch(active: Boolean) {
+        Log.i("IGlyphServiceImpl", "setGlyphTorch: $active")
+        glyphService?.setGlyphTorch(active)
+    }
+
     override fun openSession() {
         Log.i("IGlyphServiceImpl", "openSession")
         glyphService?.setFrameColors(intArrayOf(0, 0, 0, 0, 0))
