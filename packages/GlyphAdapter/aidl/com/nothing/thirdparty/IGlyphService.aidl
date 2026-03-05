@@ -8,6 +8,7 @@ package com.nothing.thirdparty;
 
 interface IGlyphService {
     void setFrameColors(in int[] iArray);
+    void setGlyphTorch(boolean active);
     void openSession();
     void closeSession();
     boolean register(in String str);
