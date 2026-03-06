@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bcc5187_c10acbbe",
+        "filename": "packages/Euicc/res/values/strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2026-03-06T00:18:53Z",
+      "side": 1,
+      "message": "Reformat to make this readable.",
+      "range": {
+        "startLine": 7,
+        "startChar": 42,
+        "endLine": 7,
+        "endChar": 220
+      },
+      "revId": "d3cf4c9e58036a431efb614dd3a1726216ac7dcc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
