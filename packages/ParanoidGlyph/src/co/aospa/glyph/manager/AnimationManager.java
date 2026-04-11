@@ -36,6 +36,27 @@ public final class AnimationManager {
     private static final String TAG = "GlyphAnimationManager";
     private static final boolean DEBUG = true;
 
+    private static int getDevicePatternLength() {
+        int[] lengths = Constants.getSupportedAnimationPatternLengths();
+        if (lengths.length == 0) return 0;
+        int max = lengths[0];
+        for (int i = 1; i < lengths.length; i++) {
+            if (lengths[i] > max) max = lengths[i];
+        }
+        return max;
+    }
+
+    private static int mapVolumeStepToIndex(int stepIndex, int steps, int barLen) {
+        if (barLen <= 1) return 0;
+        if (steps <= 1) return 0;
+        double ratio = stepIndex / (double) (steps - 1);
+        return Math.min(barLen - 1, (int) Math.floor(ratio * (barLen - 1)));
+    }
+
+    private static void updateVolumeFrame(int[] barArray) {
+        updateLedFrameAdapted(barArray);
+    }
+
     private static Future<?> submit(Runnable runnable) {
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         return executorService.submit(runnable);
@@ -185,30 +206,35 @@ public final class AnimationManager {
             StatusManager.setVolumeLedActive(true);
             StatusManager.setAnimationActive(true);
 
-            int[] volumeArray = new int[ResourceUtils.getInteger("glyph_settings_volume_levels_num")];
-            int amount = (int) (Math.floor((volumeLevel / 100D) * (volumeArray.length - 1)) + 1);
+            int steps = ResourceUtils.getInteger("glyph_settings_volume_levels_num");
+            int patternLength = getDevicePatternLength();
+            int barLen = Constants.getDevice().equals("phone3a")
+                    ? Math.max(1, patternLength - 25)
+                    : patternLength;
+            int[] volumeArray = new int[barLen];
+            int amount = (int) (Math.floor((volumeLevel / 100D) * (steps - 1)) + 1);
+            int targetIndex = mapVolumeStepToIndex(Math.max(0, amount - 1), steps, barLen);
             int last = StatusManager.getVolumeLedLast();
 
             try {
-                for (int i = 0; i < volumeArray.length; i++) {
-                    if (volumeLevel == 0) {
-                        if (checkInterruption("volume")) throw new InterruptedException();
-                        StatusManager.setVolumeLedLast(0);
-                        updateLedFrameAdapted(new int[volumeArray.length]);
-                        break;
-                    } else if ( i <= amount - 1 && volumeLevel > 0) {
+                if (volumeLevel == 0) {
+                    if (checkInterruption("volume")) throw new InterruptedException();
+                    StatusManager.setVolumeLedLast(0);
+                    updateVolumeFrame(new int[barLen]);
+                } else {
+                    for (int i = 0; i <= targetIndex; i++) {
                         if (checkInterruption("volume")) throw new InterruptedException();
                         StatusManager.setVolumeLedLast(i);
                         volumeArray[i] = Constants.getBrightness();
-                        if (last == 0) {
-                            updateLedFrameAdapted(volumeArray);
+                        if (last == 0 || i == targetIndex) {
+                            updateVolumeFrame(volumeArray);
                             Thread.sleep(15);
                         }
                     }
                 }
-                if (last != 0) {
+                if (last != 0 && volumeLevel > 0) {
                     if (checkInterruption("volume")) throw new InterruptedException();
-                    updateLedFrameAdapted(volumeArray);
+                    updateVolumeFrame(volumeArray);
                 }
                 long start = System.currentTimeMillis();
                 while (System.currentTimeMillis() - start <= 1800) {
@@ -219,7 +245,7 @@ public final class AnimationManager {
                     if (volumeArray[i] != 0) {
                         StatusManager.setVolumeLedLast(i);
                         volumeArray[i] = 0;
-                        updateLedFrameAdapted(volumeArray);
+                        updateVolumeFrame(volumeArray);
                         Thread.sleep(15);
                     }
                 }
@@ -230,7 +256,7 @@ public final class AnimationManager {
             } catch (InterruptedException e) {
                 if (DEBUG) Log.d(TAG, "Exception while playing animation, interrupted | name: volume");
                 if (!StatusManager.isAllLedActive() && !StatusManager.isVolumeLedUpdate()) {
-                    updateLedFrameAdapted(new int[volumeArray.length]);
+                    updateVolumeFrame(new int[volumeArray.length]);
                 }
             } finally {
                 if (!StatusManager.isVolumeLedUpdate()) {
