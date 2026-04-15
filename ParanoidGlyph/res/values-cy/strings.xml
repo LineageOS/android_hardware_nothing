@@ -17,5 +17,9 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="glyph_settings_brightness">Disgleirdeb</string>
+    <string name="glyph_settings_charging_level_title">Lefel batri</string>
+    <string name="glyph_settings_call_title">Galwadau</string>
+    <string name="glyph_settings_call_toggle_title">Animeiddiad galwad</string>
     <string name="glyph_settings_notifs_title">Hysbysiadau</string>
 </resources>
