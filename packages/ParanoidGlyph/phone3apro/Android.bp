@@ -1,0 +1,5 @@
+runtime_resource_overlay {
+    name: "ParanoidGlyphPhone3aProRes",
+    manifest: "AndroidManifest.xml",
+    system_ext_specific: true,
+}
