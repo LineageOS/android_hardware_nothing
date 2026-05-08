@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5eb938d1_4caa857e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 34300
+      },
+      "writtenOn": "2026-05-08T13:15:15Z",
+      "side": 1,
+      "message": "Breaks volume animation on np1",
+      "revId": "f226c0fb02ce42abe2d695d7efdda1add8dfea1d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
