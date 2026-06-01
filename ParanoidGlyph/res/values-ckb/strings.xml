@@ -37,7 +37,7 @@
     <string name="glyph_settings_notifs_title">ئاگادارکردنەوەکان</string>
     <string name="glyph_settings_notifs_toggle_title">ئەنیمەیشنی ئاگادارکردنەوە</string>
     <string name="glyph_settings_notifs_toggle_summary">داگیرسان و کوژانەوەی LED لە کاتی ئاگادارکردنەوەی نوێ</string>
-    <string name="glyph_settings_notifs_sub_title">ئەو ئەپانەی ڕێگەیان پێدراوە</string>
+    <string name="glyph_settings_notifs_sub_title">ئەو بەرنامانەی ڕێگەیان پێدراوە</string>
     <string name="glyph_settings_notifs_sub_toggle_title">چالاککردنی ئەنیمەیشنی ئاگادارکردنەوە</string>
     <string name="glyph_settings_notifs_sub_animations_title">شێواز (Pattern)</string>
     <string name="glyph_settings_notifs_sub_essential_title">ئاگادارییە بنەڕەتییەکان</string>
