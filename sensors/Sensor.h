@@ -122,6 +122,23 @@ class SysfsPollingOneShotSensor : public OneShotSensor {
     int mPollFd;
 };
 
+const std::string kTsPath =
+        "/sys/devices/platform/soc/8c0000.qcom,qupv3_2_geni_se/880000.spi/spi_master/spi8/spi8.0/";
+
+const std::string kTsSingleTapPressedPath = kTsPath + "fts_gesture_single_tap_pressed";
+const std::string kTsSingleTapEnabledPath = kTsPath + "fts_gesture_single_tap_enabled";
+
+constexpr int32_t SENSOR_TYPE_BASE = static_cast<int32_t>(SensorType::DEVICE_PRIVATE_BASE) + 100;
+
+class SingleTapSensor : public SysfsPollingOneShotSensor {
+  public:
+    SingleTapSensor(int32_t sensorHandle, ISensorsEventCallback* callback)
+        : SysfsPollingOneShotSensor(sensorHandle, callback, kTsSingleTapPressedPath,
+                                    kTsSingleTapEnabledPath, "Single Tap Sensor",
+                                    "org.lineageos.sensor.single_tap",
+                                    static_cast<SensorType>(SENSOR_TYPE_BASE + 1)) {}
+};
+
 }  // namespace implementation
 }  // namespace subhal
 }  // namespace V2_1
