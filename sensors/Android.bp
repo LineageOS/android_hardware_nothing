@@ -31,5 +31,5 @@ cc_library_shared {
     cflags: [
         "-DLOG_TAG=\"sensors.nothing\"",
     ],
-    vendor: true,
+    device_specific: true,
 }
