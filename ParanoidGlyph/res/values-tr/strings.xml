@@ -31,12 +31,14 @@
     <string name="glyph_settings_charging_powershare_summary">Ters kablosuz şarj algılandığında bir animasyon göster</string>
     <string name="glyph_settings_call_title">Aramalar</string>
     <string name="glyph_settings_call_toggle_title">Arama animasyonu</string>
-    <string name="glyph_settings_call_toggle_summary">Gelen aramalarda LED\'leri flaşla</string>
+    <string name="glyph_settings_call_toggle_summary">
+Gelen aramalarda LED\'leri flaşla</string>
     <string name="glyph_settings_call_sub_toggle_title">Arama animasyonunu etkinleştir</string>
     <string name="glyph_settings_call_sub_animations_title">Desen</string>
     <string name="glyph_settings_notifs_title">Bildirimler</string>
     <string name="glyph_settings_notifs_toggle_title">Bildirim animasyonu</string>
-    <string name="glyph_settings_notifs_toggle_summary">Yeni bildirimlerde LED\'leri flaşla</string>
+    <string name="glyph_settings_notifs_toggle_summary">
+Yeni bildirimlerde LED\'leri flaşla</string>
     <string name="glyph_settings_notifs_sub_title">İzin verilecek uygulamalar</string>
     <string name="glyph_settings_notifs_sub_toggle_title">Bildirim animasyonunu etkinleştir</string>
     <string name="glyph_settings_notifs_sub_animations_title">Desen</string>
