@@ -1,0 +1,4 @@
+type nt_esim_app, domain;
+app_domain(nt_esim_app)
+
+set_prop(nt_esim_app, radio_prop)
