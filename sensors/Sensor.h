@@ -122,10 +122,8 @@ class SysfsPollingOneShotSensor : public OneShotSensor {
     int mPollFd;
 };
 
-const std::string kTsPath = "/sys/devices/platform/soc/8c0000.qcom,qupv3_2_geni_se/880000.spi/spi_master/spi8/spi8.0/";
-
-const std::string kTsSingleTapPressedPath = kTsPath + "fts_gesture_single_tap_pressed";
-const std::string kTsSingleTapEnabledPath = kTsPath + "fts_gesture_single_tap_enabled";
+const std::string kTsSingleTapPressedPath = PANEL_SINGLE_TAP_PATH;
+const std::string kTsSingleTapEnabledPath = PANEL_SINGLE_TAP_ENABLED_PATH;
 
 constexpr int32_t SENSOR_TYPE_BASE = static_cast<int32_t>(SensorType::DEVICE_PRIVATE_BASE) + 100;
 
