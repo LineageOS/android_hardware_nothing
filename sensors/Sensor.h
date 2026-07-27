@@ -136,8 +136,8 @@ class SingleTapSensor : public SysfsPollingOneShotSensor {
                                     static_cast<SensorType>(SENSOR_TYPE_BASE + 1)) {}
 };
 
-const std::string kTsUdfpsPressedPath = "/sys/class/spi_master/spi0/spi0.0/fts_fod_pressed";
-const std::string kTsUdfpsEnabledPath = "/sys/class/spi_master/spi0/spi0.0/fts_fod_enabled";
+const std::string kTsUdfpsPressedPath = PANEL_UDFPS_PATH;
+const std::string kTsUdfpsEnabledPath = PANEL_UDFPS_ENABLED_PATH;
 
 class UdfpsSensor : public SysfsPollingOneShotSensor {
   public:
