@@ -219,8 +219,8 @@ OneShotSensor::OneShotSensor(int32_t sensorHandle, ISensorsEventCallback* callba
 
 SysfsPollingOneShotSensor::SysfsPollingOneShotSensor(
         int32_t sensorHandle, ISensorsEventCallback* callback, const std::string& pollPath,
-        const std::string& enablePath, const std::string& name, const std::string& typeAsString,
-        SensorType type)
+        std::optional<std::string> enablePath, const std::string& name,
+        const std::string& typeAsString, SensorType type)
     : OneShotSensor(sensorHandle, callback) {
     mSensorInfo.name = name;
     mSensorInfo.type = type;
@@ -230,10 +230,14 @@ SysfsPollingOneShotSensor::SysfsPollingOneShotSensor(
     mSensorInfo.power = 0;
     mSensorInfo.flags |= SensorFlagBits::WAKE_UP;
 
-    mEnableStream.open(enablePath);
-    if (!mEnableStream) {
-        ALOGE("failed to open enable path %s", enablePath.c_str());
-        return;
+    handleEnable = enablePath.has_value();
+
+    if (handleEnable) {
+        mEnableStream.open(enablePath->c_str());
+        if (!mEnableStream) {
+            ALOGE("failed to open enable path %s", enablePath->c_str());
+            return;
+        }
     }
 
     int rc;
@@ -264,7 +268,11 @@ SysfsPollingOneShotSensor::SysfsPollingOneShotSensor(
 }
 
 bool SysfsPollingOneShotSensor::opened() {
-    return mEnableStream && mWaitPipeFd[0] >= 0 && mWaitPipeFd[1] >= 0 && mPollFd >= 0;
+    if (handleEnable) {
+        return mEnableStream && mWaitPipeFd[0] >= 0 && mWaitPipeFd[1] >= 0 && mPollFd >= 0;
+    }
+
+    return mWaitPipeFd[0] >= 0 && mWaitPipeFd[1] >= 0 && mPollFd >= 0;
 }
 
 SysfsPollingOneShotSensor::~SysfsPollingOneShotSensor() {
@@ -272,7 +280,7 @@ SysfsPollingOneShotSensor::~SysfsPollingOneShotSensor() {
 }
 
 void SysfsPollingOneShotSensor::writeEnable(bool enable) {
-    if (mEnableStream) {
+    if (handleEnable && mEnableStream) {
         mEnableStream << (enable ? '1' : '0') << std::flush;
     }
 }
@@ -285,7 +293,7 @@ void SysfsPollingOneShotSensor::activate(bool enable, bool notify, bool lock) {
     }
 
     if (mIsEnabled != enable) {
-        writeEnable(enable);
+        if (handleEnable) writeEnable(enable);
 
         mIsEnabled = enable;
 
