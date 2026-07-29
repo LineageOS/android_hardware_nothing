@@ -117,6 +117,7 @@ class SysfsPollingOneShotSensor : public OneShotSensor {
 
   private:
     void interruptPoll();
+    void readCoordinates(float* x, float* y);
 
     struct pollfd mPolls[2];
     int mWaitPipeFd[2];
