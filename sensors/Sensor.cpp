@@ -366,8 +366,39 @@ std::vector<Event> SysfsPollingOneShotSensor::readEvents() {
 }
 
 void SysfsPollingOneShotSensor::fillEventData(Event& event) {
-    event.u.data[0] = 0;
-    event.u.data[1] = 0;
+    float x = 0, y = 0;
+    readCoordinates(&x, &y);
+    event.u.data[0] = x;
+    event.u.data[1] = y;
+}
+
+void SysfsPollingOneShotSensor::readCoordinates(float* x, float* y) {
+#ifdef PANEL_SINGLE_TAP_COORDS_PATH
+    std::ifstream file(PANEL_SINGLE_TAP_COORDS_PATH);
+    if (!file) {
+        ALOGW("Unable to get single tap coords at path: %s", PANEL_SINGLE_TAP_COORDS_PATH);
+        *x = 0;
+        *y = 0;
+        return;
+    }
+
+    std::string line;
+    unsigned int rawX = 0, rawY = 0;
+
+    while (std::getline(file, line)) {
+        if (line.rfind("x:", 0) == 0) {
+            rawX = std::stoul(line.substr(2), nullptr, 16);
+        } else if (line.rfind("y:", 0) == 0) {
+            rawY = std::stoul(line.substr(2), nullptr, 16);
+        }
+    }
+
+    *x = static_cast<float>(rawX);
+    *y = static_cast<float>(rawY);
+#else
+    *x = 0;
+    *y = 0;
+#endif
 }
 
 }  // namespace implementation
