@@ -219,9 +219,9 @@ OneShotSensor::OneShotSensor(int32_t sensorHandle, ISensorsEventCallback* callba
 
 SysfsPollingOneShotSensor::SysfsPollingOneShotSensor(
         int32_t sensorHandle, ISensorsEventCallback* callback, const std::string& pollPath,
-        std::optional<std::string> enablePath, const std::string& name,
-        const std::string& typeAsString, SensorType type)
-    : OneShotSensor(sensorHandle, callback) {
+        std::optional<std::string> enablePath, std::optional<std::string> coordinatePath,
+        const std::string& name, const std::string& typeAsString, SensorType type)
+    : OneShotSensor(sensorHandle, callback), mCoordinatePath(std::move(coordinatePath)) {
     mSensorInfo.name = name;
     mSensorInfo.type = type;
     mSensorInfo.typeAsString = typeAsString;
@@ -367,16 +367,18 @@ std::vector<Event> SysfsPollingOneShotSensor::readEvents() {
 
 void SysfsPollingOneShotSensor::fillEventData(Event& event) {
     float x = 0, y = 0;
-    readCoordinates(&x, &y);
+    if (mCoordinatePath.has_value()) {
+        readCoordinates(&x, &y);
+    }
     event.u.data[0] = x;
     event.u.data[1] = y;
 }
 
 void SysfsPollingOneShotSensor::readCoordinates(float* x, float* y) {
-#ifdef PANEL_SINGLE_TAP_COORDS_PATH
-    std::ifstream file(PANEL_SINGLE_TAP_COORDS_PATH);
+    std::string filePath = mCoordinatePath->c_str();
+    std::ifstream file(filePath);
     if (!file) {
-        ALOGW("Unable to get single tap coords at path: %s", PANEL_SINGLE_TAP_COORDS_PATH);
+        ALOGW("Unable to read coordinates at path: %s", filePath.c_str());
         *x = 0;
         *y = 0;
         return;
@@ -395,10 +397,6 @@ void SysfsPollingOneShotSensor::readCoordinates(float* x, float* y) {
 
     *x = static_cast<float>(rawX);
     *y = static_cast<float>(rawY);
-#else
-    *x = 0;
-    *y = 0;
-#endif
 }
 
 }  // namespace implementation

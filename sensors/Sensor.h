@@ -98,6 +98,7 @@ class SysfsPollingOneShotSensor : public OneShotSensor {
     SysfsPollingOneShotSensor(int32_t sensorHandle, ISensorsEventCallback* callback,
                               const std::string& pollPath,
                               std::optional<std::string> enablePath,
+                              std::optional<std::string> coordinatePath,
                               const std::string& name, const std::string& typeAsString,
                               SensorType type);
     virtual bool opened();
@@ -118,6 +119,7 @@ class SysfsPollingOneShotSensor : public OneShotSensor {
   private:
     void interruptPoll();
     void readCoordinates(float* x, float* y);
+    std::optional<std::string> mCoordinatePath;
 
     struct pollfd mPolls[2];
     int mWaitPipeFd[2];
@@ -138,6 +140,12 @@ class SingleTapSensor : public SysfsPollingOneShotSensor {
 #else
               std::nullopt,
 #endif
+
+#ifdef PANEL_SINGLE_TAP_COORDS_PATH
+              PANEL_SINGLE_TAP_COORDS_PATH,
+#else
+              std::nullopt,
+#endif
               "Single Tap Sensor", "org.lineageos.sensor.single_tap",
               static_cast<SensorType>(SENSOR_TYPE_BASE + 1)) {}
 };
@@ -152,7 +160,7 @@ class UdfpsSensor : public SysfsPollingOneShotSensor {
 #else
               std::nullopt,
 #endif
-              "UDFPS Sensor", "org.lineageos.sensor.udfps",
+              std::nullopt, "UDFPS Sensor", "org.lineageos.sensor.udfps",
               static_cast<SensorType>(SENSOR_TYPE_BASE + 3)) {}
 };
 
