@@ -21,6 +21,7 @@
     <string name="glyph_settings_paths_frame_absolute" translatable="false"></string>
     <string name="glyph_settings_paths_mode_absolute" translatable="false"></string>
     <string name="glyph_settings_paths_single_absolute" translatable="false"></string>
+    <string name="glyph_settings_paths_color_absolute" translatable="false"></string>
 
     <string name="glyph_settings_paths_powershare_active_absolute" translatable="false"></string>
     <string name="glyph_settings_paths_powershare_enabled_absolute" translatable="false"></string>
