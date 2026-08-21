@@ -1,4 +1,4 @@
-type nt_esim_app, domain;
+type nt_esim_app, domain, coredomain;
 extra_privapp_domain(nt_esim_app)
 
 set_prop(nt_esim_app, radio_prop)
