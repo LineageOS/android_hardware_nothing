@@ -42,6 +42,7 @@
     <string name="glyph_settings_notifs_sub_animations_title">Pattern</string>
     <string name="glyph_settings_notifs_sub_essential_title">Essential Notifications</string>
     <string name="glyph_settings_notifs_sub_essential_summary">Essential Glyph will be displayed until Essential notifications are read or dismissed</string>
+    <string name="glyph_settings_notifs_permission_required">Notification access is required to enable Glyph notifications</string>
     <string name="glyph_settings_volume_title">Volume</string>
     <string name="glyph_settings_volume_level_toggle_title">Volume indicator</string>
     <string name="glyph_settings_volume_level_toggle_summary">Show volume level when adjusting</string>

@@ -17,20 +17,13 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="glyph_settings_app_name">Интерфейс Glyph</string>
-    <string name="glyph_settings_enable">Подсветка Glyph</string>
-    <string name="glyph_settings_title">Интерфейс Glyph</string>
-    <string name="glyph_settings_summary">Настройки подсветки Glyph</string>
-    <string name="glyph_settings_flip_toggle_title">Перевернуть для Glyph</string>
-    <string name="glyph_settings_flip_toggle_summary">Отключить звук и показать Glyph, если телефон лежит экраном вниз</string>
     <string name="glyph_settings_brightness">Яркость</string>
     <string name="glyph_settings_charging_title">Заряжается</string>
     <string name="glyph_settings_charging_level_title">Уровень заряда батареи</string>
     <string name="glyph_settings_charging_level_summary">Показывать уровень заряда батареи при подключении зарядного устройства</string>
-    <string name="glyph_settings_charging_powershare_title">Обратная беспроводная зарядка</string>
-    <string name="glyph_settings_charging_powershare_summary">Показывать анимацию при обнаружении обратной беспроводной зарядки</string>
+    <string name="glyph_settings_charging_powershare_title">Реверсивная беспроводная зарядка</string>
+    <string name="glyph_settings_charging_powershare_summary">Показывать анимацию при обнаружении реверсивной беспроводной зарядки</string>
     <string name="glyph_settings_call_title">Вызовы</string>
-    <string name="glyph_settings_call_toggle_title">Анимация при вызовах</string>
     <string name="glyph_settings_call_toggle_summary">Мигание светодиода при входящих звонках</string>
     <string name="glyph_settings_call_sub_toggle_title">Включить анимацию при вызове</string>
     <string name="glyph_settings_call_sub_animations_title">Паттерн</string>
@@ -41,15 +34,9 @@
     <string name="glyph_settings_notifs_sub_toggle_title">Включить анимацию при уведомлениях</string>
     <string name="glyph_settings_notifs_sub_animations_title">Паттерн</string>
     <string name="glyph_settings_notifs_sub_essential_title">Важные уведомления</string>
-    <string name="glyph_settings_notifs_sub_essential_summary">Основной Glyph будет отображаться до тех пор, пока основные уведомления не будут прочитаны или отклонены.</string>
     <string name="glyph_settings_volume_title">Громкость</string>
     <string name="glyph_settings_volume_level_toggle_title">Индикатор громкости</string>
     <string name="glyph_settings_volume_level_toggle_summary">Показывать уровень громкости при регулировке</string>
     <string name="glyph_settings_misc_title">Прочее</string>
-    <string name="glyph_settings_music_visualizer_toggle_title">Визуализация музыки</string>
-    <string name="glyph_settings_music_visualizer_toggle_summary">Подсветка Glyph будет реагировать на проигрыватель устройства.\nВсе остальные функции Glyph будут отключены.</string>
-    <string name="glyph_accessibility_quick_settings">Glyph</string>
-    <string name="glyph_accessibility_quick_settings_torch">Фонарик Glyph</string>
-    <string name="glyph_accessibility_quick_settings_off">Выкл</string>
-    <string name="glyph_accessibility_quick_settings_on">Вкл</string>
+    <string name="glyph_settings_music_visualizer_toggle_title">Визуализатор музыки</string>
 </resources>
