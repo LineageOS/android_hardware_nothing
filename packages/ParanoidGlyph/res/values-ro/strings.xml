@@ -42,6 +42,7 @@
     <string name="glyph_settings_notifs_sub_animations_title">Model</string>
     <string name="glyph_settings_notifs_sub_essential_title">Notificări Esenţiale</string>
     <string name="glyph_settings_notifs_sub_essential_summary">Glyph-ul esenţial va fi afişat până când notificările Esenţiale sunt citite sau închise</string>
+    <string name="glyph_settings_notifs_permission_required">Accesul la notificări este necesar pentru a activa notificările Glyph</string>
     <string name="glyph_settings_volume_title">Volum</string>
     <string name="glyph_settings_volume_level_toggle_title">Indicator de volum</string>
     <string name="glyph_settings_volume_level_toggle_summary">Arată nivelul volumului la ajustare</string>

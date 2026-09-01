@@ -22,7 +22,7 @@
     <string name="glyph_settings_title">Interfejs Glyph</string>
     <string name="glyph_settings_summary">Opcje dla świateł Glyph</string>
     <string name="glyph_settings_flip_toggle_title">Odwróć, aby aktywować Glyph</string>
-    <string name="glyph_settings_flip_toggle_summary">Wyciszaj oraz pokazuj Glyph, jeśli telefon jest skierowany ekranem w dół</string>
+    <string name="glyph_settings_flip_toggle_summary">Wyciszaj oraz pokazuj Glyph, jeśli telefon jest skierowany ekranem w dół</string>
     <string name="glyph_settings_brightness">Jasność</string>
     <string name="glyph_settings_charging_title">Ładowanie</string>
     <string name="glyph_settings_charging_level_title">Poziom baterii</string>
@@ -37,11 +37,12 @@
     <string name="glyph_settings_notifs_title">Powiadomienia</string>
     <string name="glyph_settings_notifs_toggle_title">Animacja powiadomień</string>
     <string name="glyph_settings_notifs_toggle_summary">Migaj diodą przy nowych powiadomieniach</string>
-    <string name="glyph_settings_notifs_sub_title">Aplikacje do zatwierdzenia</string>
+    <string name="glyph_settings_notifs_sub_title">Dozwolone aplikacje</string>
     <string name="glyph_settings_notifs_sub_toggle_title">Włącz animację powiadomień</string>
     <string name="glyph_settings_notifs_sub_animations_title">Wzór</string>
     <string name="glyph_settings_notifs_sub_essential_title">Podstawowe powiadomienia</string>
     <string name="glyph_settings_notifs_sub_essential_summary">Podstawowy Glyph będzie wyświetlany do czasu odczytania lub odrzucenia podstawowych powiadomień</string>
+    <string name="glyph_settings_notifs_permission_required">Dostęp do powiadomień jest wymagany aby włączyć powiadomienia Glyph</string>
     <string name="glyph_settings_volume_title">Głośność</string>
     <string name="glyph_settings_volume_level_toggle_title">Wskaźnik głośności</string>
     <string name="glyph_settings_volume_level_toggle_summary">Pokazuj poziom głośności podczas dostosowywania</string>

@@ -42,6 +42,7 @@
     <string name="glyph_settings_notifs_sub_animations_title">图案</string>
     <string name="glyph_settings_notifs_sub_essential_title">重要通知</string>
     <string name="glyph_settings_notifs_sub_essential_summary">重要的 Glyph 通知将会一直显示，直到重要通知被阅读或关闭。</string>
+    <string name="glyph_settings_notifs_permission_required">需要通知访问权限才能启用 Glyph 通知</string>
     <string name="glyph_settings_volume_title">音量</string>
     <string name="glyph_settings_volume_level_toggle_title">音量指示器</string>
     <string name="glyph_settings_volume_level_toggle_summary">调节音量时显示音量大小</string>

@@ -17,39 +17,5 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="glyph_settings_app_name">Glyph インターフェース</string>
-    <string name="glyph_settings_enable">Glyph ライト</string>
-    <string name="glyph_settings_title">Glyph インターフェース</string>
-    <string name="glyph_settings_summary">Glyph ライトのオプション</string>
-    <string name="glyph_settings_flip_toggle_title">裏返した時の Glyph</string>
-    <string name="glyph_settings_flip_toggle_summary">デバイスを裏返して置いた時、ミュートにして Glyph を表示します</string>
-    <string name="glyph_settings_brightness">明るさ</string>
-    <string name="glyph_settings_charging_title">充電中</string>
-    <string name="glyph_settings_charging_level_title">バッテリー残量</string>
-    <string name="glyph_settings_charging_level_summary">電源接続時にバッテリー残量を表示します</string>
-    <string name="glyph_settings_charging_powershare_title">リバースワイヤレス充電</string>
-    <string name="glyph_settings_charging_powershare_summary">リバースワイヤレス充電時にアニメーションを表示します</string>
-    <string name="glyph_settings_call_title">通話</string>
-    <string name="glyph_settings_call_toggle_title">通話アニメーション</string>
-    <string name="glyph_settings_call_toggle_summary">着信時に LED を点滅させます</string>
-    <string name="glyph_settings_call_sub_toggle_title">通話アニメーションを有効化</string>
-    <string name="glyph_settings_call_sub_animations_title">パターン</string>
-    <string name="glyph_settings_notifs_title">通知</string>
-    <string name="glyph_settings_notifs_toggle_title">通知アニメーション</string>
-    <string name="glyph_settings_notifs_toggle_summary">新しい通知があった時に LED を点滅させます</string>
-    <string name="glyph_settings_notifs_sub_title">許可するアプリ</string>
-    <string name="glyph_settings_notifs_sub_toggle_title">通知アニメーションを有効化</string>
-    <string name="glyph_settings_notifs_sub_animations_title">パターン</string>
-    <string name="glyph_settings_notifs_sub_essential_title">重要な通知</string>
-    <string name="glyph_settings_notifs_sub_essential_summary">重要な Glyph 通知は、重要な通知が読まれるか無視されるまで表示されます</string>
-    <string name="glyph_settings_volume_title">音量</string>
-    <string name="glyph_settings_volume_level_toggle_title">音量インジケーター</string>
-    <string name="glyph_settings_volume_level_toggle_summary">調整時に音量レベルを表示します</string>
-    <string name="glyph_settings_misc_title">その他</string>
-    <string name="glyph_settings_music_visualizer_toggle_title">音楽ビジュアライザー</string>
-    <string name="glyph_settings_music_visualizer_toggle_summary">Glyph ライトがデバイスのオーディオプレーヤーに連動します。\n使用中は他のすべての Glyph 機能は無効になります</string>
-    <string name="glyph_accessibility_quick_settings">Glyph</string>
-    <string name="glyph_accessibility_quick_settings_torch">Glyph トーチ</string>
-    <string name="glyph_accessibility_quick_settings_off">OFF</string>
-    <string name="glyph_accessibility_quick_settings_on">ON</string>
+    <string name="glyph_settings_notifs_permission_required">Glyph 通知を有効にするには通知権限が必要です</string>
 </resources>

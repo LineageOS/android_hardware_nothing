@@ -32,7 +32,7 @@
     <string name="glyph_settings_call_title">تماس‌ها</string>
     <string name="glyph_settings_call_toggle_title">انیمیشن تماس</string>
     <string name="glyph_settings_call_toggle_summary">ال‌ای‌دی ها در هنگام تماس چشمک بزنند</string>
-    <string name="glyph_settings_call_sub_toggle_title">فعال کردن انیمیشن تماس</string>
+    <string name="glyph_settings_call_sub_toggle_title">فعال‌کردن انیمیشن تماس</string>
     <string name="glyph_settings_call_sub_animations_title">الگو</string>
     <string name="glyph_settings_notifs_title">اعلان‌ها</string>
     <string name="glyph_settings_notifs_toggle_title">انیمیشن اعلان‌ها</string>
@@ -42,6 +42,7 @@
     <string name="glyph_settings_notifs_sub_animations_title">الگو</string>
     <string name="glyph_settings_notifs_sub_essential_title">اعلان‌های ضروری</string>
     <string name="glyph_settings_notifs_sub_essential_summary">گلیف ضروری تا زمانیکه اعلان‌های ضروری خوانده یا رد نشود نشان داده می‌شود</string>
+    <string name="glyph_settings_notifs_permission_required">برای فعال کردن اعلان‌های گلیف، دسترسی به اعلان‌ها لازم است</string>
     <string name="glyph_settings_volume_title">میزان صدا</string>
     <string name="glyph_settings_volume_level_toggle_title">نشانگر میزان صدا</string>
     <string name="glyph_settings_volume_level_toggle_summary">هنگام تنظیم سطح صدا را نشان دهید</string>

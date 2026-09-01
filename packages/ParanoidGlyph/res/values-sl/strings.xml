@@ -42,6 +42,7 @@
     <string name="glyph_settings_notifs_sub_animations_title">Vzorec</string>
     <string name="glyph_settings_notifs_sub_essential_title">Pomembna obvestila</string>
     <string name="glyph_settings_notifs_sub_essential_summary">Pomemben Glyph bo prikazan dokler pomembna obvestila niso prebrana ali opuščena.</string>
+    <string name="glyph_settings_notifs_permission_required">Dostop do obvestil je zahtevan za omogočenje Glyph obvestil</string>
     <string name="glyph_settings_volume_title">Glasnost</string>
     <string name="glyph_settings_volume_level_toggle_title">Kazalnik glasnosti</string>
     <string name="glyph_settings_volume_level_toggle_summary">Prikaži raven glasnosti med prilagajanjem</string>
@@ -50,6 +51,6 @@
     <string name="glyph_settings_music_visualizer_toggle_summary">To bo pripravilo Glyph lučke, da reagirajo na predvajalnik glasbe na napravi.\nVse druge Glyph funkcije bodo onemogočene, ko je to uporabljeno.</string>
     <string name="glyph_accessibility_quick_settings">Glyph</string>
     <string name="glyph_accessibility_quick_settings_torch">Glyph svetilka</string>
-    <string name="glyph_accessibility_quick_settings_off">Izklopljeno</string>
-    <string name="glyph_accessibility_quick_settings_on">Vklopljeno</string>
+    <string name="glyph_accessibility_quick_settings_off">Izklopljena</string>
+    <string name="glyph_accessibility_quick_settings_on">Vklopljena</string>
 </resources>
