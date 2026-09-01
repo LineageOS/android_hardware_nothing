@@ -47,7 +47,7 @@
     <string name="glyph_settings_volume_level_toggle_summary">Hiển thị mức âm lượng khi điều chỉnh</string>
     <string name="glyph_settings_misc_title">Cài đặt khác</string>
     <string name="glyph_settings_music_visualizer_toggle_title">Sóng nhạc</string>
-    <string name="glyph_settings_music_visualizer_toggle_summary">Nó sẽ làm cho đèn Glyph phản ứng với trình phát âm thanh trên thiết bị.\nTất cả các chức năng Glyph khác sẽ bị vô hiệu hóa khi nó được sử dụng.</string>
+    <string name="glyph_settings_music_visualizer_toggle_summary">Thao tác này sẽ khiến cho đèn Glyph phản ứng với trình phát âm thanh trên thiết bị.\nTất cả các chức năng khác của Glyph sẽ bị vô hiệu hóa kh sử dụng chức năng này.</string>
     <string name="glyph_accessibility_quick_settings">Glyph</string>
     <string name="glyph_accessibility_quick_settings_torch">Đèn pin Glyph</string>
     <string name="glyph_accessibility_quick_settings_off">Tắt</string>
