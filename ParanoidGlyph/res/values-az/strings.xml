@@ -20,7 +20,7 @@
     <string name="glyph_settings_app_name">Glyph interfeysi</string>
     <string name="glyph_settings_enable">Glyph işıqları</string>
     <string name="glyph_settings_title">Glyph interfeysi</string>
-    <string name="glyph_settings_summary">Glyph işıqları üçün seçimlər</string>
+    <string name="glyph_settings_summary">Glyph işıqları üçün seçənəklər</string>
     <string name="glyph_settings_flip_toggle_title">Glyph-ə çevir</string>
     <string name="glyph_settings_flip_toggle_summary">Telefon üzü aşağı olarsa, səssizə al və \"Glyph\"ləri göstər</string>
     <string name="glyph_settings_brightness">Parlaqlıq</string>
