@@ -14,6 +14,8 @@ import android.util.Log
 
 class IGlyphServiceImpl(private val context: Context) : IGlyphService.Stub() {
     private var glyphService: IGlyphService? = null
+    private var frameLength = 0
+    private val frameLock = Any()
 
     private val connection =
         object : ServiceConnection {
@@ -45,8 +47,13 @@ class IGlyphServiceImpl(private val context: Context) : IGlyphService.Stub() {
 
     override fun setFrameColors(iArray: IntArray?) {
         Log.i("IGlyphServiceImpl", "updateLedFrame - ${iArray.contentToString()}")
-        if (iArray != null) {
-            glyphService?.setFrameColors(iArray)
+        synchronized(frameLock) {
+            if (iArray != null) {
+                glyphService?.let {
+                    it.setFrameColors(iArray)
+                    frameLength = iArray.size
+                }
+            }
         }
     }
 
@@ -56,6 +63,11 @@ class IGlyphServiceImpl(private val context: Context) : IGlyphService.Stub() {
 
     override fun closeSession() {
         Log.i("IGlyphServiceImpl", "closeSession")
+        synchronized(frameLock) {
+            if (frameLength > 0) {
+                glyphService?.setFrameColors(IntArray(frameLength))
+            }
+        }
     }
 
     override fun register(str: String) = true
