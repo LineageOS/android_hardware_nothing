@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
      SPDX-FileCopyrightText: 2025 The LineageOS Project
+     SPDX-FileCopyrightText: 2026 Paranoid Android
      SPDX-License-Identifier: Apache-2.0
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
@@ -8,6 +9,8 @@
     android:versionCode="1"
     android:versionName="1.0"
     android:sharedUserId="android.uid.system">
+
+    <permission android:name="com.nothing.ketchum.permission.ENABLE"/>
 
     <application
         android:label="GlyphAdapter"
@@ -18,9 +21,10 @@
 
         <service
             android:name=".GlyphService"
-            android:exported="true">
+            android:exported="true"
+            android:permission="com.nothing.ketchum.permission.ENABLE">
             <intent-filter>
-                <action android:name="com.nothing.thirdparty.IGlyphService"/>
+                <action android:name="com.nothing.thirdparty.bind_glyphservice"/>
             </intent-filter>
         </service>
 
