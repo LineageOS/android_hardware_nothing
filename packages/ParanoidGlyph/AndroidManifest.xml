@@ -103,8 +103,7 @@
         </service>
         <service
             android:name=".services.ThirdPartyService"
-            android:exported="true"
-            android:permission="android.permission.BIND_SERVICE">
+            android:exported="true">
             <intent-filter>
                 <action android:name="co.aospa.glyph.services.ThirdPartyService" />
             </intent-filter>
