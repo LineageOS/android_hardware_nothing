@@ -32,6 +32,16 @@ class ThirdPartyService : Service() {
             override fun register(str: String) = true
 
             override fun registerSDK(str1: String, str2: String) = true
+
+            override fun registerMatrixSDK(str: String) = false
+
+            override fun setMatrixColors(iArray: IntArray?) {}
+
+            override fun setGlyphMatrixTimeout(active: Boolean) {}
+
+            override fun setAppMatrixColors(iArray: IntArray?) {}
+
+            override fun closeAppMatrix() {}
         }
 
     override fun onBind(intent: Intent?): IBinder {
