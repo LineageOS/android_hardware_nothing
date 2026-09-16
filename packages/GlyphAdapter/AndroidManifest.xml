@@ -9,6 +9,8 @@
     android:versionName="1.0"
     android:sharedUserId="android.uid.system">
 
+    <permission android:name="com.nothing.ketchum.permission.ENABLE"/>
+
     <application
         android:label="GlyphAdapter"
         android:persistent="true"
@@ -18,9 +20,10 @@
 
         <service
             android:name=".GlyphService"
-            android:exported="true">
+            android:exported="true"
+            android:permission="com.nothing.ketchum.permission.ENABLE">
             <intent-filter>
-                <action android:name="com.nothing.thirdparty.IGlyphService"/>
+                <action android:name="com.nothing.thirdparty.bind_glyphservice"/>
             </intent-filter>
         </service>
 
