@@ -30,7 +30,8 @@
     <string name="glyph_settings_summary">Options for Glyph lights</string>
 
     <string name="glyph_settings_flip_toggle_title">Flip to Glyph</string>
-    <string name="glyph_settings_flip_toggle_summary">Mute and show Glyphs if phone is faced down</string>
+    <string name="glyph_settings_flip_toggle_summary">Silence on demand</string>
+    <string name="glyph_settings_flip_toggle_footer">For quiet focus, put the device with the Glyph Interface face up on a flat surface to trigger silent, lights-only notifications and calls.</string>
 
     <string name="glyph_settings_brightness">Brightness</string>
     <string name="glyph_settings_brightness_summary">Adjust Glyph brightness level</string>
