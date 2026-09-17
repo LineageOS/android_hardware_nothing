@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ SPDX-FileCopyrightText: Paranoid Android
+  ~ SPDX-License-Identifier: Apache-2.0
+  -->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res-auto"
+    android:title="@string/glyph_settings_charging_level_title">
+
+    <com.android.settingslib.widget.IllustrationPreference
+        android:key="glyph_settings_charging_level_preview"
+        settings:lottie_rawRes="@raw/glyph_settings_charging_level_preview" />
+
+    <com.android.settingslib.widget.MainSwitchPreference
+        android:defaultValue="true"
+        android:key="glyph_settings_charging_level"
+        android:title="@string/glyph_settings_charging_level_title" />
+
+    <com.android.settingslib.widget.FooterPreference
+        android:key="glyph_settings_charging_level_footer"
+        android:title="@string/glyph_settings_charging_level_footer" />
+
+</PreferenceScreen>
