@@ -39,8 +39,10 @@
     <string name="glyph_settings_brightness_increase_desc">Increase brightness</string>
 
     <string name="glyph_settings_charging_title">Charging</string>
-    <string name="glyph_settings_charging_level_title">Battery level</string>
-    <string name="glyph_settings_charging_level_summary">Show battery level when plugging in</string>
+    <string name="glyph_settings_charging_level_title">Charging meter</string>
+    <string name="glyph_settings_charging_level_summary">Wiggle for progress</string>
+    <string name="glyph_settings_charging_level_footer">Displays charging progression when charging with a cable.</string>
+
     <string name="glyph_settings_charging_powershare_title">Reverse wireless charging</string>
     <string name="glyph_settings_charging_powershare_summary">Show an animation when reverse wireless charging is detected</string>
 

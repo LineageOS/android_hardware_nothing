@@ -43,7 +43,7 @@ public class SettingsFragment extends SettingsBasePreferenceFragment implements 
     private PrimarySwitchPreference mFlipPreference;
     private PrimarySwitchPreference mNotifsPreference;
     private PrimarySwitchPreference mCallPreference;
-    private SwitchPreferenceCompat mChargingLevelPreference;
+    private PrimarySwitchPreference mChargingLevelPreference;
     private SwitchPreferenceCompat mChargingPowersharePreference;
     private SwitchPreferenceCompat mVolumeLevelPreference;
     private SwitchPreferenceCompat mMusicVisualizerPreference;
@@ -87,7 +87,7 @@ public class SettingsFragment extends SettingsBasePreferenceFragment implements 
         mCallPreference.setChecked(SettingsManager.isGlyphCallEnabled());
         mCallPreference.setOnPreferenceChangeListener(this);
 
-        mChargingLevelPreference = (SwitchPreferenceCompat) findPreference(Constants.GLYPH_CHARGING_LEVEL_ENABLE);
+        mChargingLevelPreference = (PrimarySwitchPreference) findPreference(Constants.GLYPH_CHARGING_LEVEL_ENABLE);
         mChargingLevelPreference.setOnPreferenceChangeListener(this);
 
         mChargingPowersharePreference = (SwitchPreferenceCompat) findPreference(Constants.GLYPH_CHARGING_POWERSHARE_ENABLE);
@@ -110,6 +110,7 @@ public class SettingsFragment extends SettingsBasePreferenceFragment implements 
             mCallPreference.setEnabled(false);
             mCallPreference.setSwitchEnabled(false);
             mChargingLevelPreference.setEnabled(false);
+            mChargingLevelPreference.setSwitchEnabled(false);
             mVolumeLevelPreference.setEnabled(false);
             mChargingPowersharePreference.setEnabled(false);
         }
@@ -132,6 +133,7 @@ public class SettingsFragment extends SettingsBasePreferenceFragment implements 
             mCallPreference.setEnabled(isChecked && !mMusicVisualizerPreference.isChecked());
             mCallPreference.setSwitchEnabled(isChecked && !mMusicVisualizerPreference.isChecked());
             mChargingLevelPreference.setEnabled(isChecked && !mMusicVisualizerPreference.isChecked());
+            mChargingLevelPreference.setSwitchEnabled(isChecked && !mMusicVisualizerPreference.isChecked());
             mChargingPowersharePreference.setEnabled(isChecked && !mMusicVisualizerPreference.isChecked());
             mVolumeLevelPreference.setEnabled(isChecked && !mMusicVisualizerPreference.isChecked());
         }
@@ -166,6 +168,7 @@ public class SettingsFragment extends SettingsBasePreferenceFragment implements 
             mCallPreference.setEnabled(isChecked);
             mCallPreference.setSwitchEnabled(isChecked);
             mChargingLevelPreference.setEnabled(isChecked);
+            mChargingLevelPreference.setSwitchEnabled(isChecked);
             mVolumeLevelPreference.setEnabled(isChecked);
             mChargingPowersharePreference.setEnabled(isChecked);
         }
@@ -179,6 +182,7 @@ public class SettingsFragment extends SettingsBasePreferenceFragment implements 
     public void onResume() {
         super.onResume();
         mFlipPreference.setChecked(SettingsManager.isGlyphFlipEnabled());
+        mChargingLevelPreference.setChecked(SettingsManager.isGlyphChargingEnabled());
         mCallPreference.setChecked(SettingsManager.isGlyphCallEnabled());
         mNotifsPreference.setChecked(SettingsManager.isGlyphNotifsEnabled());
     }
