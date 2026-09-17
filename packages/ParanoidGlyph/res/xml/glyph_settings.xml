@@ -87,12 +87,16 @@
                  android:targetClass="co.aospa.glyph.settings.ChargingLevelSettingsActivity"/>
         </com.android.settingslib.PrimarySwitchPreference>
 
-        <SwitchPreferenceCompat
+        <com.android.settingslib.PrimarySwitchPreference
             android:dependency="glyph_enable"
             android:key="glyph_settings_charging_powershare"
             android:defaultValue="true"
             android:title="@string/glyph_settings_charging_powershare_title"
-            android:summary="@string/glyph_settings_charging_powershare_summary" />
+            android:summary="@string/glyph_settings_charging_powershare_summary" >
+            <intent android:action="android.intent.action.MAIN"
+                 android:targetPackage="co.aospa.glyph"
+                 android:targetClass="co.aospa.glyph.settings.PowershareSettingsActivity"/>
+        </com.android.settingslib.PrimarySwitchPreference>
 
     <PreferenceCategory
         android:key="glyph_settings_volume"
