@@ -40,7 +40,7 @@ import co.aospa.glyph.utils.ServiceUtils;
 
 public class SettingsFragment extends SettingsBasePreferenceFragment implements OnPreferenceChangeListener {
 
-    private SwitchPreferenceCompat mFlipPreference;
+    private PrimarySwitchPreference mFlipPreference;
     private PrimarySwitchPreference mNotifsPreference;
     private PrimarySwitchPreference mCallPreference;
     private SwitchPreferenceCompat mChargingLevelPreference;
@@ -61,7 +61,7 @@ public class SettingsFragment extends SettingsBasePreferenceFragment implements 
         switchBar.setOnPreferenceChangeListener(this);
         switchBar.setChecked(glyphEnabled);
 
-        mFlipPreference = (SwitchPreferenceCompat) findPreference(Constants.GLYPH_FLIP_ENABLE);
+        mFlipPreference = (PrimarySwitchPreference) findPreference(Constants.GLYPH_FLIP_ENABLE);
         mFlipPreference.setOnPreferenceChangeListener(this);
 
         SliderPreference brightnessPreference = findPreference(Constants.GLYPH_BRIGHTNESS);
@@ -103,6 +103,7 @@ public class SettingsFragment extends SettingsBasePreferenceFragment implements 
         mMusicVisualizerPreference.setOnPreferenceChangeListener(this);
         if (mMusicVisualizerPreference.isChecked()) {
             mFlipPreference.setEnabled(false);
+            mFlipPreference.setSwitchEnabled(false);
             //mBrightnessPreference.setEnabled(false);
             mNotifsPreference.setEnabled(false);
             mNotifsPreference.setSwitchEnabled(false);
@@ -125,6 +126,7 @@ public class SettingsFragment extends SettingsBasePreferenceFragment implements 
             SettingsManager.enableGlyph(isChecked);
 
             mFlipPreference.setEnabled(isChecked && !mMusicVisualizerPreference.isChecked());
+            mFlipPreference.setSwitchEnabled(isChecked && !mMusicVisualizerPreference.isChecked());
             mNotifsPreference.setEnabled(isChecked && !mMusicVisualizerPreference.isChecked());
             mNotifsPreference.setSwitchEnabled(isChecked && !mMusicVisualizerPreference.isChecked());
             mCallPreference.setEnabled(isChecked && !mMusicVisualizerPreference.isChecked());
@@ -157,6 +159,7 @@ public class SettingsFragment extends SettingsBasePreferenceFragment implements 
         if (preferenceKey.equals(Constants.GLYPH_MUSIC_VISUALIZER_ENABLE)) {
             boolean isChecked = mMusicVisualizerPreference.isChecked();
             mFlipPreference.setEnabled(isChecked);
+            mFlipPreference.setSwitchEnabled(isChecked);
             //mBrightnessPreference.setEnabled(isChecked);
             mNotifsPreference.setEnabled(isChecked);
             mNotifsPreference.setSwitchEnabled(isChecked);
@@ -175,6 +178,7 @@ public class SettingsFragment extends SettingsBasePreferenceFragment implements 
     @Override
     public void onResume() {
         super.onResume();
+        mFlipPreference.setChecked(SettingsManager.isGlyphFlipEnabled());
         mCallPreference.setChecked(SettingsManager.isGlyphCallEnabled());
         mNotifsPreference.setChecked(SettingsManager.isGlyphNotifsEnabled());
     }
