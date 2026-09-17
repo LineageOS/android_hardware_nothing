@@ -19,18 +19,15 @@ package co.aospa.glyph.services;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.SharedPreferences;
-import android.database.ContentObserver;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import android.preference.PreferenceManager;
-import android.provider.Settings;
 import android.service.notification.NotificationListenerService;
 import android.service.notification.StatusBarNotification;
 import android.util.Log;
@@ -52,9 +49,6 @@ public class NotificationService extends NotificationListenerService
     private PowerManager mPowerManager;
     private WakeLock mWakeLock;
 
-    private ContentResolver mContentResolver;
-    private SettingObserver mSettingObserver;
-
     private SharedPreferences mSharedPreferences;
 
     @Override
@@ -66,9 +60,6 @@ public class NotificationService extends NotificationListenerService
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         mPowerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
         mWakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG);
-        mContentResolver = getContentResolver();
-        mSettingObserver = new SettingObserver();
-        mSettingObserver.register(mContentResolver);
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mSharedPreferences.registerOnSharedPreferenceChangeListener(this);
         super.onCreate();
@@ -86,7 +77,6 @@ public class NotificationService extends NotificationListenerService
         if (DEBUG) Log.d(TAG, "Destroying service");
         AnimationManager.stopEssential();
         mSharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
-        mSettingObserver.unregister(mContentResolver);
         super.onDestroy();
     }
 
@@ -142,8 +132,10 @@ public class NotificationService extends NotificationListenerService
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences preference, String key) {
-        if (key.equals("glyph_settings_notifs_sub_essential")) {
-            if (DEBUG) Log.d(TAG, "onSharedPreferenceChanged: glyph_settings_notifs_sub_essential");
+        if (Constants.GLYPH_NOTIFS_SUB_ESSENTIAL.equals(key)
+                || Constants.GLYPH_NOTIFS_ENABLE.equals(key)
+                || Constants.GLYPH_ENABLE.equals(key)) {
+            if (DEBUG) Log.d(TAG, "onSharedPreferenceChanged: " + key);
             onNotificationUpdated();
         }
     }
@@ -185,30 +177,6 @@ public class NotificationService extends NotificationListenerService
             AnimationManager.playEssential();
         } else {
             AnimationManager.stopEssential();
-        }
-    }
-
-    private class SettingObserver extends ContentObserver {
-        public SettingObserver() {
-            super(new Handler());
-        }
-
-        public void register(ContentResolver cr) {
-            cr.registerContentObserver(Settings.Secure.getUriFor(
-                Constants.GLYPH_ENABLE), false, this);
-            cr.registerContentObserver(Settings.Secure.getUriFor(
-                Constants.GLYPH_NOTIFS_ENABLE), false, this);
-        }
-
-        public void unregister(ContentResolver cr) {
-            cr.unregisterContentObserver(this);
-        }
-
-        @Override
-        public void onChange(boolean selfChange) {
-            if (DEBUG) Log.d(TAG, "SettingObserver: onChange");
-            onNotificationUpdated();
-            super.onChange(selfChange);
         }
     }
 }
