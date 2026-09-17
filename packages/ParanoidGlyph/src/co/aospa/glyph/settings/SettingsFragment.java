@@ -18,12 +18,8 @@
 
 package co.aospa.glyph.settings;
 
-import android.content.ContentResolver;
-import android.database.ContentObserver;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.Settings;
 
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceChangeListener;
@@ -52,19 +48,12 @@ public class SettingsFragment extends SettingsBasePreferenceFragment implements 
     private SwitchPreferenceCompat mVolumeLevelPreference;
     private SwitchPreferenceCompat mMusicVisualizerPreference;
 
-    private ContentResolver mContentResolver;
-    private SettingObserver mSettingObserver;
-
     private Handler mHandler = new Handler();
     private Runnable mBrightnessPreviewOff;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.glyph_settings);
-
-        mContentResolver = getActivity().getContentResolver();
-        mSettingObserver = new SettingObserver();
-        mSettingObserver.register(mContentResolver);
 
         boolean glyphEnabled = SettingsManager.isGlyphEnabled();
 
@@ -184,6 +173,13 @@ public class SettingsFragment extends SettingsBasePreferenceFragment implements 
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        mCallPreference.setChecked(SettingsManager.isGlyphCallEnabled());
+        mNotifsPreference.setChecked(SettingsManager.isGlyphNotifsEnabled());
+    }
+
+    @Override
     public void onDestroyView() {
         if (mBrightnessPreviewOff != null) {
             mHandler.removeCallbacks(mBrightnessPreviewOff);
@@ -192,39 +188,5 @@ public class SettingsFragment extends SettingsBasePreferenceFragment implements 
             mBrightnessPreviewOff = null;
         }
         super.onDestroyView();
-    }
-
-    @Override
-    public void onDestroy() {
-        mSettingObserver.unregister(mContentResolver);
-        super.onDestroy();
-    }
-
-    private class SettingObserver extends ContentObserver {
-        public SettingObserver() {
-            super(new Handler());
-        }
-
-        public void register(ContentResolver cr) {
-            cr.registerContentObserver(Settings.Secure.getUriFor(
-                Constants.GLYPH_CALL_ENABLE), false, this);
-            cr.registerContentObserver(Settings.Secure.getUriFor(
-                Constants.GLYPH_NOTIFS_ENABLE), false, this);
-        }
-
-        public void unregister(ContentResolver cr) {
-            cr.unregisterContentObserver(this);
-        }
-
-        @Override
-        public void onChange(boolean selfChange, Uri uri) {
-            super.onChange(selfChange, uri);
-            if (uri.equals(Settings.Secure.getUriFor(Constants.GLYPH_CALL_ENABLE))) {
-                mCallPreference.setChecked(SettingsManager.isGlyphCallEnabled());
-            }
-            if (uri.equals(Settings.Secure.getUriFor(Constants.GLYPH_NOTIFS_ENABLE))) {
-                mNotifsPreference.setChecked(SettingsManager.isGlyphNotifsEnabled());
-            }
-        }
     }
 }
