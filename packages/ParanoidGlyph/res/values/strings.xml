@@ -68,8 +68,9 @@
     <string name="glyph_settings_volume_level_toggle_footer">Display the current volume level with the Glyph Interface when adjusting.</string>
 
     <string name="glyph_settings_misc_title">Miscellaneous</string>
-    <string name="glyph_settings_music_visualizer_toggle_title">Music Visualizer</string>
-    <string name="glyph_settings_music_visualizer_toggle_summary">This will make Glyph lights react to audio player on the device.\nAll other Glyph functions will get disabled when this is used.</string>
+    <string name="glyph_settings_music_visualizer_toggle_title">Music visualisation</string>
+    <string name="glyph_settings_music_visualizer_toggle_summary">Give life to the party</string>
+    <string name="glyph_settings_music_visualizer_toggle_footer">The Glyph Interface lights up in sync to music played through the speakers.</string>
 
     <!-- QS tile -->
     <string name="glyph_accessibility_quick_settings">Glyph</string>

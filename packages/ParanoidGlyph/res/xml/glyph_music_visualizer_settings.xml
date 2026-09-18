@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ SPDX-FileCopyrightText: Paranoid Android
+  ~ SPDX-License-Identifier: Apache-2.0
+  -->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res-auto"
+    android:title="@string/glyph_settings_music_visualizer_toggle_title">
+
+    <com.android.settingslib.widget.IllustrationPreference
+        android:key="glyph_settings_music_visualizer_preview"
+        settings:lottie_rawRes="@raw/glyph_settings_music_visualizer_preview" />
+
+    <com.android.settingslib.widget.MainSwitchPreference
+        android:defaultValue="false"
+        android:key="glyph_settings_music_visualizer_toggle"
+        android:title="@string/glyph_settings_music_visualizer_toggle_title" />
+
+    <com.android.settingslib.widget.FooterPreference
+        android:key="glyph_settings_music_visualizer_footer"
+        android:title="@string/glyph_settings_music_visualizer_toggle_footer" />
+
+</PreferenceScreen>
