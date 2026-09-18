@@ -64,7 +64,8 @@
 
     <string name="glyph_settings_volume_title">Volume</string>
     <string name="glyph_settings_volume_level_toggle_title">Volume indicator</string>
-    <string name="glyph_settings_volume_level_toggle_summary">Show volume level when adjusting</string>
+    <string name="glyph_settings_volume_level_toggle_summary">Audio level at a glance</string>
+    <string name="glyph_settings_volume_level_toggle_footer">Display the current volume level with the Glyph Interface when adjusting.</string>
 
     <string name="glyph_settings_misc_title">Miscellaneous</string>
     <string name="glyph_settings_music_visualizer_toggle_title">Music Visualizer</string>
