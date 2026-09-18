@@ -23,7 +23,6 @@ import android.os.Handler;
 
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceChangeListener;
-import androidx.preference.SwitchPreferenceCompat;
 
 import com.android.settingslib.PrimarySwitchPreference;
 import com.android.settingslib.widget.MainSwitchPreference;
@@ -46,7 +45,7 @@ public class SettingsFragment extends SettingsBasePreferenceFragment implements 
     private PrimarySwitchPreference mChargingLevelPreference;
     private PrimarySwitchPreference mChargingPowersharePreference;
     private PrimarySwitchPreference mVolumeLevelPreference;
-    private SwitchPreferenceCompat mMusicVisualizerPreference;
+    private PrimarySwitchPreference mMusicVisualizerPreference;
 
     private Handler mHandler = new Handler();
     private Runnable mBrightnessPreviewOff;
@@ -99,23 +98,9 @@ public class SettingsFragment extends SettingsBasePreferenceFragment implements 
         mVolumeLevelPreference = (PrimarySwitchPreference) findPreference(Constants.GLYPH_VOLUME_LEVEL_ENABLE);
         mVolumeLevelPreference.setOnPreferenceChangeListener(this);
 
-        mMusicVisualizerPreference = (SwitchPreferenceCompat) findPreference(Constants.GLYPH_MUSIC_VISUALIZER_ENABLE);
+        mMusicVisualizerPreference = (PrimarySwitchPreference) findPreference(Constants.GLYPH_MUSIC_VISUALIZER_ENABLE);
         mMusicVisualizerPreference.setOnPreferenceChangeListener(this);
-        if (mMusicVisualizerPreference.isChecked()) {
-            mFlipPreference.setEnabled(false);
-            mFlipPreference.setSwitchEnabled(false);
-            //mBrightnessPreference.setEnabled(false);
-            mNotifsPreference.setEnabled(false);
-            mNotifsPreference.setSwitchEnabled(false);
-            mCallPreference.setEnabled(false);
-            mCallPreference.setSwitchEnabled(false);
-            mChargingLevelPreference.setEnabled(false);
-            mChargingLevelPreference.setSwitchEnabled(false);
-            mVolumeLevelPreference.setEnabled(false);
-            mVolumeLevelPreference.setSwitchEnabled(false);
-            mChargingPowersharePreference.setEnabled(false);
-            mChargingPowersharePreference.setSwitchEnabled(false);
-        }
+        updateEnabledState();
 
         mHandler.post(() -> ServiceUtils.checkGlyphService());
     }
@@ -127,19 +112,7 @@ public class SettingsFragment extends SettingsBasePreferenceFragment implements 
         if (preferenceKey.equals(Constants.GLYPH_ENABLE)) {
             boolean isChecked = (Boolean) newValue;
             SettingsManager.enableGlyph(isChecked);
-
-            mFlipPreference.setEnabled(isChecked && !mMusicVisualizerPreference.isChecked());
-            mFlipPreference.setSwitchEnabled(isChecked && !mMusicVisualizerPreference.isChecked());
-            mNotifsPreference.setEnabled(isChecked && !mMusicVisualizerPreference.isChecked());
-            mNotifsPreference.setSwitchEnabled(isChecked && !mMusicVisualizerPreference.isChecked());
-            mCallPreference.setEnabled(isChecked && !mMusicVisualizerPreference.isChecked());
-            mCallPreference.setSwitchEnabled(isChecked && !mMusicVisualizerPreference.isChecked());
-            mChargingLevelPreference.setEnabled(isChecked && !mMusicVisualizerPreference.isChecked());
-            mChargingLevelPreference.setSwitchEnabled(isChecked && !mMusicVisualizerPreference.isChecked());
-            mChargingPowersharePreference.setEnabled(isChecked && !mMusicVisualizerPreference.isChecked());
-            mChargingPowersharePreference.setSwitchEnabled(isChecked && !mMusicVisualizerPreference.isChecked());
-            mVolumeLevelPreference.setEnabled(isChecked && !mMusicVisualizerPreference.isChecked());
-            mVolumeLevelPreference.setSwitchEnabled(isChecked && !mMusicVisualizerPreference.isChecked());
+            mHandler.post(this::updateEnabledState);
         }
 
         if (preferenceKey.equals(Constants.GLYPH_BRIGHTNESS)) {
@@ -163,20 +136,7 @@ public class SettingsFragment extends SettingsBasePreferenceFragment implements 
         }
 
         if (preferenceKey.equals(Constants.GLYPH_MUSIC_VISUALIZER_ENABLE)) {
-            boolean isChecked = mMusicVisualizerPreference.isChecked();
-            mFlipPreference.setEnabled(isChecked);
-            mFlipPreference.setSwitchEnabled(isChecked);
-            //mBrightnessPreference.setEnabled(isChecked);
-            mNotifsPreference.setEnabled(isChecked);
-            mNotifsPreference.setSwitchEnabled(isChecked);
-            mCallPreference.setEnabled(isChecked);
-            mCallPreference.setSwitchEnabled(isChecked);
-            mChargingLevelPreference.setEnabled(isChecked);
-            mChargingLevelPreference.setSwitchEnabled(isChecked);
-            mVolumeLevelPreference.setEnabled(isChecked);
-            mVolumeLevelPreference.setSwitchEnabled(isChecked);
-            mChargingPowersharePreference.setEnabled(isChecked);
-            mChargingPowersharePreference.setSwitchEnabled(isChecked);
+            mHandler.post(this::updateEnabledState);
         }
 
         mHandler.post(() -> ServiceUtils.checkGlyphService());
@@ -193,6 +153,19 @@ public class SettingsFragment extends SettingsBasePreferenceFragment implements 
         mVolumeLevelPreference.setChecked(SettingsManager.isGlyphVolumeLevelEnabled());
         mCallPreference.setChecked(SettingsManager.isGlyphCallEnabled());
         mNotifsPreference.setChecked(SettingsManager.isGlyphNotifsEnabled());
+        mMusicVisualizerPreference.setChecked(SettingsManager.isGlyphMusicVisualizerEnabled());
+        updateEnabledState();
+    }
+
+    private void updateEnabledState() {
+        boolean enabled = SettingsManager.isGlyphEnabled()
+                && !SettingsManager.isGlyphMusicVisualizerEnabled();
+        for (PrimarySwitchPreference preference : new PrimarySwitchPreference[] {
+                mFlipPreference, mNotifsPreference, mCallPreference, mChargingLevelPreference,
+                mChargingPowersharePreference, mVolumeLevelPreference}) {
+            preference.setEnabled(enabled);
+            preference.setSwitchEnabled(enabled);
+        }
     }
 
     @Override
