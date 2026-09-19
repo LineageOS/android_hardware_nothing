@@ -22,11 +22,11 @@
     <string name="summary_empty" translatable="false"></string>
 
     <!-- App Name -->
-    <string name="glyph_settings_app_name">Glyph interface</string>
+    <string name="glyph_settings_app_name">Glyph Interface</string>
 
     <!-- Ambient Display -->
     <string name="glyph_settings_enable">Glyph lights</string>
-    <string name="glyph_settings_title">Glyph interface</string>
+    <string name="glyph_settings_title">Glyph Interface</string>
     <string name="glyph_settings_summary">Options for Glyph lights</string>
 
     <string name="glyph_settings_flip_toggle_title">Flip to Glyph</string>
