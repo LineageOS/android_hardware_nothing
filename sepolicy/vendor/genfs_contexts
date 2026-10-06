@@ -1,0 +1,9 @@
+# PowerShare
+genfscon sysfs /class/qcom-battery/wls_reverse_status                           u:object_r:sysfs_powershare:s0
+
+# Lights - Nothing 3a
+genfscon sysfs /devices/platform/soc/8c0000.qcom,qupv3_1_geni_se/880000.i2c/i2c-7/7-003a/leds/aw20036_led/all_brightness    u:object_r:vendor_sysfs_glyph:s0
+genfscon sysfs /devices/platform/soc/8c0000.qcom,qupv3_1_geni_se/880000.i2c/i2c-7/7-003a/leds/aw20036_led/all_white_brightness    u:object_r:vendor_sysfs_glyph:s0
+genfscon sysfs /devices/platform/soc/8c0000.qcom,qupv3_1_geni_se/880000.i2c/i2c-7/7-003a/leds/aw20036_led/frame_brightness        u:object_r:vendor_sysfs_glyph:s0
+genfscon sysfs /devices/platform/soc/8c0000.qcom,qupv3_1_geni_se/880000.i2c/i2c-7/7-003a/leds/aw20036_led/operating_mode          u:object_r:vendor_sysfs_glyph:s0
+genfscon sysfs /devices/platform/soc/8c0000.qcom,qupv3_1_geni_se/880000.i2c/i2c-7/7-003a/leds/aw20036_led/single_brightness       u:object_r:vendor_sysfs_glyph:s0

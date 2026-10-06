@@ -1,2 +1,5 @@
 # eSim Switcher
 user=_app seinfo=platform isPrivApp=true name=org.lineageos.settings.device.esimswitcher domain=nt_esim_app type=privapp_data_file levelFrom=all
+
+# Glyph
+user=system seinfo=platform isPrivApp=true name=co.aospa.glyph domain=glyph_app type=system_app_data_file levelFrom=all
