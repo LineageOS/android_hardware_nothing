@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2025 The LineageOS Project
+ * SPDX-FileCopyrightText: 2026 The LineageOS Project
  * SPDX-License-Identifier: Apache-2.0
  */
 
@@ -83,7 +83,7 @@ class EsimController(private val context: Context) {
     }
 
     companion object {
-        private const val TAG = "OplusEsimController"
+        private const val TAG = "NothingEsimController"
 
         private const val NFC_CONFIG_FILE_NAME_PROP = "persist.vendor.nfc.config_file_name"
     }
