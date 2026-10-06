@@ -1,0 +1,2 @@
+# PowerShare
+genfscon sysfs /class/qcom-battery/wls_reverse_status                           u:object_r:sysfs_powershare:s0
