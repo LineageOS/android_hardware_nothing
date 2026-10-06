@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2025 The LineageOS Project
+ * SPDX-FileCopyrightText: 2026 The LineageOS Project
  * SPDX-License-Identifier: Apache-2.0
  */
 
@@ -22,6 +22,10 @@ class BootCompletedReceiver : BroadcastReceiver() {
                 .isNotEmpty()
 
         setComponentEnabled(context, EsimSettingsActivity::class.java.name, hasNonRemovableEuicc)
+
+        if (hasNonRemovableEuicc) {
+            EsimController.getInstance(context).init()
+        }
     }
 
     private fun setComponentEnabled(context: Context, component: String, enabled: Boolean) {
@@ -40,6 +44,6 @@ class BootCompletedReceiver : BroadcastReceiver() {
     }
 
     companion object {
-        private const val TAG = "OplusEsimBootReceiver"
+        private const val TAG = "NothingEsimBootReceiver"
     }
 }

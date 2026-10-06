@@ -1,10 +1,10 @@
 //
-// SPDX-FileCopyrightText: 2025 The LineageOS Project
+// SPDX-FileCopyrightText: 2026 The LineageOS Project
 // SPDX-License-Identifier: Apache-2.0
 //
 
 android_app {
-    name: "OplusEsimSwitcher",
+    name: "NothingEsimSwitcher",
     defaults: ["SettingsLibDefaults"],
 
     srcs: ["src/**/*.kt"],
@@ -20,8 +20,8 @@ android_app {
     static_libs: [
         "androidx.core_core",
         "androidx.preference_preference",
+        "extphonelib",
         "org.lineageos.settings.resources",
-        "vendor.oplus.hardware.esim-V1-java",
     ],
 
     optimize: {

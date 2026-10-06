@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2025 The LineageOS Project
+ * SPDX-FileCopyrightText: 2026 The LineageOS Project
  * SPDX-License-Identifier: Apache-2.0
  */
 
@@ -17,10 +17,10 @@ class EsimSettingsFragment :
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.esim_settings, rootKey)
-        controller = EsimController(requireContext())
+        controller = EsimController.getInstance(requireContext())
 
         val switcher = findPreference<SwitchPreferenceCompat>(ESIM_TOGGLE_KEY)
-        switcher?.isChecked = controller.currentGpioState() == 1
+        switcher?.isChecked = controller.getEsimEnabled() == true
         switcher?.onPreferenceChangeListener = this
     }
 
@@ -34,13 +34,13 @@ class EsimSettingsFragment :
                 }
                 .setPositiveButton(R.string.esim_toggle_dialog_ok) { dialog, _ ->
                     dialog.dismiss()
-                    controller.toggleEsimState(1)
+                    controller.setEsimEnabled(true)
                     (preference as? SwitchPreferenceCompat)?.isChecked = true
                 }
                 .show()
             return false
         } else {
-            controller.toggleEsimState(0)
+            controller.setEsimEnabled(false)
             return true
         }
     }
