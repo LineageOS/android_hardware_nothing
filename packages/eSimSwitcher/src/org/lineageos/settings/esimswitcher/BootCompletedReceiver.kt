@@ -22,6 +22,10 @@ class BootCompletedReceiver : BroadcastReceiver() {
                 .isNotEmpty()
 
         setComponentEnabled(context, EsimSettingsActivity::class.java.name, hasNonRemovableEuicc)
+
+        if (hasNonRemovableEuicc) {
+            EsimController.getInstance(context).init()
+        }
     }
 
     private fun setComponentEnabled(context: Context, component: String, enabled: Boolean) {
