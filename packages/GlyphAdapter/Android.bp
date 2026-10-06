@@ -12,7 +12,6 @@ android_app {
     system_ext_specific: true,
 
     srcs: [
-        "src/**/*.java",
         "src/**/*.kt",
     ],
 
