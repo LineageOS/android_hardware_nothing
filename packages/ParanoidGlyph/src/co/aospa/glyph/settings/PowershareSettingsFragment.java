@@ -11,11 +11,13 @@ import android.os.Handler;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 
+import com.android.settingslib.widget.IllustrationPreference;
 import com.android.settingslib.widget.MainSwitchPreference;
 import com.android.settingslib.widget.SettingsBasePreferenceFragment;
 
 import co.aospa.glyph.R;
 import co.aospa.glyph.utils.Constants;
+import co.aospa.glyph.utils.ResourceUtils;
 import co.aospa.glyph.utils.ServiceUtils;
 
 public class PowershareSettingsFragment extends SettingsBasePreferenceFragment
@@ -26,6 +28,14 @@ public class PowershareSettingsFragment extends SettingsBasePreferenceFragment
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.glyph_charging_powershare_settings);
+
+        IllustrationPreference preview = findPreference("glyph_settings_charging_powershare_preview");
+        int previewResId = ResourceUtils.getIdentifier("glyph_settings_charging_powershare_preview", "raw");
+        if (previewResId != 0) {
+            preview.setLottieAnimationResId(previewResId);
+        } else {
+            preview.setVisible(false);
+        }
 
         getActivity().setTitle(R.string.glyph_settings_charging_powershare_title);
 
