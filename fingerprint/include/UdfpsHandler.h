@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022,2025 The LineageOS Project
+ * Copyright (C) 2022,2025-2026 The LineageOS Project
  *
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -21,6 +21,15 @@ class UdfpsHandler {
     virtual void onAuthenticationSucceeded() {};
     virtual void onAuthenticationFailed() {};
     virtual void cancel() {};
+
+    virtual void onEnroll() {};
+    virtual void onAuthenticate() {};
+    virtual void onChallengeRevoked() {};
+    virtual void onEnumerate() {};
+    virtual void onError(int32_t error, int32_t vendorCode) {};
+    virtual void onUiReady() {};
+    virtual void setIgnoreDisplayTouches(bool shouldIgnore) {};
+    virtual void onSessionClosed() {};
 };
 
 struct UdfpsHandlerFactory {
