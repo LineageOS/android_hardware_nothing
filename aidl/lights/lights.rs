@@ -28,6 +28,7 @@ const COALESCE_MAX: Duration = Duration::from_millis(16);
 
 const LOOKAHEAD_BUFFERS: usize = 3;
 const REFILL_INTERVAL: Duration = Duration::from_millis(50);
+const STREAM_END_TIMEOUT: Duration = Duration::from_millis(200);
 
 struct State {
     tracks: Vec<Track>,
@@ -172,10 +173,16 @@ fn render(tracks: &[Track], t: f64) -> Frame {
     std::array::from_fn(|index| to_level(tracks[index].level_at(t)))
 }
 
+fn animation_end(tracks: &[Track]) -> Option<f64> {
+    tracks.iter().try_fold(f64::NEG_INFINITY, |end, track| track.end().map(|e| end.max(e)))
+}
+
 struct Stream {
     generation: u64,
     start: f64,
+    end: Option<f64>,
     next_frame: u64,
+    complete: bool,
 }
 
 impl Stream {
@@ -270,7 +277,7 @@ impl<'a> Player<'a> {
 
         let restart = match &self.stream {
             Some(stream) if stream.generation == generation => {
-                self.strips.as_mut().unwrap().wait_end(Duration::ZERO)
+                !stream.complete && self.strips.as_mut().unwrap().wait_end(Duration::ZERO)
             }
             _ => true,
         };
@@ -283,14 +290,32 @@ impl<'a> Player<'a> {
         } else {
             self.fill(tracks);
         }
-        REFILL_INTERVAL
+
+        let stream = self.stream.as_ref().unwrap();
+        match (stream.end, stream.complete) {
+            (Some(end), true) => {
+                if now >= end {
+                    self.strips.as_mut().unwrap().wait_end(STREAM_END_TIMEOUT);
+                    self.stream = None;
+                    return Duration::ZERO;
+                }
+                Duration::from_secs_f64((end - now) / 1000.0).min(REFILL_INTERVAL)
+            }
+            _ => REFILL_INTERVAL,
+        }
     }
 
     fn start_stream(&mut self, tracks: &[Track], generation: u64, now: f64) -> std::io::Result<()> {
         self.stop_stream();
         self.glyph.wake()?;
         self.strips.as_mut().unwrap().reset();
-        self.stream = Some(Stream { generation, start: now, next_frame: 0 });
+        self.stream = Some(Stream {
+            generation,
+            start: now,
+            end: animation_end(tracks),
+            next_frame: 0,
+            complete: false,
+        });
         self.fill(tracks);
         self.strips.as_mut().unwrap().start()
     }
@@ -299,12 +324,18 @@ impl<'a> Player<'a> {
         let (Some(strips), Some(stream)) = (self.strips.as_mut(), self.stream.as_mut()) else {
             return;
         };
-        while strips.queued() < LOOKAHEAD_BUFFERS && strips.has_free_buffer() {
+        while !stream.complete && strips.queued() < LOOKAHEAD_BUFFERS && strips.has_free_buffer() {
             let mut frames = Vec::with_capacity(FRAMES_PER_BUFFER);
             while frames.len() < FRAMES_PER_BUFFER {
-                frames.push(render(tracks, stream.frame_time(stream.next_frame)));
+                let t = stream.frame_time(stream.next_frame);
+                if stream.end.is_some_and(|end| t > end) {
+                    break;
+                }
+                frames.push(render(tracks, t));
                 stream.next_frame += 1;
             }
+            // A partial buffer ends the stream
+            stream.complete = frames.len() < FRAMES_PER_BUFFER;
             strips.push(&frames);
         }
     }

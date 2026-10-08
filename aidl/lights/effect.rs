@@ -134,6 +134,10 @@ impl Track {
         !self.segments.is_empty()
     }
 
+    pub fn end(&self) -> Option<f64> {
+        self.segments.back().map_or(Some(f64::NEG_INFINITY), |segment| segment.end)
+    }
+
     pub fn level_at(&self, t: f64) -> f32 {
         let mut level = self.base;
         for segment in &self.segments {
