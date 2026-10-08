@@ -34,6 +34,24 @@
       "parentUuid": "60615777_e77eb791",
       "revId": "9c46e859ec93584b7a25067bf3de0a42d9d64684",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9b4a9c9_295b4d5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 24442
+      },
+      "writtenOn": "2026-10-08T21:57:07Z",
+      "side": 1,
+      "message": "Yeah I prefer if you could do import -\u003e rebrand -\u003e logic (squash of my commits + hiroshi).",
+      "parentUuid": "8e5dd151_52ef3e6b",
+      "revId": "9c46e859ec93584b7a25067bf3de0a42d9d64684",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
