@@ -59,7 +59,9 @@ public final class SettingsManager {
 
     public static int getGlyphBrightnessSetting() {
         String colorPath = ResourceUtils.getString("glyph_settings_paths_color_absolute");
-        int d = "white".equals(FileUtils.readLine(colorPath)) ? 2 : 3;
+        boolean white = colorPath != null && !colorPath.isEmpty()
+                && "white".equals(FileUtils.readLine(colorPath));
+        int d = white ? 2 : 3;
         return getPreferences().getInt(Constants.GLYPH_BRIGHTNESS, d);
     }
 
