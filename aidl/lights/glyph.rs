@@ -12,6 +12,11 @@ pub type Frame = [u8; NUM_LEDS];
 
 const LED_DIR: &str = "/sys/class/leds/aw20036_led";
 
+pub fn color_to_level(color: i32) -> u8 {
+    let [_, r, g, b] = color.to_be_bytes();
+    r.max(g).max(b)
+}
+
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 enum Mode {
     Shutdown = 0,
@@ -28,14 +33,14 @@ impl Glyph {
         Self { mode: read_mode() }
     }
 
-    pub fn write_frame(&mut self, frame: &Frame) -> io::Result<()> {
+    pub fn write_frame(&mut self, frame: &Frame, allow_standby: bool) -> io::Result<()> {
         let on = frame.iter().any(|&level| level != 0);
         if on || self.mode != Some(Mode::Standby) {
             self.set_mode(Mode::Active)?;
             let values = frame.iter().map(|level| level.to_string()).collect::<Vec<_>>();
             write_node("frame_brightness", &values.join(" "))?;
         }
-        if !on {
+        if !on && allow_standby {
             self.set_mode(Mode::Standby)?;
         }
         Ok(())
