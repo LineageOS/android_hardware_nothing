@@ -15,11 +15,16 @@ use android_hardware_light::aidl::android::hardware::light::{
 
 use binder::{ExceptionCode, Interface, Status};
 
-use crate::glyph::{self, Frame, NUM_LEDS};
+use crate::glyph::{Frame, Glyph, NUM_LEDS};
+
+struct State {
+    frame: Frame,
+    glyph: Glyph,
+}
 
 /// Defined so we can implement the ILights AIDL interface.
 pub struct LightsService {
-    frame: Mutex<Frame>,
+    state: Mutex<State>,
 }
 
 impl Interface for LightsService {}
@@ -35,16 +40,17 @@ impl LightsService {
 
 impl Default for LightsService {
     fn default() -> Self {
-        Self { frame: Mutex::new([0; NUM_LEDS]) }
+        Self { state: Mutex::new(State { frame: [0; NUM_LEDS], glyph: Glyph::new() }) }
     }
 }
 
 impl ILights for LightsService {
     fn setLightState(&self, id: i32, state: &HwLightState) -> binder::Result<()> {
         let index = Self::validate_light(id).map_err(|e| Status::new_exception(e, None))?;
-        let mut frame = self.frame.lock().unwrap();
-        frame[index] = color_to_level(state.color);
-        if let Err(e) = glyph::write_frame(&frame) {
+        let mut locked = self.state.lock().unwrap();
+        let locked = &mut *locked;
+        locked.frame[index] = color_to_level(state.color);
+        if let Err(e) = locked.glyph.write_frame(&locked.frame) {
             error!("Failed to write Glyph frame: {e}");
         }
         Ok(())
