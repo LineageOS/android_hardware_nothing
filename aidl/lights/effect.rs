@@ -37,8 +37,9 @@ impl Segment {
         }
         let elapsed = (t - self.start).max(0.0);
         let iteration = (elapsed / period).floor();
-        let from = if iteration == 0.0 { self.from } else { self.last_level() };
-        level_in_iteration(&self.effect, from, elapsed - iteration * period)
+        let first = iteration == 0.0;
+        let from = if first { self.from } else { self.last_level() };
+        level_in_iteration(&self.effect, from, elapsed - iteration * period, !first)
     }
 }
 
@@ -47,10 +48,13 @@ fn period(effect: &HwLightEffect) -> f64 {
         * f64::from(effect.framePeriodMillis)
 }
 
-fn level_in_iteration(effect: &HwLightEffect, from: f32, t: f64) -> f32 {
+fn level_in_iteration(effect: &HwLightEffect, from: f32, t: f64, skip_initial: bool) -> f32 {
     let frame_ms = f64::from(effect.framePeriodMillis);
     let (mut prev_t, mut prev_level) = (0.0, from);
-    for (&frames, &color) in effect.frames.iter().zip(&effect.colors) {
+    for (i, (&frames, &color)) in effect.frames.iter().zip(&effect.colors).enumerate() {
+        if skip_initial && i == 0 && frames == 0 {
+            continue;
+        }
         let target_t = prev_t + f64::from(frames) * frame_ms;
         let level = f32::from(color_to_level(color));
         if t < target_t {
