@@ -277,6 +277,16 @@ public final class AnimationManager {
             long start = System.currentTimeMillis();
 
             while (StatusManager.isCallLedEnabled()) {
+                if (GlyphLights.supportsEffects()) {
+                    try {
+                        playCallEffect(name);
+                    } catch (Exception e) {
+                        if (DEBUG) Log.d(TAG, "Exception while playing animation | name: " + name + " | exception: " + e);
+                    } finally {
+                        waitWhileAllLedActive(name);
+                    }
+                    continue;
+                }
                 try (BufferedReader reader = new BufferedReader(new InputStreamReader(
                         ResourceUtils.getCallAnimation(name)))) {
                     String line;
@@ -297,16 +307,20 @@ public final class AnimationManager {
                 } catch (Exception e) {
                     if (DEBUG) Log.d(TAG, "Exception while playing animation | name: " + name + " | exception: " + e);
                 } finally {
-                    if (StatusManager.isAllLedActive()) {
-                        if (DEBUG) Log.d(TAG, "All LED active, pause playing animation | name: " + name);
-                        while (StatusManager.isAllLedActive()) {}
-                    }
+                    waitWhileAllLedActive(name);
                 }
             }
             updateLedFrame(new float[5]);
             StatusManager.setCallLedActive(false);
             if (DEBUG) Log.d(TAG, "Done playing animation | name: " + name);
         });
+    }
+
+    private static void waitWhileAllLedActive(String name) {
+        if (StatusManager.isAllLedActive()) {
+            if (DEBUG) Log.d(TAG, "All LED active, pause playing animation | name: " + name);
+            while (StatusManager.isAllLedActive()) {}
+        }
     }
 
     private static void playCsvEffect(String name) throws IOException, InterruptedException {
@@ -316,6 +330,16 @@ public final class AnimationManager {
         long end = System.currentTimeMillis() + GlyphLights.playFrames(frames, 1);
         while (System.currentTimeMillis() < end) {
             if (checkInterruption("csv")) throw new InterruptedException();
+            Thread.sleep(EFFECT_POLL_INTERVAL);
+        }
+    }
+
+    private static void playCallEffect(String name) throws IOException, InterruptedException {
+        List<float[]> frames = readCsvFrames(name, ResourceUtils.getCallAnimation(name));
+        if (frames != null) {
+            GlyphLights.playFrames(frames, 0);
+        }
+        while (!checkInterruption("call")) {
             Thread.sleep(EFFECT_POLL_INTERVAL);
         }
     }
