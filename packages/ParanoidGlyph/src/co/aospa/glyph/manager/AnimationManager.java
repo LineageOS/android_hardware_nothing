@@ -374,6 +374,13 @@ public final class AnimationManager {
 
     private static void updateLedFrame(float[] pattern) {
         //if (DEBUG) Log.d(TAG, "Updating pattern: " + pattern);
+        float[] frame = buildFrame(pattern);
+        if (frame != null) {
+            GlyphLights.writeFrame(frame);
+        }
+    }
+
+    private static float[] buildFrame(float[] pattern) {
         float maxBrightness = (float) Constants.getMaxBrightness();
         if (Constants.getDevice().equals("phone3a")) {
             int[] zoneDefs = ResourceUtils.getIntArray("glyph_zone_channel_count");
@@ -396,7 +403,7 @@ public final class AnimationManager {
                 for (float brightness : pattern) {
                     if (brightness != 0) {
                         Log.w(TAG, "Unsupported pattern length: " + pattern.length);
-                        return;
+                        return null;
                     }
                 }
                 pattern = new float[frameLength];
@@ -420,7 +427,7 @@ public final class AnimationManager {
         for (int i = 0; i < pattern.length; i++) {
             pattern[i] = pattern[i] / maxBrightness * Constants.getBrightness();
         }
-        GlyphLights.writeFrame(pattern);
+        return pattern;
     }
 
     private static void updateLedSingle(int led, String brightness) {
