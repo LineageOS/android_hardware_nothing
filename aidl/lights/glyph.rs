@@ -33,10 +33,14 @@ impl Glyph {
         Self { mode: read_mode() }
     }
 
+    pub fn wake(&mut self) -> io::Result<()> {
+        self.set_mode(Mode::Active)
+    }
+
     pub fn write_frame(&mut self, frame: &Frame, allow_standby: bool) -> io::Result<()> {
         let on = frame.iter().any(|&level| level != 0);
         if on || self.mode != Some(Mode::Standby) {
-            self.set_mode(Mode::Active)?;
+            self.wake()?;
             let values = frame.iter().map(|level| level.to_string()).collect::<Vec<_>>();
             write_node("frame_brightness", &values.join(" "))?;
         }

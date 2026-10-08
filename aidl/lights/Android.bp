@@ -13,6 +13,7 @@ rust_binary {
         "liblogger",
         "liblog_rust",
         "libbinder_rs",
+        "liblibc",
         "android.hardware.light-V3-rust",
     ],
     srcs: ["main.rs"],

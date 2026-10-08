@@ -8,7 +8,7 @@ use std::sync::{Arc, Condvar, Mutex, MutexGuard};
 use std::thread;
 use std::time::{Duration, Instant};
 
-use log::{error, info};
+use log::{error, info, warn};
 
 use android_hardware_light::aidl::android::hardware::light::{
     HwLight::HwLight, HwLightEffect::HwLightEffect, HwLightState::HwLightState, ILights::ILights,
@@ -19,12 +19,15 @@ use binder::{ExceptionCode, Interface, Status};
 
 use crate::effect::{to_level, Track};
 use crate::glyph::{color_to_level, Frame, Glyph, NUM_LEDS};
+use crate::strips::{LedStrips, FRAMES_PER_BUFFER, FRAME_PERIOD_MS};
 
-const FRAME_PERIOD_MS: f64 = 1000.0 / 60.0;
 const MIN_UPDATE_PERIOD_MS: i32 = 17;
 
 const COALESCE_QUIET: Duration = Duration::from_millis(2);
 const COALESCE_MAX: Duration = Duration::from_millis(16);
+
+const LOOKAHEAD_BUFFERS: usize = 3;
+const REFILL_INTERVAL: Duration = Duration::from_millis(50);
 
 struct State {
     tracks: Vec<Track>,
@@ -169,15 +172,32 @@ fn render(tracks: &[Track], t: f64) -> Frame {
     std::array::from_fn(|index| to_level(tracks[index].level_at(t)))
 }
 
+struct Stream {
+    generation: u64,
+    start: f64,
+    next_frame: u64,
+}
+
+impl Stream {
+    fn frame_time(&self, frame: u64) -> f64 {
+        self.start + frame as f64 * FRAME_PERIOD_MS
+    }
+}
+
 struct Player<'a> {
     shared: &'a Shared,
     glyph: Glyph,
+    strips: Option<LedStrips>,
+    stream: Option<Stream>,
     written: Option<u64>,
 }
 
 impl<'a> Player<'a> {
     fn new(shared: &'a Shared) -> Self {
-        Self { shared, glyph: Glyph::new(), written: None }
+        let strips = LedStrips::open()
+            .inspect_err(|e| warn!("Failed to open LED strips, animating through sysfs: {e}"))
+            .ok();
+        Self { shared, glyph: Glyph::new(), strips, stream: None, written: None }
     }
 
     fn run(mut self) -> ! {
@@ -204,7 +224,7 @@ impl<'a> Player<'a> {
                 let tracks = state.tracks.clone();
                 drop(state);
                 self.written = None;
-                timeout = Some(self.animate(&tracks, now));
+                timeout = Some(self.animate(&tracks, generation, now));
             } else {
                 let frame = std::array::from_fn(|index| state.tracks[index].static_level());
                 drop(state);
@@ -230,6 +250,7 @@ impl<'a> Player<'a> {
     }
 
     fn show_static(&mut self, frame: &Frame, generation: u64) {
+        self.stop_stream();
         if self.written == Some(generation) {
             return;
         }
@@ -239,10 +260,63 @@ impl<'a> Player<'a> {
         }
     }
 
-    fn animate(&mut self, tracks: &[Track], now: f64) -> Duration {
-        if let Err(e) = self.glyph.write_frame(&render(tracks, now), false) {
-            error!("Failed to write Glyph frame: {e}");
+    fn animate(&mut self, tracks: &[Track], generation: u64, now: f64) -> Duration {
+        if self.strips.is_none() {
+            if let Err(e) = self.glyph.write_frame(&render(tracks, now), false) {
+                error!("Failed to write Glyph frame: {e}");
+            }
+            return Duration::from_secs_f64(FRAME_PERIOD_MS / 1000.0);
         }
-        Duration::from_secs_f64(FRAME_PERIOD_MS / 1000.0)
+
+        let restart = match &self.stream {
+            Some(stream) if stream.generation == generation => {
+                self.strips.as_mut().unwrap().wait_end(Duration::ZERO)
+            }
+            _ => true,
+        };
+        if restart {
+            if let Err(e) = self.start_stream(tracks, generation, now) {
+                error!("Failed to start LED strips stream: {e}");
+                self.strips = None;
+                return Duration::ZERO;
+            }
+        } else {
+            self.fill(tracks);
+        }
+        REFILL_INTERVAL
+    }
+
+    fn start_stream(&mut self, tracks: &[Track], generation: u64, now: f64) -> std::io::Result<()> {
+        self.stop_stream();
+        self.glyph.wake()?;
+        self.strips.as_mut().unwrap().reset();
+        self.stream = Some(Stream { generation, start: now, next_frame: 0 });
+        self.fill(tracks);
+        self.strips.as_mut().unwrap().start()
+    }
+
+    fn fill(&mut self, tracks: &[Track]) {
+        let (Some(strips), Some(stream)) = (self.strips.as_mut(), self.stream.as_mut()) else {
+            return;
+        };
+        while strips.queued() < LOOKAHEAD_BUFFERS && strips.has_free_buffer() {
+            let mut frames = Vec::with_capacity(FRAMES_PER_BUFFER);
+            while frames.len() < FRAMES_PER_BUFFER {
+                frames.push(render(tracks, stream.frame_time(stream.next_frame)));
+                stream.next_frame += 1;
+            }
+            strips.push(&frames);
+        }
+    }
+
+    fn stop_stream(&mut self) {
+        if self.stream.take().is_none() {
+            return;
+        }
+        if let Some(strips) = self.strips.as_mut() {
+            if let Err(e) = strips.stop() {
+                error!("Failed to stop LED strips stream: {e}");
+            }
+        }
     }
 }

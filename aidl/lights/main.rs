@@ -10,6 +10,7 @@ use binder::BinderFeatures;
 mod effect;
 mod glyph;
 mod lights;
+mod strips;
 use lights::LightsService;
 
 const LOG_TAG: &str = "android.hardware.light-service.nothing";
