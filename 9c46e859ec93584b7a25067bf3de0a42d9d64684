@@ -16,6 +16,24 @@
       "message": "I did not make this commit like that. Rebrand and changing the logic should be two different thing.\n\nAdditionally, most of esimsiwtcher chain should be squashed with hiroshi commits, since this is needed to make it fully work in the first place.",
       "revId": "9c46e859ec93584b7a25067bf3de0a42d9d64684",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e5dd151_52ef3e6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 28798
+      },
+      "writtenOn": "2026-10-08T20:53:31Z",
+      "side": 1,
+      "message": "Okay will amend this into import itself, I kept this separate to get an idea to what actually changed, or I can separate it to import -\u003e rebrand -\u003e logic. Wdyt?",
+      "parentUuid": "60615777_e77eb791",
+      "revId": "9c46e859ec93584b7a25067bf3de0a42d9d64684",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
