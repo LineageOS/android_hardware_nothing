@@ -1,0 +1,2 @@
+# Lights
+/vendor/bin/hw/android\.hardware\.light-service\.nothing                               u:object_r:hal_light_default_exec:s0
