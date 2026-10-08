@@ -25,7 +25,7 @@ import co.aospa.glyph.R;
 import co.aospa.glyph.utils.Constants;
 import co.aospa.glyph.manager.SettingsManager;
 import co.aospa.glyph.manager.StatusManager;
-import co.aospa.glyph.utils.FileUtils;
+import co.aospa.glyph.utils.GlyphLights;
 import co.aospa.glyph.utils.ResourceUtils;
 
 /** Quick settings tile: Glyph **/
@@ -68,9 +68,9 @@ public class TorchTileService extends TileService {
     private void setEnabled(boolean enabled) {
         int brightness = SettingsManager.getGlyphBrightness();
         StatusManager.setAllLedsActive(enabled);
-        FileUtils.writeAllLed(enabled ? brightness : 0);
+        GlyphLights.writeAll(enabled ? brightness : 0);
         if (StatusManager.isEssentialLedActive() && !enabled)
-            FileUtils.writeSingleLed(
+            GlyphLights.writeSingle(
                 ResourceUtils.getInteger("glyph_settings_notifs_essential_led"),
                 brightness / 100 * 7);
     }

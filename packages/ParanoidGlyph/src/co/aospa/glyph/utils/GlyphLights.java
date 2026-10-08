@@ -54,6 +54,19 @@ public final class GlyphLights {
         sSession.requestLights(request.build());
     }
 
+    public static void writeAll(float brightness) {
+        if (!init()) {
+            FileUtils.writeAllLed(brightness);
+            return;
+        }
+        LightsRequest.Builder request = new LightsRequest.Builder();
+        LightState state = toState(brightness);
+        for (Light light : sLights) {
+            request.addLight(light, state);
+        }
+        sSession.requestLights(request.build());
+    }
+
     public static void writeSingle(int led, float brightness) {
         if (!init()) {
             FileUtils.writeSingleLed(led, brightness);
