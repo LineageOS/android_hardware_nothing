@@ -41,6 +41,7 @@ public final class AnimationManager {
     private static final String TAG = "GlyphAnimationManager";
     private static final boolean DEBUG = true;
 
+    private static final float CSV_MAX_BRIGHTNESS = 4095f;
     private static final long EFFECT_POLL_INTERVAL = 10;
 
     private static Future<?> submit(Runnable runnable) {
@@ -321,6 +322,7 @@ public final class AnimationManager {
 
     private static List<float[]> readCsvFrames(String name, InputStream input) throws IOException {
         List<float[]> frames = new ArrayList<>();
+        float scale = Constants.getMaxBrightness() / CSV_MAX_BRIGHTNESS;
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(input))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -334,7 +336,7 @@ public final class AnimationManager {
                 }
                 float[] pattern = new float[values.length];
                 for (int i = 0; i < values.length; i++) {
-                    pattern[i] = Float.parseFloat(values[i]);
+                    pattern[i] = Float.parseFloat(values[i]) * scale;
                 }
                 float[] frame = buildFrame(pattern);
                 if (frame == null) return null;
