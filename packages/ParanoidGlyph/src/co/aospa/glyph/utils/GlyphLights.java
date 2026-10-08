@@ -54,6 +54,20 @@ public final class GlyphLights {
         sSession.requestLights(request.build());
     }
 
+    public static void writeSingle(int led, float brightness) {
+        if (!init()) {
+            FileUtils.writeSingleLed(led, brightness);
+            return;
+        }
+        if (led < 0 || led >= sLights.size()) {
+            Log.w(TAG, "Invalid LED: " + led);
+            return;
+        }
+        sSession.requestLights(new LightsRequest.Builder()
+                .addLight(sLights.get(led), toState(brightness))
+                .build());
+    }
+
     private static int toColor(float brightness) {
         int level = Math.round(brightness / Constants.getMaxBrightness() * 255);
         level = Math.max(0, Math.min(255, level));

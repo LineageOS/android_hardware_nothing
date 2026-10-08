@@ -29,7 +29,6 @@ import java.util.concurrent.Future;
 
 import co.aospa.glyph.utils.AnimationUtils;
 import co.aospa.glyph.utils.Constants;
-import co.aospa.glyph.utils.FileUtils;
 import co.aospa.glyph.utils.GlyphLights;
 import co.aospa.glyph.utils.ResourceUtils;
 
@@ -449,6 +448,6 @@ public final class AnimationManager {
                 brightness = maxBrightness / 100 * 7;
             }
         }
-        FileUtils.writeSingleLed(led, brightness / maxBrightness * Constants.getBrightness());
+        GlyphLights.writeSingle(led, brightness / maxBrightness * Constants.getBrightness());
     }
 }
