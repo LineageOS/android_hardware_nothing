@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61a1b7a8_f2645188",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 24442
+      },
+      "writtenOn": "2026-10-08T20:16:38Z",
+      "side": 1,
+      "message": "set_prop already gives get_prop permission, no need to declare both explicitly",
+      "revId": "b3c48a9e555412d26bf78383534b30a8cec9059f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
