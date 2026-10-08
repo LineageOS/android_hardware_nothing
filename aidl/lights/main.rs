@@ -7,6 +7,7 @@
 use android_hardware_light::aidl::android::hardware::light::ILights::{BnLights, ILights};
 use binder::BinderFeatures;
 
+mod glyph;
 mod lights;
 use lights::LightsService;
 
