@@ -30,6 +30,7 @@ import java.util.concurrent.Future;
 import co.aospa.glyph.utils.AnimationUtils;
 import co.aospa.glyph.utils.Constants;
 import co.aospa.glyph.utils.FileUtils;
+import co.aospa.glyph.utils.GlyphLights;
 import co.aospa.glyph.utils.ResourceUtils;
 
 public final class AnimationManager {
@@ -420,7 +421,7 @@ public final class AnimationManager {
         for (int i = 0; i < pattern.length; i++) {
             pattern[i] = pattern[i] / maxBrightness * Constants.getBrightness();
         }
-        FileUtils.writeFrameLed(pattern);
+        GlyphLights.writeFrame(pattern);
     }
 
     private static void updateLedSingle(int led, String brightness) {
