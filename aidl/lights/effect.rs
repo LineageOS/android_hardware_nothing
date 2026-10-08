@@ -5,7 +5,9 @@
 
 use std::collections::VecDeque;
 
-use android_hardware_light::aidl::android::hardware::light::HwLightEffect::HwLightEffect;
+use android_hardware_light::aidl::android::hardware::light::{
+    HwLightEffect::HwLightEffect, InterpolationType::InterpolationType,
+};
 
 use crate::glyph::color_to_level;
 
@@ -50,7 +52,12 @@ fn level_in_iteration(effect: &HwLightEffect, from: f32, t: f64) -> f32 {
         let target_t = prev_t + f64::from(frames) * frame_ms;
         let level = f32::from(color_to_level(color));
         if t < target_t {
-            return prev_level;
+            return match effect.interpolationType {
+                InterpolationType::LINEAR => {
+                    prev_level + (level - prev_level) * ((t - prev_t) / (target_t - prev_t)) as f32
+                }
+                _ => prev_level,
+            };
         }
         (prev_t, prev_level) = (target_t, level);
     }
