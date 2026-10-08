@@ -5,10 +5,12 @@
 
 package co.aospa.glyph.utils;
 
+import android.hardware.lights.ColorSequence;
 import android.hardware.lights.Light;
 import android.hardware.lights.LightState;
 import android.hardware.lights.LightsManager;
 import android.hardware.lights.LightsRequest;
+import android.hardware.lights.MultiLightEffect;
 import android.util.Log;
 
 import java.util.Comparator;
@@ -40,6 +42,10 @@ public final class GlyphLights {
             if (DEBUG) Log.d(TAG, "Glyph LEDs exposed by the lights HAL: " + sLights.size());
         }
         return sSession != null;
+    }
+
+    public static boolean supportsEffects() {
+        return init() && sLights.stream().allMatch(Light::hasAnimationControl);
     }
 
     public static void writeFrame(float[] frame) {
@@ -79,6 +85,41 @@ public final class GlyphLights {
         sSession.requestLights(new LightsRequest.Builder()
                 .addLight(sLights.get(led), toState(brightness))
                 .build());
+    }
+
+    public static long playFrames(List<float[]> frames, int iterations) {
+        if (!supportsEffects() || frames.isEmpty()) {
+            return 0;
+        }
+        long period = sLights.get(0).getMinUpdatePeriodMillis();
+
+        MultiLightEffect.Builder effect = new MultiLightEffect.Builder()
+                .setIterations(iterations)
+                .setPreemptive(true);
+        for (int led = 0; led < sLights.size(); led++) {
+            ColorSequence.Builder sequence = new ColorSequence.Builder()
+                    .setInterpolationMode(ColorSequence.INTERPOLATION_MODE_NONE);
+            int lastFrame = 0;
+            int lastColor = toColor(level(frames.get(0), led));
+            sequence.addControlPoint(0, lastColor);
+            for (int i = 1; i < frames.size(); i++) {
+                int color = toColor(level(frames.get(i), led));
+                if (color != lastColor) {
+                    sequence.addControlPoint((i - lastFrame) * period, color);
+                    lastFrame = i;
+                    lastColor = color;
+                }
+            }
+            sequence.addControlPoint((frames.size() - lastFrame) * period, lastColor);
+            effect.addLightSequence(sLights.get(led), sequence.build());
+        }
+
+        sSession.requestLights(new LightsRequest.Builder().setEffect(effect.build()).build());
+        return frames.size() * period;
+    }
+
+    private static float level(float[] frame, int led) {
+        return led < frame.length ? frame[led] : 0;
     }
 
     private static int toColor(float brightness) {

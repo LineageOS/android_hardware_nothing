@@ -21,8 +21,12 @@ import android.util.Log;
 import com.android.internal.util.ArrayUtils;
 
 import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -36,6 +40,8 @@ public final class AnimationManager {
 
     private static final String TAG = "GlyphAnimationManager";
     private static final boolean DEBUG = true;
+
+    private static final long EFFECT_POLL_INTERVAL = 10;
 
     private static Future<?> submit(Runnable runnable) {
         ExecutorService executorService = Executors.newSingleThreadExecutor();
@@ -97,6 +103,19 @@ public final class AnimationManager {
                 return;
 
             StatusManager.setAnimationActive(true);
+
+            if (GlyphLights.supportsEffects()) {
+                try {
+                    playCsvEffect(name);
+                } catch (Exception e) {
+                    if (DEBUG) Log.d(TAG, "Exception while playing animation | name: " + name + " | exception: " + e);
+                } finally {
+                    updateLedFrame(new float[5]);
+                    StatusManager.setAnimationActive(false);
+                    if (DEBUG) Log.d(TAG, "Done playing animation | name: " + name);
+                }
+                return;
+            }
 
             long start = System.currentTimeMillis();
 
@@ -287,6 +306,42 @@ public final class AnimationManager {
             StatusManager.setCallLedActive(false);
             if (DEBUG) Log.d(TAG, "Done playing animation | name: " + name);
         });
+    }
+
+    private static void playCsvEffect(String name) throws IOException, InterruptedException {
+        List<float[]> frames = readCsvFrames(name, ResourceUtils.getAnimation(name));
+        if (frames == null) return;
+
+        long end = System.currentTimeMillis() + GlyphLights.playFrames(frames, 1);
+        while (System.currentTimeMillis() < end) {
+            if (checkInterruption("csv")) throw new InterruptedException();
+            Thread.sleep(EFFECT_POLL_INTERVAL);
+        }
+    }
+
+    private static List<float[]> readCsvFrames(String name, InputStream input) throws IOException {
+        List<float[]> frames = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(input))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                line = line.replace(" ", "");
+                line = line.endsWith(",") ? line.substring(0, line.length() - 1) : line;
+                if (line.isEmpty()) continue;
+                String[] values = line.split(",");
+                if (!ArrayUtils.contains(Constants.getSupportedAnimationPatternLengths(), values.length)) {
+                    if (DEBUG) Log.d(TAG, "Animation line length mismatch | name: " + name + " | line: " + line);
+                    return null;
+                }
+                float[] pattern = new float[values.length];
+                for (int i = 0; i < values.length; i++) {
+                    pattern[i] = Float.parseFloat(values[i]);
+                }
+                float[] frame = buildFrame(pattern);
+                if (frame == null) return null;
+                frames.add(frame);
+            }
+        }
+        return frames;
     }
 
     public static void stopCall() {
