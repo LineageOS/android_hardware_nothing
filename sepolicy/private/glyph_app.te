@@ -15,6 +15,7 @@ allow glyph_app {
   game_service
   gpu_service
   hint_service
+  light_service
   media_session_service
   netstats_service
   sensorservice_service
