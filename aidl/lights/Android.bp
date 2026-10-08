@@ -4,10 +4,10 @@
 //
 
 rust_binary {
-    name: "android.hardware.lights-service.example",
+    name: "android.hardware.light-service.nothing",
     relative_install_path: "hw",
-    init_rc: ["lights-default.rc"],
-    vintf_fragments: ["lights-default.xml"],
+    init_rc: ["android.hardware.light-service.nothing.rc"],
+    vintf_fragments: ["android.hardware.light-service.nothing.xml"],
     vendor: true,
     rustlibs: [
         "liblogger",

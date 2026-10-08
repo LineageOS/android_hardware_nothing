@@ -10,7 +10,7 @@ use binder::BinderFeatures;
 mod lights;
 use lights::LightsService;
 
-const LOG_TAG: &str = "lights_service_example_rust";
+const LOG_TAG: &str = "android.hardware.light-service.nothing";
 
 use log::LevelFilter;
 
