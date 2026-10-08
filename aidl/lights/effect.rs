@@ -11,6 +11,8 @@ use android_hardware_light::aidl::android::hardware::light::{
 
 use crate::glyph::color_to_level;
 
+const MAX_QUEUED_EFFECTS: usize = 10;
+
 #[derive(Clone)]
 struct Segment {
     effect: HwLightEffect,
@@ -77,8 +79,29 @@ impl Track {
     }
 
     pub fn push(&mut self, effect: &HwLightEffect, now: f64) {
-        let (start, from) = (now, self.level_at(now));
-        self.segments.clear();
+        let (start, from) = if effect.preemptive || self.segments.is_empty() {
+            let from = self.level_at(now);
+            self.segments.clear();
+            (now, from)
+        } else {
+            let last = self.segments.back_mut().unwrap();
+            let end = match last.end {
+                Some(end) => end,
+                None => {
+                    // Let the current iteration finish
+                    let period = last.period();
+                    let end = if period > 0.0 {
+                        let iterations = ((now - last.start) / period).floor().max(0.0) + 1.0;
+                        last.start + iterations * period
+                    } else {
+                        now
+                    };
+                    last.end = Some(end);
+                    end
+                }
+            };
+            (end.max(now), last.last_level())
+        };
 
         let period = period(effect);
         let end = if effect.iterations > 0 {
@@ -89,6 +112,9 @@ impl Track {
             None
         };
 
+        while self.segments.len() >= MAX_QUEUED_EFFECTS {
+            self.segments.pop_front();
+        }
         self.segments.push_back(Segment { effect: effect.clone(), start, end, from });
     }
 
