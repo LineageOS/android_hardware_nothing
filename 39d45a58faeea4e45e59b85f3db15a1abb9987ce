@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ae5a672_7f911df0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2026-10-12T21:01:13Z",
+      "side": 1,
+      "message": "I would just add a rebranded Doze, mentioning it in the commit message.",
+      "revId": "39d45a58faeea4e45e59b85f3db15a1abb9987ce",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
