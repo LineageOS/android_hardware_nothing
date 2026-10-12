@@ -17,6 +17,6 @@ class BootCompletedReceiver : BroadcastReceiver() {
     }
 
     companion object {
-        private const val TAG = "OplusDoze"
+        private const val TAG = "NothingDoze"
     }
 }

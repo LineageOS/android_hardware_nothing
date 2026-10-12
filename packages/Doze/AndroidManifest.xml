@@ -40,7 +40,7 @@
         </receiver>
 
         <service android:name=".DozeService"
-                 android:permission="OneplusDozeService"
+                 android:permission="NothingDozeService"
                  android:exported="true">
         </service>
 
