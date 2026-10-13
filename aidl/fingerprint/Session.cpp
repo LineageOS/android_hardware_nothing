@@ -508,8 +508,8 @@ void Session::notify(const fingerprint_msg_t* msg) {
             mCb->onAuthenticatorIdInvalidated(msg->data.authenticator.id);
         } break;
         case FINGERPRINT_RESET_LOCKOUT: {
-            ALOGD("onLockoutCleared");
-            clearLockout(true);
+            // resetLockout() already cleared the lockout and notified the framework
+            ALOGD("onLockoutReset");
         } break;
 #endif
     }
