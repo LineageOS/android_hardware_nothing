@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45b2cf27_f3e5275a",
+        "filename": "sepolicy/vendor/hal_fingerprint_default.te",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 24442
+      },
+      "writtenOn": "2026-10-13T21:50:50Z",
+      "side": 1,
+      "message": "vendor_hal_perf is a qcom domain",
+      "revId": "3e38520a018aa53d88cb3de288852906eb63b668",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
