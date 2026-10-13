@@ -7,3 +7,7 @@ SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += hardware/nothing/sepolicy/public
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += hardware/nothing/sepolicy/private
 
 BOARD_VENDOR_SEPOLICY_DIRS += hardware/nothing/sepolicy/vendor
+
+ifeq ($(BOARD_USES_QCOM_HARDWARE),true)
+BOARD_VENDOR_SEPOLICY_DIRS += hardware/nothing/sepolicy/qcom/vendor
+endif
