@@ -1,0 +1,2 @@
+# Fingerprint
+genfscon sysfs /panel_feature/fp_status    u:object_r:vendor_sysfs_fingerprint:s0
