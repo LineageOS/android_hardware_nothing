@@ -18,6 +18,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f85c554_102cf2c6",
+        "filename": "sepolicy/qcom/vendor/genfs_contexts",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 28798
+      },
+      "writtenOn": "2026-10-14T05:53:26Z",
+      "side": 1,
+      "message": "At this stage, my focus is on the qcom platform that I initially pushed the chain for. Support for other platforms will be considered later when someone steps in to push/adapt this chain.",
+      "parentUuid": "7763b82e_006163e5",
+      "revId": "3e38520a018aa53d88cb3de288852906eb63b668",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45b2cf27_f3e5275a",
