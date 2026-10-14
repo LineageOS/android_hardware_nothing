@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c6e92c3_7834d250",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 28798
+      },
+      "writtenOn": "2026-10-14T07:46:17Z",
+      "side": 1,
+      "message": "okay, I need to make some more changes to sepolicy, its better to move nodes to device-specifics for glyph/vibr/fp, will do that and fix this.\n\nReview the rest meanwhile",
+      "revId": "3e38520a018aa53d88cb3de288852906eb63b668",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7763b82e_006163e5",
