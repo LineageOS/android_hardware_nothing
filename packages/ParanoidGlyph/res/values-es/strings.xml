@@ -17,5 +17,30 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="glyph_settings_app_name">Interfaz Glyph</string>
+    <string name="glyph_settings_enable">Iluminación Glyph</string>
+    <string name="glyph_settings_title">Interfaz Glyph</string>
+    <string name="glyph_settings_summary">Opciones para iluminación Glyph</string>
+    <string name="glyph_settings_flip_toggle_title">Rotar para Glyph</string>
+    <string name="glyph_settings_flip_toggle_summary">Silenciar y mostrar Glyphs si el teléfono está boca abajo</string>
+    <string name="glyph_settings_brightness">Brillo</string>
+    <string name="glyph_settings_charging_title">Cargando</string>
+    <string name="glyph_settings_charging_level_title">Nivel de batería</string>
+    <string name="glyph_settings_charging_powershare_title">Carga inalámbrica inversa</string>
+    <string name="glyph_settings_charging_powershare_summary">Mostrar una animación al detectar la carga inalámbrica inversa</string>
+    <string name="glyph_settings_call_title">Llamadas</string>
+    <string name="glyph_settings_call_toggle_title">Animación de llamada</string>
+    <string name="glyph_settings_call_toggle_summary">LED parpadeante en llamadas entrantes</string>
+    <string name="glyph_settings_notifs_title">Notificaciones</string>
+    <string name="glyph_settings_notifs_toggle_title">Animación de notificaciones</string>
+    <string name="glyph_settings_notifs_sub_title">Aplicaciones permitidas</string>
+    <string name="glyph_settings_notifs_sub_toggle_title">Activar animación de notificaciones</string>
     <string name="glyph_settings_notifs_permission_required">Se requiere acceso a las notificaciones para habilitar las notificaciones de Glyph</string>
+    <string name="glyph_settings_volume_title">Volumen</string>
+    <string name="glyph_settings_volume_level_toggle_title">Indicador de volumen</string>
+    <string name="glyph_settings_volume_level_toggle_summary">Mostrar el nivel de volumen al ajustarlo</string>
+    <string name="glyph_settings_misc_title">Varios</string>
+    <string name="glyph_settings_music_visualizer_toggle_title">Visualizador de música</string>
+    <string name="glyph_accessibility_quick_settings">Glyph</string>
+    <string name="glyph_accessibility_quick_settings_torch">Linterna Glyph</string>
 </resources>
