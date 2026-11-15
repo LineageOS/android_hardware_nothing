@@ -17,5 +17,40 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="glyph_settings_app_name">Interfaccia Glyph</string>
+    <string name="glyph_settings_enable">Luci Glyph</string>
+    <string name="glyph_settings_title">Interfaccia Glyph</string>
+    <string name="glyph_settings_summary">Opzioni per le luci Glyph</string>
+    <string name="glyph_settings_flip_toggle_title">Capovolgi per attivare Glyph</string>
+    <string name="glyph_settings_flip_toggle_summary">Silenzia e attiva Glyph se il telefono è capovolto</string>
+    <string name="glyph_settings_brightness">Luminosità</string>
+    <string name="glyph_settings_charging_title">In carica</string>
+    <string name="glyph_settings_charging_level_title">Livello della batteria</string>
+    <string name="glyph_settings_charging_level_summary">Mostra il livello della batteria quando collegato al caricatore</string>
+    <string name="glyph_settings_charging_powershare_title">Ricarica wireless inversa</string>
+    <string name="glyph_settings_charging_powershare_summary">Mostra un\'animazione quando la ricarica wireless inversa viene attivata</string>
+    <string name="glyph_settings_call_title">Chiamate</string>
+    <string name="glyph_settings_call_toggle_title">Animazione di chiamata</string>
+    <string name="glyph_settings_call_toggle_summary">Illumina i LED quando ci chiamate in arrivo</string>
+    <string name="glyph_settings_call_sub_toggle_title">Abilita l\'animazione di chiamata</string>
+    <string name="glyph_settings_call_sub_animations_title">Sequenza</string>
+    <string name="glyph_settings_notifs_title">Notifiche</string>
+    <string name="glyph_settings_notifs_toggle_title">Animazione di notifica</string>
+    <string name="glyph_settings_notifs_toggle_summary">Illumina i LED all\'arrivo di nuove notifiche</string>
+    <string name="glyph_settings_notifs_sub_title">App consentite</string>
+    <string name="glyph_settings_notifs_sub_toggle_title">Abilita l\'animazione di notifica</string>
+    <string name="glyph_settings_notifs_sub_animations_title">Sequenza</string>
+    <string name="glyph_settings_notifs_sub_essential_title">Notifiche Essential</string>
+    <string name="glyph_settings_notifs_sub_essential_summary">I Glyph Essential saranno mostrati fino alla lettura o cancellazione delle notifiche Essential</string>
     <string name="glyph_settings_notifs_permission_required">L\'accesso alle notifiche è necessario per abilitare le notifiche Glyph</string>
+    <string name="glyph_settings_volume_title">Volume</string>
+    <string name="glyph_settings_volume_level_toggle_title">Indicatore del volume</string>
+    <string name="glyph_settings_volume_level_toggle_summary">Mostra il livello del volume durante la regolazione</string>
+    <string name="glyph_settings_misc_title">Varie</string>
+    <string name="glyph_settings_music_visualizer_toggle_title">Visualizzatore musicale</string>
+    <string name="glyph_settings_music_visualizer_toggle_summary">Questa impostazione farà reagire le luci Glyph al lettore audio del dispositivo.\nTutte le altre funzioni Glyph verranno disabilitate quando il Visualizzatore musicale è in uso. </string>
+    <string name="glyph_accessibility_quick_settings">Glyph</string>
+    <string name="glyph_accessibility_quick_settings_torch">Torcia Glyph</string>
+    <string name="glyph_accessibility_quick_settings_off">Off</string>
+    <string name="glyph_accessibility_quick_settings_on">On</string>
 </resources>
