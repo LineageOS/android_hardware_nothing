@@ -13,9 +13,10 @@ mod shell;
 #[cfg_attr(phone1, path = "device/phone1.rs")]
 #[cfg_attr(phone2, path = "device/phone2.rs")]
 #[cfg_attr(phone3a, path = "device/phone3a.rs")]
+#[cfg_attr(phone4a, path = "device/phone4a.rs")]
 mod phone;
 
-#[cfg(not(any(phone1, phone2, phone3a)))]
+#[cfg(not(any(phone1, phone2, phone3a, phone4a)))]
 compile_error!("Set the nothing_glyph device soong config to a phone this service supports");
 
 pub use camera::CameraCodes;
@@ -23,7 +24,9 @@ pub use layout::{Group, Layout, Segments};
 pub use phone::DEVICE;
 pub use shell::{Shell, ShellLevel};
 
+use std::fs;
 use std::io::Result;
+use std::path::Path;
 
 use crate::controller::{Controller, Node};
 
@@ -35,6 +38,10 @@ pub struct IndicatorLed<Level = u32> {
 
     /// The level it lights at.
     pub level: Level,
+
+    /// The node that switches the driver to the PWM frequency a camera can film while recording,
+    /// where it takes one.
+    pub video_node: Option<&'static str>,
 }
 
 /// A phone: the controller it carries, and how it wires and uses it. Its levels are given for each
@@ -71,6 +78,7 @@ impl Device<ShellLevel> {
             indicator: self.indicator.map(|indicator| IndicatorLed {
                 led: indicator.led,
                 level: indicator.level.for_shell(shell),
+                video_node: indicator.video_node,
             }),
             layout: self.layout,
             camera: self.camera,
@@ -95,6 +103,14 @@ impl Device {
     /// Lights one LED on its own, outside any frame.
     pub fn write_led(&self, led: usize, level: u32) -> Result<()> {
         self.controller.write(self.dir, Node::Single, &format!("{led} {level}"), level > 0)
+    }
+
+    /// Switches the driver to the frequency a camera can film while recording, and back.
+    pub fn write_video_mode(&self, on: bool) -> Result<()> {
+        let Some(node) = self.indicator.and_then(|indicator| indicator.video_node) else {
+            return Ok(());
+        };
+        fs::write(Path::new(self.dir).join(node), if on { "1" } else { "0" })
     }
 
     fn clamp(&self, level: u32) -> u32 {

@@ -5,12 +5,12 @@
 
 //! The glyph controller chip: the nodes its driver offers, and how to write them.
 
-#[cfg(any(phone2, phone3a))]
+#[cfg(any(phone2, phone3a, phone4a))]
 mod aw20036;
 #[cfg(phone1)]
 mod aw210xx;
 
-#[cfg(any(phone2, phone3a))]
+#[cfg(any(phone2, phone3a, phone4a))]
 pub use aw20036::AW20036;
 #[cfg(phone1)]
 pub use aw210xx::AW210XX;

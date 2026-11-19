@@ -42,7 +42,14 @@ impl Indicator {
             if let Err(e) = self.device.write_led(led.led, 0) {
                 error!("Failed to clear the indicator: {e}");
             }
+            if let Err(e) = self.device.write_video_mode(false) {
+                error!("Failed to leave the video mode: {e}");
+            }
             return;
+        }
+
+        if let Err(e) = self.device.write_video_mode(true) {
+            error!("Failed to enter the video mode: {e}");
         }
 
         let generation = Arc::clone(&self.generation);

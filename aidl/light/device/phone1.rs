@@ -15,7 +15,11 @@ pub static DEVICE: Device<ShellLevel> = Device {
     dir: "/sys/class/leds/aw210xx_led",
     segments: 15,
     max_brightness: ShellLevel { black: 3840, white: 1306 },
-    indicator: Some(IndicatorLed { led: 17, level: ShellLevel { black: 3840, white: 1306 } }),
+    indicator: Some(IndicatorLed {
+        led: 17,
+        level: ShellLevel { black: 3840, white: 1306 },
+        video_node: None,
+    }),
     layout: Layout {
         camera: &[0],
         glyphs: Lights(&[&[0], &[1], &[2, 3, 4, 5], &[7, 8, 9, 10, 11, 12, 13, 14], &[6]]),

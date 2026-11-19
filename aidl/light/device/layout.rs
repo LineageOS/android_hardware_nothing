@@ -25,7 +25,7 @@ pub enum Group {
     Each(Segments),
 
     /// Lights that may each cover several segments. Not every phone has any.
-    #[cfg_attr(any(phone2, phone3a), allow(dead_code))]
+    #[cfg_attr(any(phone2, phone3a, phone4a), allow(dead_code))]
     Lights(&'static [Segments]),
 }
 
