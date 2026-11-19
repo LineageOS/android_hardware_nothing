@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ SPDX-FileCopyrightText: The LineageOS Project
+  ~ SPDX-License-Identifier: Apache-2.0
+  -->
+<resources>
+
+    <!-- Which device's strips these resources describe. -->
+    <string name="config_device" translatable="false">phone4a</string>
+
+    <!-- Highest level the strips accept. -->
+    <integer name="config_brightnessMax" translatable="false">4095</integer>
+
+    <!-- The levels the brightness slider steps through, dimmest first. These are the levels the
+         stock firmware gives a black shell. -->
+    <integer-array name="config_brightnessLevels" translatable="false">
+        <item>1125</item>
+        <item>1526</item>
+        <item>1928</item>
+    </integer-array>
+
+    <!-- The levels on a white shell, which diffuses more light. -->
+    <integer-array name="config_brightnessLevelsWhite" translatable="false">
+        <item>803</item>
+        <item>1205</item>
+        <item>1606</item>
+    </integer-array>
+
+    <!-- The wake-up sensor that reports the screen facing down. -->
+    <string name="config_flipSensorType" translatable="false">android.sensor.screen_upward</string>
+
+    <!-- The glyphs of the device drawing, the six segments of the bar from the top down. -->
+    <array name="config_glyphViews" translatable="false">
+        <item>@id/preview_device_segment1</item>
+        <item>@id/preview_device_segment2</item>
+        <item>@id/preview_device_segment3</item>
+        <item>@id/preview_device_segment4</item>
+        <item>@id/preview_device_segment5</item>
+        <item>@id/preview_device_segment6</item>
+    </array>
+
+    <!-- The channels each glyph of the drawing shows, in the order of the glyphs above. -->
+    <string-array name="config_glyphViewZones" translatable="false">
+        <item>0</item> <!-- segment 1 -->
+        <item>1</item> <!-- segment 2 -->
+        <item>2</item> <!-- segment 3 -->
+        <item>3</item> <!-- segment 4 -->
+        <item>4</item> <!-- segment 5 -->
+        <item>5</item> <!-- segment 6 -->
+    </string-array>
+
+    <!-- How many levels a csv line may carry, one entry per width accepted. -->
+    <integer-array name="config_patternLengths" translatable="false">
+        <item>5</item>
+        <item>6</item>
+    </integer-array>
+
+    <!-- The channels each zone of a five-zone frame lights, in the order the frame lists them. -->
+    <string-array name="config_frameZones" translatable="false">
+        <item>0</item> <!-- camera -->
+        <item>1</item> <!-- slant -->
+        <item>2-3</item> <!-- center -->
+        <item>4</item> <!-- bar -->
+        <item>5</item> <!-- dot -->
+    </string-array>
+
+    <!-- How the music visualizer reacts to sound. Each array below has one entry for each band,
+         and each band lights one segment, the highest pitch at the top. -->
+
+    <!-- The fft buckets each band averages, a bucket or a range of them. -->
+    <string-array name="config_visualizerBuckets" translatable="false">
+        <item>55-74</item> <!-- segment 1 -->
+        <item>30-44</item> <!-- segment 2 -->
+        <item>15-22</item> <!-- segment 3 -->
+        <item>8-11</item> <!-- segment 4 -->
+        <item>3-6</item> <!-- segment 5 -->
+        <item>0</item> <!-- segment 6 -->
+    </string-array>
+
+    <!-- How long, in milliseconds, each band's ceiling holds after a beat. -->
+    <integer-array name="config_visualizerDecayWindows" translatable="false">
+        <item>100</item> <!-- segment 1 -->
+        <item>200</item> <!-- segment 2 -->
+        <item>500</item> <!-- segment 3 -->
+        <item>1000</item> <!-- segment 4 -->
+        <item>600</item> <!-- segment 5 -->
+        <item>300</item> <!-- segment 6 -->
+    </integer-array>
+
+    <!-- The part of its ceiling a value has to reach to count as a beat. -->
+    <array name="config_visualizerTriggerRatios" translatable="false">
+        <item>0.7</item> <!-- segment 1 -->
+        <item>0.7</item> <!-- segment 2 -->
+        <item>0.7</item> <!-- segment 3 -->
+        <item>0.75</item> <!-- segment 4 -->
+        <item>0.75</item> <!-- segment 5 -->
+        <item>0.75</item> <!-- segment 6 -->
+    </array>
+
+    <!-- What each band's brightness is multiplied by each capture between beats. -->
+    <array name="config_visualizerTriggerDecays" translatable="false">
+        <item>0.66</item> <!-- segment 1 -->
+        <item>0.66</item> <!-- segment 2 -->
+        <item>0.66</item> <!-- segment 3 -->
+        <item>0.56</item> <!-- segment 4 -->
+        <item>0.56</item> <!-- segment 5 -->
+        <item>0.56</item> <!-- segment 6 -->
+    </array>
+
+    <!-- What each band's ceiling is multiplied by each capture once it falls. -->
+    <array name="config_visualizerCeilingDecays" translatable="false">
+        <item>0.63</item> <!-- segment 1 -->
+        <item>0.63</item> <!-- segment 2 -->
+        <item>0.65</item> <!-- segment 3 -->
+        <item>0.65</item> <!-- segment 4 -->
+        <item>0.65</item> <!-- segment 5 -->
+        <item>0.95</item> <!-- segment 6 -->
+    </array>
+
+    <!-- How long, in milliseconds, a band waits after a beat before it can beat again. -->
+    <integer name="config_visualizerRetrigger" translatable="false">180</integer>
+
+    <!-- The channels an essential notification holds lit, the whole bar. -->
+    <string-array name="config_essentialZones" translatable="false">
+        <item>0-5</item>
+    </string-array>
+
+    <!-- The ringtone a call plays until the user chooses another. -->
+    <string name="config_defaultCallAnimation" translatable="false">Beetle (Custom)</string>
+
+    <!-- The animation a notification plays until the user chooses another. -->
+    <string name="config_defaultNotificationAnimation" translatable="false">Beak (Custom)</string>
+
+</resources>

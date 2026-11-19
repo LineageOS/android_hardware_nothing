@@ -32,6 +32,8 @@ android_app {
         "phone1": ["phone1/assets"],
         "phone2": ["phone2/assets"],
         "phone3a": ["phone3a/assets"],
+        // The frames of Phone (1) and (2) are widened to the six segments of the bar.
+        "phone4a": ["phone2/assets"],
         default: [],
     }),
     resource_dirs: select(soong_config_variable("nothing_glyph", "device"), {
@@ -46,6 +48,10 @@ android_app {
         "phone3a": [
             "res",
             "phone3a/res",
+        ],
+        "phone4a": [
+            "res",
+            "phone4a/res",
         ],
         default: [],
     }),

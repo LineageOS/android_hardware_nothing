@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ SPDX-FileCopyrightText: The LineageOS Project
+  ~ SPDX-License-Identifier: Apache-2.0
+  -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="105.43dp"
+    android:layout_height="225dp"
+    android:background="@drawable/preview_device"
+    android:clipChildren="false">
+
+    <ImageView
+        android:layout_width="45.02dp"
+        android:layout_height="45.02dp"
+        android:layout_marginStart="30.21dp"
+        android:layout_marginTop="89.29dp"
+        android:alpha="0.35"
+        android:importantForAccessibility="no"
+        android:src="@drawable/preview_logo" />
+
+    <ImageView
+        android:id="@+id/preview_device_segment1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|top"
+        android:layout_marginTop="20.00dp"
+        android:layout_marginEnd="5.7dp"
+        android:alpha="0.3"
+        android:src="@drawable/glyph_led_segment" />
+
+    <ImageView
+        android:id="@+id/preview_device_segment2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|top"
+        android:layout_marginTop="26.04dp"
+        android:layout_marginEnd="5.7dp"
+        android:alpha="0.3"
+        android:src="@drawable/glyph_led_segment" />
+
+    <ImageView
+        android:id="@+id/preview_device_segment3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|top"
+        android:layout_marginTop="32.08dp"
+        android:layout_marginEnd="5.7dp"
+        android:alpha="0.3"
+        android:src="@drawable/glyph_led_segment" />
+
+    <ImageView
+        android:id="@+id/preview_device_segment4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|top"
+        android:layout_marginTop="38.12dp"
+        android:layout_marginEnd="5.7dp"
+        android:alpha="0.3"
+        android:src="@drawable/glyph_led_segment" />
+
+    <ImageView
+        android:id="@+id/preview_device_segment5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|top"
+        android:layout_marginTop="44.16dp"
+        android:layout_marginEnd="5.7dp"
+        android:alpha="0.3"
+        android:src="@drawable/glyph_led_segment" />
+
+    <ImageView
+        android:id="@+id/preview_device_segment6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|top"
+        android:layout_marginTop="50.20dp"
+        android:layout_marginEnd="5.7dp"
+        android:alpha="0.3"
+        android:src="@drawable/glyph_led_segment" />
+
+</FrameLayout>
